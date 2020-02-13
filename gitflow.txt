@@ -12,6 +12,7 @@
   => git add . (or specific file names) 
   => git commit -m '<specific and meaningful message>'
   => git push
+  => run --set-upstream message from console
   // this save your current work on github, no need to create pull request until feature is complete
 
 6. Once feature is complete => Create pull request on github
