@@ -11,6 +11,7 @@
 5. Save changes when you feel the need. 
   => git add . (or specific file names) 
   => git commit -m '<specific and meaningful message>'
+  => git pull origin development
   => git push
   => run --set-upstream message from console
   // this save your current work on github, no need to create pull request until feature is complete
