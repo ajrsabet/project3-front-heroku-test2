@@ -3,8 +3,16 @@ import "./card.css";
 
 export default function Card(props) {
   return (
-    <p> 
-      {props.title}
-    </p>
+    <div className='card'>
+      <p>
+        <img src={props.image} />
+      </p>
+      <p>
+        {props.heading}
+      </p>
+      <p>
+        {props.text}
+      </p>
+    </div>
   )
 }
