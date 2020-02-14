@@ -1,10 +1,15 @@
 import React from 'react';
 import Aside from './Components/Aside'
+import Form from "./Components/Form"
 // import './App.css';
 
 function App() {
   return (
-    <Aside />
+    <div>
+      <Aside />
+      <Form />
+    </div>
+
   )
 }
 
