@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./form.css";
+import "./Form.css";
 
 export default function Form(props) {
     let pw1, pw2;
