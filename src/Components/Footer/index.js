@@ -1,3 +1,10 @@
 import React from "react";
-import "./style.css";
+import "./footer.css";
 
+export default function Footer(props) {
+  return (
+    <footer className='footer'>
+      {props.children}
+    </footer>
+  )
+}
