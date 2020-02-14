@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./aside.css";
+import "./Aside.css";
 
 export default function Aside(props) {
 
