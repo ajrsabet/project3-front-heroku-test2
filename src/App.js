@@ -1,12 +1,10 @@
 import React from 'react';
-import Footer from './Components/Footer/index';
+import Aside from './Components/Aside'
 // import './App.css';
 
 function App() {
   return (
-    <Footer text='footer'>
-      
-    </Footer>
+    <Aside />
   )
 }
 
