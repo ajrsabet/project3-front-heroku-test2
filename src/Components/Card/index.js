@@ -1,3 +1,10 @@
 import React from "react";
-import "./style.css";
+import "./card.css";
 
+export default function Card(props) {
+  return (
+    <p> 
+      {props.title}
+    </p>
+  )
+}
