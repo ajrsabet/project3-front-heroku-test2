@@ -2,21 +2,28 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../Components/Header';
 import Navbar from '../Components/Navbar';
+import Register from './Register';
+import Login from './Login';
+
+
 
 export default function Home() {
-  // function renderHome() {
 
-  // }
+  function renderRegister() {
+
+  }
+
+  function renderLogin() {
+
+  }
 
   return (
     <div>
       <Header>
         <Navbar>
           <ul>
-            {/* <li onClick={renderHome}><Home/></li>
-            <li onClick={renderAbout}><About/></li>
-            <li onClick={renderRegister}><Create/></li>
-            <li onClick={renderLogin}><Login/></li> */}
+            <li onClick={renderRegister}><Register /></li>
+            <li onClick={renderLogin}><Login /></li>
           </ul>
         </Navbar>
         <p>
