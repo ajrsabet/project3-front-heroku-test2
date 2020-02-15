@@ -12,15 +12,15 @@ export default function Form(props) {
         city: "",
         state: "",
         zipcode: "",
-        ein2: null,
-        einRemaining: null,
+        ein2: "",
+        einRemaining: "",
         email: "",
         password: ""
     })
 
     const submitRegistration = (event) => {
         event.preventDefault();
-        console.log(event)
+        console.log(userState)
         pw1 = document.querySelector('#pw1').value;
         pw2 = document.querySelector('#pw2').value;
         (pw1 === pw2) ? console.log('passwords equal') : alert('passwords must match')
