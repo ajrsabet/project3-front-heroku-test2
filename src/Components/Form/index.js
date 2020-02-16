@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Form.css";
+import API from "../../Util/API/API"
 
 export default function Form(props) {
     let pw1, pw2;
@@ -30,6 +31,7 @@ export default function Form(props) {
         const name = event.target.name;
         const value = event.target.value;
         setUserState({
+            ...userState,
             [name]: value
         });
     };
