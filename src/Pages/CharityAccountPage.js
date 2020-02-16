@@ -10,13 +10,7 @@ export default function CharityAccountPage() {
     })
 
     useEffect(() => {
-        setSectionState({
-            sectionData:
-                <div>
-                    <h1>Account Overview</h1>
-                    <h2>stuff stuff</h2>
-                </div>
-        })
+        accountOverview()
     }, []);
 
 
