@@ -28,9 +28,28 @@ export default function CharityAccountPage() {
     function editProfile() {
         setSectionState({
             sectionData:
-                <div>
-                    <h1> Edit Profile </h1>
-                </div>
+            <div>
+            <h1> Edit Profile </h1>
+            <p>Company Name</p>
+            <input placeholder="API data here"></input>
+            <p>Admin Name</p>
+            <input placeholder="API data here"></input>
+            <p>Street Address</p>
+            <input placeholder="API data here"></input>
+            <p>City</p>
+            <input placeholder="API data here"></input>
+            <p>State</p>
+            <input placeholder="API data here"></input>
+            <p>Zipcode</p>
+            <input placeholder="API data here"></input>
+            <p>EIN</p>
+            <input placeholder="API data here"></input>
+            <input placeholder="API data here"></input>
+            <p>Email</p>
+            <input placeholder="API data here"></input>
+            <p>Password</p>
+            <input placeholder="API data here"></input>
+        </div>
         })
     }
 
