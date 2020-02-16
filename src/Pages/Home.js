@@ -22,8 +22,8 @@ export default function Home() {
       <Header>
         <Navbar>
           <ul>
-            <li onClick={renderRegister}><Register /></li>
-            <li onClick={renderLogin}><Login /></li>
+            <li onClick={renderRegister}>Register</li>
+            <li onClick={renderLogin}>Login</li>
           </ul>
         </Navbar>
         <p>
