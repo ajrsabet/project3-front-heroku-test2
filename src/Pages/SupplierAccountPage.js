@@ -14,12 +14,48 @@ export default function SupplierAccountPage() {
     }, []);
 
 
-    function accountOverview() {
+    function accountOverview(props) {
         setSectionState({
             sectionData:
                 <div>
                     <h1>Account Overview</h1>
-                    <h2>stuff stuff</h2>
+                    <h2>Profile</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Company Name</td>
+                                {/* <td>{props.company}</td> */}
+                                {/* correct props call? */}
+                            </tr>
+                            <tr>
+                                <td>Admin Name</td>
+                                {/* <td>{props.admin}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Street Address</td>
+                                {/* <td>{props.street}</td> */}
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                {/* <td>{props.city}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Zipcode</td>
+                                {/* <td>{props.zipcode}</td> */}
+                            </tr>
+                            <tr>
+                                <td>EIN</td>
+                                {/* <td>{props.ein}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                {/* <td>{props.email}</td> */}
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <button onClick={editProfile}>Edit Profile</button>
+
                 </div>
 
         })
@@ -49,15 +85,34 @@ export default function SupplierAccountPage() {
                     <input placeholder="API data here"></input>
                     <p>Password</p>
                     <input placeholder="API data here"></input>
+                    {/* Add confirm password? Also add API calls to change this info in DB */}
                 </div>
         })
     }
 
-    function changePassword() {
+    function setPickupSchedule() {
         setSectionState({
             sectionData:
                 <div>
-                    <h1> Change Password </h1>
+                    <h1> Set Pickup Schedule </h1>
+                </div>
+        })
+    }
+
+    function updateInventory(props) {
+        setSectionState({
+            sectionData:
+                <div>
+                    <h1> Update Inventory </h1>
+                </div>
+        })
+    }
+
+    function reviewCharities() {
+        setSectionState({
+            sectionData:
+                <div>
+                    <h1> Review Charities </h1>
                 </div>
         })
     }
@@ -68,7 +123,9 @@ export default function SupplierAccountPage() {
             <Aside>
                 <button onClick={accountOverview}>Account Overview</button>
                 <button onClick={editProfile}>Edit Profile</button>
-                <button onClick={changePassword}>Change Password</button>
+                <button onClick={setPickupSchedule}>Set Pickup Schedule</button>
+                <button onClick={updateInventory}>Update Inventory</button>
+                <button onClick={reviewCharities}>Review Charities</button>
             </Aside>
             <Section>
                 <div>{sectionState.sectionData}</div>

@@ -14,13 +14,49 @@ export default function CharityAccountPage() {
     }, []);
 
 
-    function accountOverview() {
+    function accountOverview(props) {
         setSectionState({
             sectionData:
-                <div>
-                    <h1>Account Overview</h1>
-                    <h2>stuff stuff</h2>
-                </div>
+            <div>
+            <h1>Account Overview</h1>
+            <h2>Profile</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Company Name</td>
+                        {/* <td>{props.company}</td> */}
+                        {/* correct props call? */}
+                    </tr>
+                    <tr>
+                        <td>Admin Name</td>
+                        {/* <td>{props.admin}</td> */}
+                    </tr>
+                    <tr>
+                        <td>Street Address</td>
+                        {/* <td>{props.street}</td> */}
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        {/* <td>{props.city}</td> */}
+                    </tr>
+                    <tr>
+                        <td>Zipcode</td>
+                        {/* <td>{props.zipcode}</td> */}
+                    </tr>
+                    <tr>
+                        <td>EIN</td>
+                        {/* <td>{props.ein}</td> */}
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        {/* <td>{props.email}</td> */}
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <button onClick={editProfile}>Edit Profile</button>
+
+        </div>
 
         })
     }
@@ -49,15 +85,36 @@ export default function CharityAccountPage() {
             <input placeholder="API data here"></input>
             <p>Password</p>
             <input placeholder="API data here"></input>
+            {/* Add confirm password? Also add API calls to change this info in DB */}
         </div>
         })
     }
 
-    function changePassword() {
+    function findSupplier() {
         setSectionState({
             sectionData:
                 <div>
-                    <h1> Change Password </h1>
+                    <h1> Find Suppliers </h1>
+                    {/* Add functionality to "favorite" suppliers */}
+                </div>
+        })
+    }
+
+    function viewInventory(){
+        setSectionState({
+            sectionData:
+                <div>
+                    <h1> View Supplier Inventory </h1>
+                    {/* Of favorite suppliers? */}
+                </div>
+        })
+    }
+
+    function reviewSupplier() {
+        setSectionState({
+            sectionData:
+                <div>
+                    <h1> Review Suppliers </h1>
                 </div>
         })
     }
@@ -68,7 +125,9 @@ export default function CharityAccountPage() {
             <Aside>
                 <button onClick={accountOverview}>Account Overview</button>
                 <button onClick={editProfile}>Edit Profile</button>
-                <button onClick={changePassword}>Change Password</button>
+                <button onClick={findSupplier}>Find Suppliers</button>
+                <button onClick={viewInventory}>View Supplier Inventory</button>
+                <button onClick={reviewSupplier}>Review Suppliers</button>
             </Aside>
             <Section>
                 <div>{sectionState.sectionData}</div>
