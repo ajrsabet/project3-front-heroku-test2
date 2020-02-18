@@ -14,7 +14,7 @@ export default function Home() {
           <Link to='/login'>Login</Link>
 
         </Navbar>
-          <h1>Title</h1>
+        <h1>Title</h1>
       </Header>
       <div className='main-info'>
         info hhit
