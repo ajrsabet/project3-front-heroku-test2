@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-import "./Aside.css";
+import React from "react";
 
 export default function Aside(props) {
 
-  // const [optionState, setOptionState] = useState({
-  //   accountOverview: `Account Overview`,
-  //   editProfile: `Edit Profile`,
-  //   changePassword: `Change Password`,
-  // })
-
   return (
-    <aside className="aside">
-     {props.children}
+    <aside className="aside span-2-of-5 col">
+      <div className='col'>
+        {props.children}
+      </div>
     </aside>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
+import Wrapper from '../Components/Wrapper';
 
 export default function SupplierAccountPage() {
 
@@ -65,14 +66,16 @@ export default function SupplierAccountPage() {
   return (
     <div>
       <Header />
-      <Aside>
-        <button onClick={accountOverview}>Account Overview</button>
-        <button onClick={editProfile}>Edit Profile</button>
-        <button onClick={changePassword}>Change Password</button>
-      </Aside>
-      <Section>
-        <div>{sectionState.sectionData}</div>
-      </Section>
+      <Wrapper>
+        <Aside>
+          <button onClick={accountOverview}>Account Overview</button>
+          <button onClick={editProfile}>Edit Profile</button>
+          <button onClick={changePassword}>Change Password</button>
+        </Aside>
+        <Section>
+          <div>{sectionState.sectionData}</div>
+        </Section>
+      </Wrapper>
     </div>
   )
 }

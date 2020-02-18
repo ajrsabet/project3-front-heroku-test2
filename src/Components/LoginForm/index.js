@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./LoginForm.css";
 
-export default function LoginForm(props) {
+export default function LoginForm() {
 
     const [loginState, setLoginState] = useState({
         email: "",
@@ -22,8 +21,8 @@ export default function LoginForm(props) {
     };
 
     return (
-        <form className="loginForm">
-            <div className='input-container'>
+        <form className="login-form">
+            <div className='login-container'>
                 <input
                     value={loginState.email}
                     onChange={handleInputChange}

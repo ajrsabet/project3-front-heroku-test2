@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
+import Wrapper from '../Components/Wrapper';
 
 export default function CharityAccountPage() {
 
@@ -63,16 +64,21 @@ export default function CharityAccountPage() {
   }
 
   return (
-    <div>
-      <Header />
+
+    <Wrapper>
+      <Header>
+        <h1>Hey Header</h1>
+      </Header>
       <Aside>
-        <button onClick={accountOverview}>Account Overview</button>
-        <button onClick={editProfile}>Edit Profile</button>
-        <button onClick={changePassword}>Change Password</button>
+        <button className='btn' onClick={accountOverview}>Account Overview</button>
+        <button className='btn' onClick={editProfile}>Edit Profile</button>
+        <button className='btn' onClick={changePassword}>Change Password</button>
       </Aside>
       <Section>
         <div>{sectionState.sectionData}</div>
       </Section>
-    </div>
+    </Wrapper>
+
+
   )
 }
