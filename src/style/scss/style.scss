@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -23,10 +24,80 @@ body {
   height: 100vh;
 }
 
+.main-home {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/produce-delivery.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.main-logo {
+  height: 100px;
+  width: auto;
+  float: left;
+  margin: 25px 0 0 35px;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+
+  .navbar {
+    float: right;
+    width: 100%;
+
+    a {
+      text-decoration: none;
+      margin: 40px 40px;
+      color: #fff;
+      float: right;
+      transition: 0.2s;
+
+      &:hover {
+        border-bottom: 2px solid #FF5722;
+      }
+    }
+  }
+}
+
+.main-home-text {
+  position: absolute;
+  width: 1140px;
+  top: 45%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  font-size: 120%;
+  a {
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 3px 12px;
+    border-radius: 50px;
+    color: #fff;
+    transition: 0.2s;
+
+    &:hover {
+      border-color: #FF5722;
+    }
+  }
+}
+
+.main-info{
+  width: 90%;
+  margin: 0 auto;
+  div{
+    border: 1px solid red;
+    height: 560px;
+  }
+}
+
+
+
 .wrapper {
   width: 85%;
   margin: 0 auto;
 }
+
+
 
 .Section {
   padding-left: 30px;
@@ -75,9 +146,7 @@ body {
   color: #fff;
 
   h1 {
-    text-align: center;
     padding: none;
     margin: none;
   }
 }
-
