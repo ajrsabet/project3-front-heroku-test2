@@ -54,21 +54,12 @@ export default function SupplierAccountPage() {
             </tbody>
           </table>
           <br />
-          <button onClick={editProfile}>Edit Profile</button>
+          {/* <button onClick={editProfile}>Edit Profile</button> */}
 
         </div>
     })
   }
 
-  function accountOverview() {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1>Account Overview</h1>
-          <h2>stuff stuff</h2>
-        </div>
-    })
-  }
 
   function editProfile() {
     setSectionState({
@@ -89,6 +80,7 @@ export default function SupplierAccountPage() {
           <input type='number' placeholder="API data here"></input>
           <p>EIN</p>
           <input type='number' placeholder="API data here"></input>
+          <input placeholder="API data here"></input>
           <p>Email</p>
           <input placeholder="API data here"></input>
           <p>Password</p>
