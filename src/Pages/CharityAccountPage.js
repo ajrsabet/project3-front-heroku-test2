@@ -17,46 +17,46 @@ export default function CharityAccountPage() {
     function accountOverview(props) {
         setSectionState({
             sectionData:
-            <div>
-            <h1>Account Overview</h1>
-            <h2>Profile</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Company Name</td>
-                        {/* <td>{props.company}</td> */}
-                        {/* correct props call? */}
-                    </tr>
-                    <tr>
-                        <td>Admin Name</td>
-                        {/* <td>{props.admin}</td> */}
-                    </tr>
-                    <tr>
-                        <td>Street Address</td>
-                        {/* <td>{props.street}</td> */}
-                    </tr>
-                    <tr>
-                        <td>City</td>
-                        {/* <td>{props.city}</td> */}
-                    </tr>
-                    <tr>
-                        <td>Zipcode</td>
-                        {/* <td>{props.zipcode}</td> */}
-                    </tr>
-                    <tr>
-                        <td>EIN</td>
-                        {/* <td>{props.ein}</td> */}
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        {/* <td>{props.email}</td> */}
-                    </tr>
-                </tbody>
-            </table>
-            <br />
-            <button onClick={editProfile}>Edit Profile</button>
+                <div>
+                    <h1>Account Overview</h1>
+                    <h2>Profile</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Company Name</td>
+                                {/* <td>{props.company}</td> */}
+                                {/* correct props call? */}
+                            </tr>
+                            <tr>
+                                <td>Admin Name</td>
+                                {/* <td>{props.admin}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Street Address</td>
+                                {/* <td>{props.street}</td> */}
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                {/* <td>{props.city}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Zipcode</td>
+                                {/* <td>{props.zipcode}</td> */}
+                            </tr>
+                            <tr>
+                                <td>EIN</td>
+                                {/* <td>{props.ein}</td> */}
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                {/* <td>{props.email}</td> */}
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <button onClick={editProfile}>Edit Profile</button>
 
-        </div>
+                </div>
 
         })
     }
@@ -64,29 +64,29 @@ export default function CharityAccountPage() {
     function editProfile() {
         setSectionState({
             sectionData:
-            <div>
-            <h1> Edit Profile </h1>
-            <p>Company Name</p>
-            <input placeholder="API data here"></input>
-            <p>Admin Name</p>
-            <input placeholder="API data here"></input>
-            <p>Street Address</p>
-            <input placeholder="API data here"></input>
-            <p>City</p>
-            <input placeholder="API data here"></input>
-            <p>State</p>
-            <input placeholder="API data here"></input>
-            <p>Zipcode</p>
-            <input placeholder="API data here"></input>
-            <p>EIN</p>
-            <input placeholder="API data here"></input>
-            <input placeholder="API data here"></input>
-            <p>Email</p>
-            <input placeholder="API data here"></input>
-            <p>Password</p>
-            <input placeholder="API data here"></input>
-            {/* Add confirm password? Also add API calls to change this info in DB */}
-        </div>
+                <div>
+                    <h1> Edit Profile </h1>
+                    <p>Company Name</p>
+                    <input placeholder="API data here"></input>
+                    <p>Admin Name</p>
+                    <input placeholder="API data here"></input>
+                    <p>Street Address</p>
+                    <input placeholder="API data here"></input>
+                    <p>City</p>
+                    <input placeholder="API data here"></input>
+                    <p>State</p>
+                    <input placeholder="API data here"></input>
+                    <p>Zipcode</p>
+                    <input placeholder="API data here"></input>
+                    <p>EIN</p>
+                    <input placeholder="API data here"></input>
+                    <input placeholder="API data here"></input>
+                    <p>Email</p>
+                    <input placeholder="API data here"></input>
+                    <p>Password</p>
+                    <input placeholder="API data here"></input>
+                    {/* Add confirm password? Also add API calls to change this info in DB */}
+                </div>
         })
     }
 
@@ -100,7 +100,7 @@ export default function CharityAccountPage() {
         })
     }
 
-    function viewInventory(){
+    function viewInventory() {
         setSectionState({
             sectionData:
                 <div>

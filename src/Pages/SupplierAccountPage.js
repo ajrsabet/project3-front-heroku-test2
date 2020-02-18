@@ -13,7 +13,6 @@ export default function SupplierAccountPage() {
         accountOverview()
     }, []);
 
-
     function accountOverview(props) {
         setSectionState({
             sectionData:
@@ -57,7 +56,16 @@ export default function SupplierAccountPage() {
                     <button onClick={editProfile}>Edit Profile</button>
 
                 </div>
+        })
+    }
 
+    function accountOverview() {
+        setSectionState({
+            sectionData:
+                <div>
+                    <h1>Account Overview</h1>
+                    <h2>stuff stuff</h2>
+                </div>
         })
     }
 
