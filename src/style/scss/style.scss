@@ -11,28 +11,73 @@ body {
   font-size: $primary-font-size;
   font-weight: $primary-font-weight;
   text-rendering: optimizeLegibility;
+  background-color: $primary-color-4;
 }
 
-.aside, .Section {
-  border: 1px red solid;
+.aside,
+.Section {
+  // border: 1px red solid;
   display: inline-flex;
-  padding: 0;
+  // padding: 0;
   margin: 0;
+  height: 100vh;
 }
 
+.wrapper {
+  width: 85%;
+  margin: 0 auto;
+}
 
+.Section {
+  padding-left: 30px;
+  background-color: #fff;
 
-.header {
-  border: 1px red solid;
-  width: 100%;
-  height: auto;
-  justify-content: center;
-  h1 {
-    text-align: center;
+  div {
+    width: 100%;
+
+    p {
+      width: 100%;
+      padding-top: 10px;
+    }
   }
 }
 
-.btn {
-  width: 100%;
-  margin-bottom: 10px;
+.aside {
+  background-color: $primary-color-2;
+
+  .btn {
+    background-color: $primary-color-2;
+    color: #fff;
+    width: 100%;
+    padding: 20px 0;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $primary-color-1;
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+      background-color: $primary-color-1;
+    }
+  }
 }
+
+.header {
+  background-color: $primary-color-1;
+  border: $primary-color-2 1px solid;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  color: #fff;
+
+  h1 {
+    text-align: center;
+    padding: none;
+    margin: none;
+  }
+}
+

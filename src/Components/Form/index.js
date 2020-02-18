@@ -13,8 +13,7 @@ export default function Form() {
     city: "",
     state: "",
     zipcode: "",
-    ein2: "",         // Can't type in the field
-    einRemaining: "", // Can't type in the field
+    ein: "",         // Can't type in the field
     email: "",
     password: ""
   })
@@ -136,18 +135,11 @@ export default function Form() {
           placeholder='ZIPCODE'
         />
         <input
-          value={userState.ein2}
+          value={userState.ein}
           onChange={handleInputChange}
           type='number'
-          name='ein2'
+          name='ein'
           placeholder='EIN'
-        />
-        <input
-          value={userState.einRemaining}
-          onChange={handleInputChange}
-          type='number'
-          name='einRemaining'
-          placeholder='EIN-7-Digits' // Added a placd holder for the input
         />
         <input
           value={userState.email}
