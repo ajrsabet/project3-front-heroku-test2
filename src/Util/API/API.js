@@ -111,8 +111,8 @@ const API = {
         return axios.delete(`${URL}/api/donation/${id}`)
     },
 
-//  Donation Routes___________________________________________
-    // Get all Companys
+//  Company Routes___________________________________________
+    // Get all Companies
     getAllCompany: () => {
         return axios.get(`${URL}/api/company`)
     },
@@ -134,13 +134,15 @@ const API = {
     },
 
 // User Login __________________________________________________
-    login: (user) => {
+    logIn: (user) => {
         return axios.post(`${URL}/api/auth/login`, user, { withCredentials: true })
     },
     // isAuthenticated: () => {
     //     return axios.get(`${URL}/api/auth/loggedinuser`, { withCredentials: true });
     // }
-
+    logOut: (user) => {
+        return axios.get(`${URL}/api/auth/logout`, user, { withCredentials: true })
+    }
 }
 
 export default API
