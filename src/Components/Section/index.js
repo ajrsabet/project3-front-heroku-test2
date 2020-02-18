@@ -1,9 +1,8 @@
 import React from "react";
-import "./Section.css";
 
 export default function Section(props) {
     return (
-        <section className="section">
+        <section className="Section span-4-of-5">
             {props.children}
         </section>
     )

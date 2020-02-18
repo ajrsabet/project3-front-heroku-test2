@@ -8,14 +8,16 @@ import Login from "./Pages/Login";
 import SupplierAccountPage from "./Pages/SupplierAccountPage";
 import CharityAccountPage from "./Pages/CharityAccountPage";
 
-// import './App.css';
+import './style/Resources/grid-css/grid.css';
+import './style/Resources/normalize/normalize.css';
+import './style/css/style.min.css';
 
 function App() {
   return (
     <div>
       <Router>
 
-        <Navbar />
+        <Navbar className='navbar' />
 
         <Switch>
 

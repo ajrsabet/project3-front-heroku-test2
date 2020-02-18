@@ -6,7 +6,7 @@ import Navbar from '../Components/Navbar';
 export default function Home() {
 
   return (
-    <div>
+    <div className='container'>
       <Header>
         <Navbar>
 
@@ -14,9 +14,7 @@ export default function Home() {
           <Link to='/login'>Login</Link>
 
         </Navbar>
-        <p>
           <h1>Title</h1>
-        </p>
       </Header>
       <div className='main-info'>
         info hhit
@@ -25,3 +23,6 @@ export default function Home() {
   )
 
 }
+
+
+

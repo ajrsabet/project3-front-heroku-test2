@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
+import Wrapper from '../Components/Wrapper';
 
 export default function CharityAccountPage() {
 
@@ -133,5 +134,6 @@ export default function CharityAccountPage() {
                 <div>{sectionState.sectionData}</div>
             </Section>
         </div>
-    )
+      )
+
 }

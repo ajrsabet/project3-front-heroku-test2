@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Form.css";
 import API from "../../Util/API/API"
 
 export default function Form() {
@@ -71,15 +70,19 @@ export default function Form() {
   };
 
   return (
-    <form className="form">
+    <form className="register-form">
       <div className='input-container'>
         <label htmlFor="charity">Charity</label>
-        <input value="checked"
+        <input
+          className='radio-button'
+          value="checked"
           onChange={handleInputChange}
           type="radio"
           name='account-type' />
         <label htmlFor="supplier">Supplier</label>
-        <input value={userState.accountType}
+        <input
+          className='radio-button'
+          value={userState.accountType}
           onChange={handleInputChange}
           type="radio"
           name='account-type' />
@@ -104,7 +107,8 @@ export default function Form() {
           name='adminLastName' //-----------------
           placeholder='ADMIN LAST NAME' //----------------
         />
-        <input value={userState.street}
+        <input
+          value={userState.street}
           onChange={handleInputChange}
           type='text'
           name='street'

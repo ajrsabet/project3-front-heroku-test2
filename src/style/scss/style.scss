@@ -1,0 +1,38 @@
+@import './config';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: $primary-font-size;
+  font-weight: $primary-font-weight;
+  text-rendering: optimizeLegibility;
+}
+
+.aside, .Section {
+  border: 1px red solid;
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.header {
+  border: 1px red solid;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  h1 {
+    text-align: center;
+  }
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
