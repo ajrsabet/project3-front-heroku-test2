@@ -13,7 +13,7 @@ export default function Form() {
     city: "",
     state: "",
     zipcode: "",
-    ein: "",         // Can't type in the field
+    ein: "", 
     email: "",
     password: ""
   })
@@ -24,38 +24,39 @@ export default function Form() {
     // console.log(userState)
     pw1 = document.querySelector('#pw1').value;
     pw2 = document.querySelector('#pw2').value;
+    
     (pw1 === pw2) ? console.log('passwords equal') : alert('passwords must match')
 
     //API call to update 3 tables
     API.createCompany({
       company_name: userState.company,
-      ein: userState.ein2,
+      ein: userState.ein,
       account_type: 1
     }).then(res => {
       console.log(res);
-
-      // API.createUser({
-      //   username: userState.email,
-      //   password: userState.password,
-      //   first_name: userState.adminFirstName,
-      //   last_name: userState.adminLastName,
-      //   email: userState.email,
-      //   admin: 1, // maybe replace with user input
-      //   companyProfileId: res.body.id
-      // }).then(data => {
-      //   console.log(data);
-      //   API.createLocation({
-      //     address: userState.street,
-      //     city: userState.city,
-      //     state: userState.state,
-      //     zip: userState.zipcode,
-      //     ein: userState.ein2,
-      //   })
-      //   // res.json(data)
-
-      // })
-
-
+      API.createUser({
+        username: userState.email,
+        password: userState.password,
+        first_name: userState.adminFirstName,
+        last_name: userState.adminLastName,
+        email: userState.email,
+        admin: 1, // maybe replace with user input
+        CompanyProfileId: res.data.id
+      }).then(data => {
+        console.log(data.data.id);
+        console.log(res.data.id);
+        
+        API.createLocation({
+          address: userState.street,
+          city: userState.city,
+          state: userState.state,
+          zip: userState.zipcode,
+          CompanyProfileId: res.data.id
+        })
+        // res.json(data)
+      }).then (data => {
+        window.location.href = `/charity`;
+      })
     })
     //------------------------------------------------
   }
