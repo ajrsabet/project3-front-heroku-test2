@@ -54,9 +54,6 @@ export default function CharityAccountPage() {
               </tr>
             </tbody>
           </table>
-          <br />
-          {/* <button onClick={editProfile}>Edit Profile</button> */}
-
         </div>
 
     })
