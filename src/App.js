@@ -10,7 +10,6 @@ import CharityAccountPage from "./Pages/CharityAccountPage";
 
 import './style/Resources/grid-css/grid.css';
 import './style/Resources/normalize/normalize.css';
-import './style/css/style.min.css';
 
 function App() {
   return (

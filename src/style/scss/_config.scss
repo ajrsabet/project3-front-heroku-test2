@@ -1,7 +1,72 @@
-$primary-color-1: #655c56;
+$primary-orange: #FF5722;
 $primary-color-2: #94d3ac;
 $primary-color-3: #ccedd2;
 $primary-color-4: #effcef;
-$primary-font:'Roboto', sans-serif;
+$primary-font:'Roboto',
+sans-serif;
 $primary-font-size: 20px;
 $primary-font-weight: 300;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: $primary-font-size;
+}
+
+body {
+  font-family: $primary-font;
+  font-weight: $primary-font-weight;
+  text-rendering: optimizeLegibility;
+  background-color: $primary-color-4;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+
+  .navbar {
+    float: right;
+    width: 100%;
+
+    .logo {
+      height: 100px;
+      width: auto;
+      float: left;
+      margin: 25px 0 0 35px;
+    }
+
+    a {
+      text-decoration: none;
+      margin: 40px 40px;
+      color: #fff;
+      float: right;
+      transition: 0.2s;
+      border: 2px solid transparent;
+      padding: 4px 15px;
+
+      &:hover {
+        padding: 4px 15px;
+        border: 2px solid $primary-orange;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .container {
+    .navbar {
+      .logo {
+        margin: 15px 0 0 15px;
+        height: 65px;
+        width: auto;
+      }
+
+      a {
+        margin: 20px 0;
+      }
+    }
+  }
+}
