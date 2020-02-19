@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
+import FindingSupplier from '../Components/FindingSupplier';
 
 export default function CharityAccountPage() {
 
@@ -95,7 +96,7 @@ export default function CharityAccountPage() {
       sectionData:
         <div>
           <h1> Find Suppliers </h1>
-          {/* Add functionality to "favorite" suppliers */}
+          <FindingSupplier/>
         </div>
     })
   }
