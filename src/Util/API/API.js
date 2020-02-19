@@ -133,7 +133,7 @@ const API = {
         return axios.delete(`${URL}/api/company/${id}`)
     },
 
-// User Login __________________________________________________
+// User Authentication __________________________________________________
     logIn: (user) => {
         return axios.post(`${URL}/api/auth/login`, user, { withCredentials: true })
     },
@@ -142,6 +142,9 @@ const API = {
     // }
     logOut: (user) => {
         return axios.get(`${URL}/api/auth/logout`, user, { withCredentials: true })
+    },
+    verifyLogin:()=>{
+        return axios.get(`${URL}/api/auth/verifylogin`,{withCredentials:true});
     },
     // checking the EIN number
     einChecker:(einToCheck) => {

@@ -3,18 +3,27 @@ import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
+import API from "../Util/API/API";
+import {Redirect,useHistory} from "react-router-dom"
 import FindingSupplier from '../Components/FindingSupplier';
 
 export default function CharityAccountPage() {
-
+  const history = useHistory();
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+  
+    useEffect(()=>{
+      API.verifyLogin().then(res=>{
+          console.log("You are logged in!")
+      }).catch(err=>{
+          history.push("/login")
+      })
+  },[])
 
   useEffect(() => {
     accountOverview()
   }, []);
-
 
   function accountOverview(props) {
     setSectionState({
