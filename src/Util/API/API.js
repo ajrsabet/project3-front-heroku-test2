@@ -48,8 +48,8 @@ const API = {
 
     //  Location Routes___________________________________________
     // Get all Locations
-    getAllLocation: () => {
-        return axios.get(`${URL}/api/location`)
+    getAllLocation: (cityToSearch) => {
+        return axios.get(`${URL}/api/location/all/${cityToSearch}`)
     },
     // Create new location
     createLocation: (locationToMake) => {
