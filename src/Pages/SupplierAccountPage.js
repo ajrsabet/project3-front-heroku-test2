@@ -3,12 +3,24 @@ import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
+import API from "../Util/API/API";
+import {Redirect,useHistory} from "react-router-dom"
 
 export default function SupplierAccountPage() {
-
+  const history = useHistory();
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+
+  useEffect(()=>{
+    console.log(history)
+    API.verifyLogin().then(res=>{
+        console.log("yay you can make animals!")
+    }).catch(err=>{
+        // history.goBack();
+        history.push("/login")
+    })
+},[])
 
   useEffect(() => {
     accountOverview()

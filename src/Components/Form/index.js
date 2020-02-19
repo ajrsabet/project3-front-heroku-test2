@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API from "../../Util/API/API"
 
 export default function Form() {
-  let pw1, pw2;
+  // let pw1, pw2;
 
   const [userState, setUserState] = useState({
     accountType: "", // State doesn't change when choosing an option & we can choose both options
@@ -16,29 +16,29 @@ export default function Form() {
     email: "",
     password: ""
   })
-
+  // split out ein from userState to verify nonprofit status
   const [einState, setEinState]= useState({ein:""})
 
   const submitRegistration = (event) => {
     event.preventDefault();
-    pw1 = document.querySelector('#pw1').value;
-    pw2 = document.querySelector('#pw2').value;
-    const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/;
+    // pw1 = document.querySelector('#pw1').value;
+    // pw2 = document.querySelector('#pw2').value;
+    // const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/;
 
     // validate all data fields
     if (!userState.accountType && !userState.adminFirstName && !userState.adminLastName && !userState.street && !userState.email) {
       alert("All fields are required");
     } else if (userState.zipCode.length !== 5) {
       alert("zip code must be 5 digits");
-    } else if (userState.ein.length !== 9) {
+    } else if (einState.ein.length !== 9) {
       alert("ein must be 9 digits")
-    } else if (!emailCheck.test(String(userState.email).toLowerCase())) {
-      alert("enter a valid email")
-    } else if (!userState.password.match(passwordCheck)) {
-      alert("password must be 8-128 characters and contain at least one lower, upper, special, and number")
-    } else if (pw1 !== pw2) {
-      alert("your passwords do not match")
+    // } else if (!emailCheck.test(String(userState.email).toLowerCase())) {
+    //   alert("enter a valid email")
+    // } else if (!userState.password.match(passwordCheck)) {
+    //   alert("password must be 8-128 characters and contain at least one lower, upper, special, and number")
+    // } else if (pw1 !== pw2) {
+    //   alert("your passwords do not match")
     } else { 
     //API call to update 3 tables
     API.createCompany({
@@ -180,7 +180,7 @@ value
         <input
           value={userState.userName}
           onChange={handleInputChange}
-          type='userName'
+          type='text'
           name='userName'
           placeholder='USER NAME'
         />
