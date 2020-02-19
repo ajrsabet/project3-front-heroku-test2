@@ -33,25 +33,30 @@ export default function LoginForm() {
     };
 
 
-    return (
-        <form className="login-form">
-            <div className='login-container'>
-                <input
-                    value={loginState.username}
-                    onChange={handleInputChange}
-                    type='text'
-                    name='username'
-                    placeholder='USERNAME'
-                />
-                <input
-                    value={loginState.password}
-                    onChange={handleInputChange}
-                    type='password'
-                    name='password'
-                    placeholder='PASSWORD'
-                />
-                <button type='submit' onClick={submitLogin}>SUBMIT</button>
-            </div>
-        </form>
-    )
+  return (
+    <form className="login-form">
+      <h3>Login</h3>
+      <div className='login-container row'>
+        <input
+          value={loginState.email}
+          onChange={handleInputChange}
+          type='email'
+          name='email'
+          placeholder='EMAIL'
+        />
+        <input
+          value={loginState.password}
+          onChange={handleInputChange}
+          type='password'
+          name='password'
+          placeholder='PASSWORD'
+          id='pw1'
+        />
+
+        <div className='row'>
+          <button className='btn-main' type='submit' onClick={submitLogin}>SUBMIT</button>
+        </div>
+      </div>
+    </form>
+  )
 };
