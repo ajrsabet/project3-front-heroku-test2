@@ -17,7 +17,7 @@ export default function Form() {
     password: ""
   })
 
-  const [einState, setEinState]= useState({ein:""})
+  const [einState, setEinState] = useState({ ein: "" })
 
   const submitRegistration = (event) => {
     event.preventDefault();
@@ -39,37 +39,37 @@ export default function Form() {
       alert("password must be 8-128 characters and contain at least one lower, upper, special, and number")
     } else if (pw1 !== pw2) {
       alert("your passwords do not match")
-    } else { 
-    //API call to update 3 tables
-    API.createCompany({
-      company_name: userState.company.trim(),
-      ein: einState.ein.trim(),
-      account_type: 1
-    }).then(res => {
-      console.log(res);
-      API.createUser({
-        username: userState.userName.toLowerCase().trim(),
-        password: userState.password.trim(),
-        first_name: userState.adminFirstName.trim(),
-        last_name: userState.adminLastName.trim(),
-        email: userState.email.toLowerCase().trim(),
-        admin: 1, // maybe replace with user input
-        CompanyProfileId: res.data.id
-      }).then(res2 => {
-        API.createLocation({
-          address: userState.street.trim(),
-          city: userState.city.trim(),
-          state: userState.state.trim(),
-          zip: userState.zipCode.trim(),
+    } else {
+      //API call to update 3 tables
+      API.createCompany({
+        company_name: userState.company.trim(),
+        ein: einState.ein.trim(),
+        account_type: 1
+      }).then(res => {
+        console.log(res);
+        API.createUser({
+          username: userState.userName.toLowerCase().trim(),
+          password: userState.password.trim(),
+          first_name: userState.adminFirstName.trim(),
+          last_name: userState.adminLastName.trim(),
+          email: userState.email.toLowerCase().trim(),
+          admin: 1, // maybe replace with user input
           CompanyProfileId: res.data.id
+        }).then(res2 => {
+          API.createLocation({
+            address: userState.street.trim(),
+            city: userState.city.trim(),
+            state: userState.state.trim(),
+            zip: userState.zipCode.trim(),
+            CompanyProfileId: res.data.id
+          })
+        }).then((res3) => {
+          console.log(res3);
+          alert("You have successfully created an account!")
+          window.location.href = `/charity`;
         })
-      }).then((res3) => {
-        console.log(res3);
-        alert("You have successfully created an account!")
-        window.location.href = `/charity`;
       })
-    })
-  }
+    }
     //------------------------------------------------
   }
 
@@ -88,103 +88,115 @@ export default function Form() {
     const name = event.target.name;
     const value = event.target.value;
     setEinState({
-      [name]: value});
-    if (value.length>8) {
-        console.log("anything");
-        API.einChecker(
-value
-        ).then(result=>console.log(result))
-    } 
+      [name]: value
+    });
+    if (value.length > 8) {
+      console.log("anything");
+      API.einChecker(
+        value
+      ).then(result => console.log(result))
+    }
   };
 
   return (
-    <form className="register-form">
+    <form className="register-form row">
       <div className='input-container'>
-        <label htmlFor="charity">Charity</label>
-        <input
-          className='radio-button'
-          value="checked"
-          onChange={handleInputChange}
-          type="radio"
-          name='account-type' />
-        <label htmlFor="supplier">Supplier</label>
-        <input
-          className='radio-button'
-          value={userState.accountType}
-          onChange={handleInputChange}
-          type="radio"
-          name='account-type' />
-        <input
+        <h3>Account Setup</h3>
+        <div className='radios'>
+          <label>
+            Charity
+            <input
+              className='radio-button'
+              value={userState.accountType}
+              data-value='charity'
+              onChange={handleInputChange}
+              type="radio"
+              name='account-type' />
+          </label>
+
+          <label>
+            <input
+              className='radio-button'
+              value={userState.accountType}
+              data-value='supplier'
+              onChange={handleInputChange}
+              type="radio"
+              name='account-type' />
+            Supplier
+            </label>
+
+        </div>
+        <input className='text-input'
           value={userState.company}
           onChange={handleInputChange}
           type='text'
           name='company'
           placeholder='COMPANY NAME'
         />
-        <input
+        <input className='text-input'
           value={userState.adminFirstName}  // Changed the value  
           onChange={handleInputChange}
           type='text'
           name='adminFirstName'  // CHanged the name
           placeholder='ADMIN FIRST NAME' // changed the place holder
         />
-        <input
+        <input className='text-input'
           value={userState.adminLastName} // Added another input for last name 
           onChange={handleInputChange} //----------------
           type='text' //---------------
           name='adminLastName' //-----------------
           placeholder='ADMIN LAST NAME' //----------------
         />
-        <input
+        <input className='text-input'
           value={userState.street}
           onChange={handleInputChange}
           type='text'
           name='street'
           placeholder='STREET ADDRESS'
         />
-        <input
+        <input className='text-input'
           value={userState.city}
           onChange={handleInputChange}
           type='text'
           name='city'
           placeholder='CITY'
         />
-        <input
+        <input className='text-input'
           value={userState.state}
           onChange={handleInputChange}
           type='text'
           name='state'
           placeholder='STATE'
         />
-        <input
-          value={userState.zipCode}
+        <input className='text-input'
+          value={userState.zipcode}
           onChange={handleInputChange}
           type='number'
           name='zipCode'
           placeholder='ZIPCODE'
         />
-        <input
+        <input className='text-input'
           value={userState.ein}
           onChange={handleEinInputChange}
           type='number'
           name='ein'
           placeholder='EIN'
         />
-        <input
+        <input className='text-input'
           value={userState.email}
           onChange={handleInputChange}
           type='email'
           name='email'
           placeholder='EMAIL'
         />
-        <input
+        <input className='text-input'
           value={userState.userName}
           onChange={handleInputChange}
-          type='userName'
+          type='text'
           name='userName'
           placeholder='USER NAME'
         />
-        <input
+        <input className='text-input'
           value={userState.password}
           onChange={handleInputChange}
           type='password'
@@ -192,7 +204,7 @@ value
           placeholder='PASSWORD'
           id='pw1'
         />
-        <input
+        <input className='text-input'
           type='password'
           name='confirmPassword'
           placeholder='CONFIRM PASSWORD'
