@@ -69,86 +69,88 @@ export default function Form() {
   };
 
   return (
-    <form className="register-form">
+    <form className="register-form row">
       <div className='input-container'>
-        <label htmlFor="charity">Charity</label>
+        <div className='radios'>
+        <label htmlFor="account-type">Charity</label>
         <input
           className='radio-button'
           value="checked"
           onChange={handleInputChange}
           type="radio"
           name='account-type' />
-        <label htmlFor="supplier">Supplier</label>
+        <label htmlFor="account-type">Supplier</label>
         <input
           className='radio-button'
           value={userState.accountType}
           onChange={handleInputChange}
           type="radio"
           name='account-type' />
-        <input
+        </div>
+        <input className='text-input'
           value={userState.company}
           onChange={handleInputChange}
           type='text'
           name='company'
           placeholder='COMPANY NAME'
         />
-        <input
+        <input className='text-input'
           value={userState.adminFirstName}  // Changed the value  
           onChange={handleInputChange}
           type='text'
           name='adminFirstName'  // CHanged the name
           placeholder='ADMIN FIRST NAME' // changed the place holder
         />
-        <input
+        <input className='text-input'
           value={userState.adminLastName} // Added another input for last name 
           onChange={handleInputChange} //----------------
           type='text' //---------------
           name='adminLastName' //-----------------
           placeholder='ADMIN LAST NAME' //----------------
         />
-        <input
+        <input className='text-input'
           value={userState.street}
           onChange={handleInputChange}
           type='text'
           name='street'
           placeholder='STREET ADDRESS'
         />
-        <input
+        <input className='text-input'
           value={userState.city}
           onChange={handleInputChange}
           type='text'
           name='city'
           placeholder='CITY'
         />
-        <input
+        <input className='text-input'
           value={userState.state}
           onChange={handleInputChange}
           type='text'
           name='state'
           placeholder='STATE'
         />
-        <input
+        <input className='text-input'
           value={userState.zipcode}
           onChange={handleInputChange}
           type='number'
           name='zipcode'
           placeholder='ZIPCODE'
         />
-        <input
+        <input className='text-input'
           value={userState.ein}
           onChange={handleInputChange}
           type='number'
           name='ein'
           placeholder='EIN'
         />
-        <input
+        <input className='text-input'
           value={userState.email}
           onChange={handleInputChange}
           type='email'
           name='email'
           placeholder='EMAIL'
         />
-        <input
+        <input className='text-input'
           value={userState.password}
           onChange={handleInputChange}
           type='password'
@@ -156,7 +158,7 @@ export default function Form() {
           placeholder='PASSWORD'
           id='pw1'
         />
-        <input
+        <input className='text-input'
           type='password'
           name='confirmPassword'
           placeholder='CONFIRM PASSWORD'

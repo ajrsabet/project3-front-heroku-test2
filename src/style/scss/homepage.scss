@@ -1,0 +1,57 @@
+@import './config';
+
+.main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.main-text {
+  position: absolute;
+  width: 1140px;
+  top: 45%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  font-size: 120%;
+
+  a {
+    text-decoration: none;
+    border: 2px solid $primary-orange;
+    padding: 3px 15px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: $primary-orange;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: darken($color: $primary-orange, $amount: 10%);
+      ;
+      border-color: darken($color: $primary-orange, $amount: 10%);
+    }
+  }
+}
+
+.main-info {
+  width: 90%;
+  margin: 0 auto;
+
+  div {
+    border: 1px solid red;
+    height: 560px;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .main-text {
+    width: 100vw;
+    top: 30%;
+    left: 0;
+    transform: none;
+
+    a {
+      margin: 0;
+    }
+  }
+
+}
