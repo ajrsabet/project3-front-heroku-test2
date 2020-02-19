@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API from "../../Util/API/API";
 
 export default function LoginForm() {
 
@@ -7,9 +8,10 @@ export default function LoginForm() {
         password: ""
     })
 
-    const submitRegistration = (event) => {
+    const submitLogin = (event) => {
         event.preventDefault();
         console.log(event)
+       
     }
 
     const handleInputChange = event => {
@@ -39,7 +41,7 @@ export default function LoginForm() {
                     placeholder='PASSWORD'
                     id='pw1'
                 />
-                <button type='submit' onClick={submitRegistration}>SUBMIT</button>
+                <button type='submit' onClick={submitLogin}>SUBMIT</button>
             </div>
         </form>
     )
