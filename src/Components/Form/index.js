@@ -17,7 +17,7 @@ export default function Form() {
     password: ""
   })
 
-  const [einState, setEinState]= useState({ein:""})
+  const [einState, setEinState] = useState({ ein: "" })
 
   const submitRegistration = (event) => {
     event.preventDefault();
@@ -39,37 +39,37 @@ export default function Form() {
       alert("password must be 8-128 characters and contain at least one lower, upper, special, and number")
     } else if (pw1 !== pw2) {
       alert("your passwords do not match")
-    } else { 
-    //API call to update 3 tables
-    API.createCompany({
-      company_name: userState.company.trim(),
-      ein: einState.ein.trim(),
-      account_type: 1
-    }).then(res => {
-      console.log(res);
-      API.createUser({
-        username: userState.userName.toLowerCase().trim(),
-        password: userState.password.trim(),
-        first_name: userState.adminFirstName.trim(),
-        last_name: userState.adminLastName.trim(),
-        email: userState.email.toLowerCase().trim(),
-        admin: 1, // maybe replace with user input
-        CompanyProfileId: res.data.id
-      }).then(res2 => {
-        API.createLocation({
-          address: userState.street.trim(),
-          city: userState.city.trim(),
-          state: userState.state.trim(),
-          zip: userState.zipCode.trim(),
+    } else {
+      //API call to update 3 tables
+      API.createCompany({
+        company_name: userState.company.trim(),
+        ein: einState.ein.trim(),
+        account_type: 1
+      }).then(res => {
+        console.log(res);
+        API.createUser({
+          username: userState.userName.toLowerCase().trim(),
+          password: userState.password.trim(),
+          first_name: userState.adminFirstName.trim(),
+          last_name: userState.adminLastName.trim(),
+          email: userState.email.toLowerCase().trim(),
+          admin: 1, // maybe replace with user input
           CompanyProfileId: res.data.id
+        }).then(res2 => {
+          API.createLocation({
+            address: userState.street.trim(),
+            city: userState.city.trim(),
+            state: userState.state.trim(),
+            zip: userState.zipCode.trim(),
+            CompanyProfileId: res.data.id
+          })
+        }).then((res3) => {
+          console.log(res3);
+          alert("You have successfully created an account!")
+          window.location.href = `/charity`;
         })
-      }).then((res3) => {
-        console.log(res3);
-        alert("You have successfully created an account!")
-        window.location.href = `/charity`;
       })
-    })
-  }
+    }
     //------------------------------------------------
   }
 
@@ -88,33 +88,43 @@ export default function Form() {
     const name = event.target.name;
     const value = event.target.value;
     setEinState({
-      [name]: value});
-    if (value.length>8) {
-        console.log("anything");
-        API.einChecker(
-value
-        ).then(result=>console.log(result))
-    } 
+      [name]: value
+    });
+    if (value.length > 8) {
+      console.log("anything");
+      API.einChecker(
+        value
+      ).then(result => console.log(result))
+    }
   };
 
   return (
     <form className="register-form row">
       <div className='input-container'>
+        <h3>Account Setup</h3>
         <div className='radios'>
-        <label htmlFor="account-type">Charity</label>
-        <input
-          className='radio-button'
-          value="checked"
-          onChange={handleInputChange}
-          type="radio"
-          name='account-type' />
-        <label htmlFor="account-type">Supplier</label>
-        <input
-          className='radio-button'
-          value={userState.accountType}
-          onChange={handleInputChange}
-          type="radio"
-          name='account-type' />
+          <label>
+            Charity
+            <input
+              className='radio-button'
+              value={userState.accountType}
+              data-value='charity'
+              onChange={handleInputChange}
+              type="radio"
+              name='account-type' />
+          </label>
+
+          <label>
+            <input
+              className='radio-button'
+              value={userState.accountType}
+              data-value='supplier'
+              onChange={handleInputChange}
+              type="radio"
+              name='account-type' />
+            Supplier
+            </label>
+
         </div>
         <input className='text-input'
           value={userState.company}

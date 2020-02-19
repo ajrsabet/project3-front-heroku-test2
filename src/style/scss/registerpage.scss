@@ -12,7 +12,8 @@ body {
 }
 
 .input-container {
-  border: 1px solid red;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
   width: 40vw;
   top: 50%;
   left: 50%;
@@ -20,8 +21,17 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 
+  h3 {
+    margin: 30px auto 0 auto;
+    color: #fff;
+    width: 75%;
+    border: #fff solid 2px;
+    text-align: center;
+
+  }
+
   .radios {
-    margin: 0 auto;
+    margin: 30px auto;
     color: #fff;
   }
 
@@ -33,12 +43,12 @@ body {
     display: block;
     text-align: center;
     font-size: 85%;
-    margin: 18px auto;
-    border-radius: 50px;
-
+    margin: 12px auto;
+    border-radius: 4px;
 
     &[type=radio] {
       display: inline;
+      margin: 0 10px;
     }
   }
 
@@ -48,16 +58,32 @@ body {
     border: 2px solid transparent;
     padding: 4px 15px;
     border-radius: 50px;
+    margin-bottom: 40px;
   }
-
-
 }
 
-@media screen and (max-width: 1140px) {
-  .input-container{
+@media screen and (max-width: 800px) {
+  * {
+    font-size: 99%;
+  }
+
+  .input-container {
     width: 80vw;
+
+    .radios {
+      margin: 10px auto;
+    }
+
+    button {
+      margin-top: 12px
+    }
+
     input {
-      margin: 5px auto;
+      margin: 2.5px auto;
+
+      &[type=radio] {
+        margin: 0 10px;
+      }
     }
   }
 }

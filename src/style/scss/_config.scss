@@ -12,11 +12,11 @@ $primary-font-weight: 300;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-size: $primary-font-size;
 }
 
 body {
   font-family: $primary-font;
-  font-size: $primary-font-size;
   font-weight: $primary-font-weight;
   text-rendering: optimizeLegibility;
   background-color: $primary-color-4;
@@ -58,9 +58,12 @@ body {
 @media screen and (max-width: 1140px) {
   .container {
     .navbar {
-      .logo{
-        margin-left: 15px;
+      .logo {
+        margin: 15px 0 0 15px;
+        height: 65px;
+        width: auto;
       }
+
       a {
         margin: 20px 0;
       }
