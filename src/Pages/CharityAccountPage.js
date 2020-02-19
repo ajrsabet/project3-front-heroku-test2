@@ -5,6 +5,7 @@ import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
 import {Redirect,useHistory} from "react-router-dom"
+import FindingSupplier from '../Components/FindingSupplier';
 
 export default function CharityAccountPage() {
   const history = useHistory();
@@ -101,7 +102,7 @@ export default function CharityAccountPage() {
       sectionData:
         <div>
           <h1> Find Suppliers </h1>
-          {/* Add functionality to "favorite" suppliers */}
+          <FindingSupplier/>
         </div>
     })
   }
