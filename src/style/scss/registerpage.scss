@@ -1,0 +1,89 @@
+@import './config';
+
+body {
+  background-color: #333;
+}
+
+.main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.input-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  width: 40vw;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  h3 {
+    margin: 30px auto 0 auto;
+    color: #fff;
+    width: 75%;
+    border: #fff solid 2px;
+    text-align: center;
+
+  }
+
+  .radios {
+    margin: 30px auto;
+    color: #fff;
+  }
+
+  .text-input {
+    width: 80%;
+  }
+
+  input {
+    display: block;
+    text-align: center;
+    font-size: 85%;
+    margin: 12px auto;
+    border-radius: 4px;
+
+    &[type=radio] {
+      display: inline;
+      margin: 0 10px;
+    }
+  }
+
+  button {
+    background-color: #fff;
+    transition: 0.2s;
+    border: 2px solid transparent;
+    padding: 4px 15px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  * {
+    font-size: 99%;
+  }
+
+  .input-container {
+    width: 80vw;
+
+    .radios {
+      margin: 10px auto;
+    }
+
+    button {
+      margin-top: 12px
+    }
+
+    input {
+      margin: 2.5px auto;
+
+      &[type=radio] {
+        margin: 0 10px;
+      }
+    }
+  }
+}
