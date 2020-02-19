@@ -12,49 +12,64 @@ export default function Form() {
     street: "",
     city: "",
     state: "",
-    zipcode: "",
-    ein: "",         // Can't type in the field
+    zipCode: "",
     email: "",
     password: ""
   })
 
+  const [einState, setEinState]= useState({ein:""})
 
   const submitRegistration = (event) => {
     event.preventDefault();
-    console.log(userState)
     pw1 = document.querySelector('#pw1').value;
     pw2 = document.querySelector('#pw2').value;
-    (pw1 === pw2) ? console.log('passwords equal') : alert('passwords must match')
+    const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/;
 
+    // validate all data fields
+    if (!userState.accountType && !userState.adminFirstName && !userState.adminLastName && !userState.street && !userState.email) {
+      alert("All fields are required");
+    } else if (userState.zipCode.length !== 5) {
+      alert("zip code must be 5 digits");
+    } else if (userState.ein.length !== 9) {
+      alert("ein must be 9 digits")
+    } else if (!emailCheck.test(String(userState.email).toLowerCase())) {
+      alert("enter a valid email")
+    } else if (!userState.password.match(passwordCheck)) {
+      alert("password must be 8-128 characters and contain at least one lower, upper, special, and number")
+    } else if (pw1 !== pw2) {
+      alert("your passwords do not match")
+    } else { 
     //API call to update 3 tables
     API.createCompany({
-      company_name: userState.company,
-      ein: userState.ein2,
-      // account_type: userState.accountType
+      company_name: userState.company.trim(),
+      ein: einState.ein.trim(),
+      account_type: 1
     }).then(res => {
       console.log(res);
-
       API.createUser({
-        username: userState.email,
-        password: userState.password,
-        first_name: userState.adminFirstName,
-        last_name: userState.adminLastName,
-        email: userState.email,
-      }).then(data => {
-        console.log(data);
+        username: userState.userName.toLowerCase().trim(),
+        password: userState.password.trim(),
+        first_name: userState.adminFirstName.trim(),
+        last_name: userState.adminLastName.trim(),
+        email: userState.email.toLowerCase().trim(),
+        admin: 1, // maybe replace with user input
+        CompanyProfileId: res.data.id
+      }).then(res2 => {
         API.createLocation({
-          address: userState.street,
-          city: userState.city,
-          state: userState.state,
-          zip: userState.zipcode,
-          ein: userState.ein2,
+          address: userState.street.trim(),
+          city: userState.city.trim(),
+          state: userState.state.trim(),
+          zip: userState.zipCode.trim(),
+          CompanyProfileId: res.data.id
         })
-        res.json(data)
-
+      }).then((res3) => {
+        console.log(res3);
+        alert("You have successfully created an account!")
+        window.location.href = `/charity`;
       })
-
-
     })
+  }
     //------------------------------------------------
   }
 
@@ -66,6 +81,20 @@ export default function Form() {
       [name]: value
     });
 
+  };
+
+  // Varify ein for non-profit
+  const handleEinInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setEinState({
+      [name]: value});
+    if (value.length>8) {
+        console.log("anything");
+        API.einChecker(
+value
+        ).then(result=>console.log(result))
+    } 
   };
 
   return (
@@ -128,15 +157,15 @@ export default function Form() {
           placeholder='STATE'
         />
         <input
-          value={userState.zipcode}
+          value={userState.zipCode}
           onChange={handleInputChange}
           type='number'
-          name='zipcode'
+          name='zipCode'
           placeholder='ZIPCODE'
         />
         <input
           value={userState.ein}
-          onChange={handleInputChange}
+          onChange={handleEinInputChange}
           type='number'
           name='ein'
           placeholder='EIN'
@@ -147,6 +176,13 @@ export default function Form() {
           type='email'
           name='email'
           placeholder='EMAIL'
+        />
+        <input
+          value={userState.userName}
+          onChange={handleInputChange}
+          type='userName'
+          name='userName'
+          placeholder='USER NAME'
         />
         <input
           value={userState.password}
