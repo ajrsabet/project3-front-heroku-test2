@@ -13,11 +13,11 @@ export default function Form() {
     city: "",
     state: "",
     zipCode: "",
-    ein: "",
     email: "",
     password: ""
   })
 
+  const [einState, setEinState]= useState({ein:""})
 
   const submitRegistration = (event) => {
     event.preventDefault();
@@ -43,7 +43,7 @@ export default function Form() {
     //API call to update 3 tables
     API.createCompany({
       company_name: userState.company.trim(),
-      ein: userState.ein.trim(),
+      ein: einState.ein.trim(),
       account_type: 1
     }).then(res => {
       console.log(res);
@@ -81,6 +81,20 @@ export default function Form() {
       [name]: value
     });
 
+  };
+
+  // Varify ein for non-profit
+  const handleEinInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setEinState({
+      [name]: value});
+    if (value.length>8) {
+        console.log("anything");
+        API.einChecker(
+value
+        ).then(result=>console.log(result))
+    } 
   };
 
   return (
@@ -148,15 +162,13 @@ export default function Form() {
           type='number'
           name='zipCode'
           placeholder='ZIPCODE'
-          maxlength='5'
         />
         <input
           value={userState.ein}
-          onChange={handleInputChange}
+          onChange={handleEinInputChange}
           type='number'
           name='ein'
           placeholder='EIN'
-          maxlength= '9'
         />
         <input
           value={userState.email}
@@ -179,14 +191,12 @@ export default function Form() {
           name='password'
           placeholder='PASSWORD'
           id='pw1'
-          maxlength='128'
         />
         <input
           type='password'
           name='confirmPassword'
           placeholder='CONFIRM PASSWORD'
           id='pw2'
-          maxlength='128'
         />
         <button type='submit' onClick={submitRegistration}>SUBMIT</button>
       </div>

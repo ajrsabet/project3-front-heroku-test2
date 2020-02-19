@@ -142,7 +142,10 @@ const API = {
     // }
     logOut: (user) => {
         return axios.get(`${URL}/api/auth/logout`, user, { withCredentials: true })
+    },
+    // checking the EIN number
+    einChecker:(einToCheck) => {
+        return axios.get(`${URL}/api/company/ein/${einToCheck}`);
     }
 }
-
 export default API
