@@ -38,8 +38,8 @@ const API = {
         return axios.get(`${URL}/api/inventory/${id}`)
     },
     // Update inventory by id
-    updateInventoryById: (id) => {
-        return axios.put(`${URL}/api/inventory/${id}`)
+    updateInventoryById: (itemInfo) => {
+        return axios.put(`${URL}/api/inventory/update`, itemInfo)
     },
     // Delete inventory by id
     deleteInventoryById: (id) => {

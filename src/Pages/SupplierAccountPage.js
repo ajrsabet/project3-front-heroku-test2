@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
+import InventoryTable from "../Components/InventoryTable";
 
 
 export default function SupplierAccountPage() {
@@ -25,31 +26,38 @@ export default function SupplierAccountPage() {
                         <tbody>
                             <tr>
                                 <td>Company Name</td>
+                                <td>API data here</td>
                                 {/* <td>{props.company}</td> */}
                                 {/* correct props call? */}
                             </tr>
                             <tr>
                                 <td>Admin Name</td>
+                                <td>API data here</td>
                                 {/* <td>{props.admin}</td> */}
                             </tr>
                             <tr>
                                 <td>Street Address</td>
+                                <td>API data here</td>
                                 {/* <td>{props.street}</td> */}
                             </tr>
                             <tr>
                                 <td>City</td>
+                                <td>API data here</td>
                                 {/* <td>{props.city}</td> */}
                             </tr>
                             <tr>
                                 <td>Zipcode</td>
+                                <td>API data here</td>
                                 {/* <td>{props.zipcode}</td> */}
                             </tr>
                             <tr>
                                 <td>EIN</td>
+                                <td>API data here</td>
                                 {/* <td>{props.ein}</td> */}
                             </tr>
                             <tr>
                                 <td>Email</td>
+                                <td>API data here</td>
                                 {/* <td>{props.email}</td> */}
                             </tr>
                         </tbody>
@@ -64,23 +72,23 @@ export default function SupplierAccountPage() {
                 <div>
                     <h1> Edit Profile </h1>
                     <p>Company Name</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     <p>Admin Name</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     <p>Street Address</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     <p>City</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     <p>State</p>
-                    <input type='number' placeholder="API data here"></input>
+                    <input type='number' placeholder=""></input>
                     <p>Zipcode</p>
-                    <input type='number' placeholder="API data here"></input>
+                    <input type='number' placeholder=""></input>
                     <p>EIN</p>
-                    <input type='number' placeholder="API data here"></input>
+                    <input type='number' placeholder=""></input>
                     <p>Email</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     <p>Password</p>
-                    <input placeholder="API data here"></input>
+                    <input placeholder=""></input>
                     {/* Add confirm password? Also add API calls to change this info in DB */}
                 </div>
         })
@@ -104,11 +112,12 @@ export default function SupplierAccountPage() {
         })
     }
 
-    function updateInventory(props) {
+    function inventory(props) {
         setSectionState({
             sectionData:
                 <div>
-                    <h1> Update Inventory </h1>
+                    <h1> Inventory </h1>
+                    <InventoryTable />
                 </div>
         })
     }
@@ -132,7 +141,7 @@ export default function SupplierAccountPage() {
                     <button className='btn' onClick={accountOverview}>Account Overview</button>
                     <button className='btn' onClick={editProfile}>Edit Profile</button>
                     <button className='btn' onClick={setPickupSchedule}>Set Pickup Schedule</button>
-                    <button className='btn' onClick={updateInventory}>Update Inventory</button>
+                    <button className='btn' onClick={inventory}>Inventory</button>
                     <button className='btn' onClick={reviewCharities}>Review Charities</button>
                 </Aside>
                 <Section>
