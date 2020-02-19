@@ -3,17 +3,27 @@ import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
+import API from "../Util/API/API";
+import {Redirect,useHistory} from "react-router-dom"
+import FindingSupplier from '../Components/FindingSupplier';
 
 export default function CharityAccountPage() {
-
+  const history = useHistory();
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+  
+    useEffect(()=>{
+      API.verifyLogin().then(res=>{
+          console.log("You are logged in!")
+      }).catch(err=>{
+          history.push("/login")
+      })
+  },[])
 
   useEffect(() => {
     accountOverview()
   }, []);
-
 
   function accountOverview(props) {
     setSectionState({
@@ -54,9 +64,6 @@ export default function CharityAccountPage() {
               </tr>
             </tbody>
           </table>
-          <br />
-          {/* <button onClick={editProfile}>Edit Profile</button> */}
-
         </div>
 
     })
@@ -95,7 +102,7 @@ export default function CharityAccountPage() {
       sectionData:
         <div>
           <h1> Find Suppliers </h1>
-          {/* Add functionality to "favorite" suppliers */}
+          <FindingSupplier/>
         </div>
     })
   }

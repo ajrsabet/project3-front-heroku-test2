@@ -1,26 +1,36 @@
 import React, { useState } from "react";
 import API from "../../Util/API/API";
+import {Redirect,useHistory} from "react-router-dom"
 
 export default function LoginForm() {
+    const history = useHistory();
+    const [loginState, setLoginState] = useState({
+        username: "",
+        password: ""
+    })
 
-  const [loginState, setLoginState] = useState({
-    email: "",
-    password: ""
-  })
+    const submitLogin = (event) => {
+        event.preventDefault();
+        console.log(loginState)
+        API.logIn({
+            username: loginState.username.trim(),
+            password: loginState.password.trim()
+        }).then(res => {
+            // if(res){
+            //     history.goBack();
+            // }
+            console.log(res);
+        })
+    }
 
-  const submitLogin = (event) => {
-    event.preventDefault();
-    console.log(event)
-
-  }
-
-  const handleInputChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setLoginState({
-      [name]: value
-    });
-  };
+    const handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setLoginState({
+            ...loginState,
+            [name]: value
+        });
+    };
 
 
   return (

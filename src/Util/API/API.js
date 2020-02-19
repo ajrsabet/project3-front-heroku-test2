@@ -38,8 +38,8 @@ const API = {
         return axios.get(`${URL}/api/inventory/${id}`)
     },
     // Update inventory by id
-    updateInventoryById: (id) => {
-        return axios.put(`${URL}/api/inventory/${id}`)
+    updateInventoryById: (itemInfo) => {
+        return axios.put(`${URL}/api/inventory/update`, itemInfo)
     },
     // Delete inventory by id
     deleteInventoryById: (id) => {
@@ -48,8 +48,8 @@ const API = {
 
     //  Location Routes___________________________________________
     // Get all Locations
-    getAllLocation: () => {
-        return axios.get(`${URL}/api/location`)
+    getAllLocation: (cityToSearch) => {
+        return axios.get(`${URL}/api/location/all/${cityToSearch}`)
     },
     // Create new location
     createLocation: (locationToMake) => {
@@ -133,7 +133,7 @@ const API = {
         return axios.delete(`${URL}/api/company/${id}`)
     },
 
-// User Login __________________________________________________
+// User Authentication __________________________________________________
     logIn: (user) => {
         return axios.post(`${URL}/api/auth/login`, user, { withCredentials: true })
     },
@@ -142,6 +142,9 @@ const API = {
     // }
     logOut: (user) => {
         return axios.get(`${URL}/api/auth/logout`, user, { withCredentials: true })
+    },
+    verifyLogin:()=>{
+        return axios.get(`${URL}/api/auth/verifylogin`,{withCredentials:true});
     },
     // checking the EIN number
     einChecker:(einToCheck) => {
