@@ -29,12 +29,8 @@ export default function CharityAccountPage() {
           history.push("/login");
         }  
       }).catch(err=>{
-<<<<<<< HEAD
-          //history.push("/login")
-=======
         console.log(err);
           history.push("/login");
->>>>>>> 1a378823e513a01be0f1b18366085ed9bbc0dd13
       })
   },[])
 
