@@ -26,8 +26,8 @@ const API = {
     },
     // Inventory Routes___________________________________________
     // Get all Inventory
-    getAllInventory: () => {
-        return axios.get(`${URL}/api/inventory`)
+    getAllInventory: (locationId) => {
+        return axios.get(`${URL}/api/inventory/all/${locationId}`)
     },
     // Create new inventory
     createInventory: (inventoryToMake) => {
@@ -146,6 +146,8 @@ const API = {
     verifyLogin:()=>{
         return axios.get(`${URL}/api/auth/verifylogin`,{withCredentials:true});
     },
+    
+    // External API Calls ________________________________________________________
     // checking the EIN number
     einChecker:(einToCheck) => {
         return axios.get(`${URL}/api/company/ein/${einToCheck}`);

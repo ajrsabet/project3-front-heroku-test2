@@ -1,7 +1,10 @@
-$primary-orange: #FF5722;
-$primary-color-2: #94d3ac;
-$primary-color-3: #ccedd2;
-$primary-color-4: #effcef;
+$primary-color-1: #FF574F;
+$primary-color-2: #902919;
+$primary-color-3: #7B2315;
+$primary-color-4: #58230F;
+$primary-color-5: #482303;
+$frosty: rgba(255, 255, 255, 0.2);
+
 $primary-font:'Roboto',
 sans-serif;
 $primary-font-size: 20px;
@@ -19,7 +22,28 @@ body {
   font-family: $primary-font;
   font-weight: $primary-font-weight;
   text-rendering: optimizeLegibility;
-  background-color: $primary-color-4;
+  background-color: #333;
+}
+
+.main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-main {
+  border: 2px solid $primary-color-1;
+  padding: 3px 15px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: $primary-color-1;
+  transition: 0.2s;
+  margin-bottom: 20px;
+  &:hover {
+    background-color: darken($color: $primary-color-1, $amount: 10%);
+    ;
+    border-color: darken($color: $primary-color-1, $amount: 10%);
+  }
 }
 
 .container {
@@ -39,7 +63,7 @@ body {
 
     a {
       text-decoration: none;
-      margin: 40px 40px;
+      margin: 40px 20px;
       color: #fff;
       float: right;
       transition: 0.2s;
@@ -48,7 +72,7 @@ body {
 
       &:hover {
         padding: 4px 15px;
-        border: 2px solid $primary-orange;
+        border: 2px solid $primary-color-1;
         border-radius: 50px;
       }
     }
@@ -65,7 +89,7 @@ body {
       }
 
       a {
-        margin: 20px 0;
+        margin: 30px 0;
       }
     }
   }

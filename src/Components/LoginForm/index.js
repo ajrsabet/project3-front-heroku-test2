@@ -5,7 +5,7 @@ import {Redirect,useHistory} from "react-router-dom"
 export default function LoginForm() {
     const history = useHistory();
     const [loginState, setLoginState] = useState({
-        username: "",
+        email: "",
         password: ""
     })
 
@@ -13,14 +13,17 @@ export default function LoginForm() {
         event.preventDefault();
         console.log(loginState)
         API.logIn({
-            username: loginState.username.trim(),
+            email: loginState.email.trim(),
             password: loginState.password.trim()
         }).then(res => {
-            // if(res){
-            //     history.goBack();
-            // }
             console.log(res);
-        })
+            if(res.email){
+                history.goBack();
+            }
+        }).catch(err=>{
+            console.log(err);
+              history.push("/login");
+          })
     }
 
     const handleInputChange = event => {

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function EditProfile(props) {
   return (
-    <div>
+    <div className='edit-container'>
       <h1> Edit Profile </h1>
       <p>Company Name</p>
       <input placeholder=""></input>

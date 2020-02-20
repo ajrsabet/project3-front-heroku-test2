@@ -142,8 +142,8 @@
 }
 
 .span-4-of-5 {
-    /* width: 79.68%;  */
-    width: 80%;
+    width: 79.68%; 
+    /* width: 80%; */
 }
 
 .span-3-of-5 {
@@ -151,8 +151,8 @@
 }
 
 .span-2-of-5 {
-    /* width: 39.04%; */
-    width: 20%
+    width: 39.04%;
+    /* width: 20% */
     
 }
 
