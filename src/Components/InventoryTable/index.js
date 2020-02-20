@@ -81,6 +81,28 @@ export default function InventoryTable() {
             }))
     }
 
+    function addRow(){
+      API.createInventory(itemToUpdate).
+            then(() => {
+                API.getAllInventory(inventoryState)
+                    .then(res => {
+                        console.log("get all inventory response", res.data);
+
+                        setInventoryState({
+                            result: res.data
+                        })
+                    })
+                    .catch(err => setInventoryState({
+                        ...inventoryState,
+                        error: err.message
+                    }))
+            })
+            .catch(err => setInventoryState({
+                ...inventoryState,
+                error: err.message
+            }))
+    }
+
     const handleToggleModal = (itemToDisplay) => {
         setItemToUpdate(itemToDisplay);
         setModalOpen(!modalOpen)
@@ -96,6 +118,7 @@ export default function InventoryTable() {
 
     return (
         <>
+        <button onClick={() =>handleToggleModal()}>Add</button>
             <table className="table">
                 <thead>
                     <tr>
@@ -110,7 +133,7 @@ export default function InventoryTable() {
                     {
                         inventoryState.result.map((inventory) => {
                             return (
-
+                              
                                 <tr key={inventory.id}>
                                     <td>{inventory.title}</td>
                                     <td>{inventory.quantity}</td>
@@ -123,13 +146,15 @@ export default function InventoryTable() {
                                     <button onClick={() => deleteRow(inventory.id)}>Delete</button>
 
                                 </tr>
+                    
                             )
                         })
+                        
                     }
 
                 </tbody>
             </table>        
-            <Modal editRow={editRow} handleInputChange={handleInputChange} modalOpen={modalOpen} toggleModal={handleToggleModal} itemToUpdate={itemToUpdate} />
+            <Modal editRow={editRow} addRow={addRow} handleInputChange={handleInputChange} modalOpen={modalOpen} toggleModal={handleToggleModal} itemToUpdate={itemToUpdate} />
         </>
     );
 }
