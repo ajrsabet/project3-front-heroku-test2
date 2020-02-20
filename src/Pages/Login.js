@@ -26,28 +26,12 @@ export default function Login() {
     }
   }, [activePage]);
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (window.screen.availWidth < 824) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }, [window.screen.availWidth]);
-
   return (
     <div className='container main'>
       <div className='row'>
         <Navbar>
           <img onClick={()=>{setActivePage("Home")}}  className='logo' src={logo} alt='logo'></img>
-          <LoginDrawer setActivePage={setActivePage} isMobile={isMobile} />
-            {isMobile ? (<div />) : (
-              <div>
-                <Link to='/register'>Register</Link>
-                <Link to='/'>Logout</Link>
-              </div>
-            )}
+          <LoginDrawer setActivePage={setActivePage} />
         </Navbar>
       </div>
       <div className='row'>

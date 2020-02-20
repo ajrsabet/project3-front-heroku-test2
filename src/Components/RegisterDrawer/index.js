@@ -49,18 +49,11 @@ export default function RegisterDrawer(props) {
 
   return (
     <div>
-      {props.isMobile ? (
-        <div>
       <Button onClick={toggleDrawer('right', true)} style={{position:"absolute", top: 0, right: 0, color: "white", marginTop: '12px'}}><i class="fas fa-bars icon-3x"></i></Button>
     
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}
-      </Drawer>
-          </div>
-      ) : (
-      <div />
-      )}
-      
+      </Drawer>  
     </div>
   );
 }

@@ -25,15 +25,6 @@ export default function Register() {
     }
   }, [activePage]);
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (window.screen.availWidth < 824) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }, [window.screen.availWidth]);
 
   return (
     <div className='main'>
@@ -41,13 +32,7 @@ export default function Register() {
         <div className='row'>
           <Navbar>
             <img onClick={()=>{setActivePage("Home")}} className='logo' src={logo} alt='logo'></img>
-            <RegisterDrawer setActivePage={setActivePage} isMobile={isMobile} />
-            {isMobile ? (<div />) : (
-              <div>
-                <Link to='/login'>Login</Link>
-                <Link to='/'>Logout</Link>
-              </div>
-            )}
+            <RegisterDrawer setActivePage={setActivePage} />
           </Navbar>
           <div className='span-2-of-3'>
             <Form />

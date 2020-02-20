@@ -7,8 +7,6 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import SupplierAccountPage from "./Pages/SupplierAccountPage";
 import CharityAccountPage from "./Pages/CharityAccountPage";
-import SupplierSideDrawer from './Components/SupplierSideDrawer'
-import Backdrop from './Components/Backdrop'
 
 import './style/Resources/grid-css/grid.css';
 import './style/Resources/normalize/normalize.css';
