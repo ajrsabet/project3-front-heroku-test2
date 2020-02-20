@@ -19,7 +19,7 @@ export default function SupplierAccountPage() {
         console.log("yay you can make animals!")
     }).catch(err=>{
         // history.goBack();
-        history.push("/login")
+        //history.push("/login")
     })
 },[])
 

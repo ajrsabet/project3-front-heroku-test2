@@ -17,7 +17,7 @@ export default function CharityAccountPage() {
       API.verifyLogin().then(res=>{
           console.log("You are logged in!")
       }).catch(err=>{
-          history.push("/login")
+          //history.push("/login")
       })
   },[])
 
