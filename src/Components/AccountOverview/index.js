@@ -12,6 +12,13 @@ export default function AccountOverview(props) {
       API.verifyLogin().then(res=>{
         if (res.data.email) {
           sessionData = res.data;
+          API.getUserById(sessionData.CompanyProfileId).then(data=>{
+            setUserState(data.data.User_profiles[0])
+            setLocationState(data.data.Locations[0])
+            setcompanyState(data.data)
+            console.log(data.data);
+            
+          })
           console.log(sessionData);
         } else {
           history.push("/login");
@@ -24,15 +31,17 @@ export default function AccountOverview(props) {
   const [companyState, setcompanyState] = useState([])
   const [locationState, setLocationState] = useState([])
   const [userState, setUserState] = useState([])
-  useEffect(()=>{
-    API.getUserById(1).then(data=>{
-      setUserState(data.data.User_profiles[0])
-      setLocationState(data.data.Locations[0])
-      setcompanyState(data.data)
-      console.log(data.data);
+//   useEffect(()=>{
+//     console.log(props.sessionData);
+    
+//     API.getUserById(1).then(data=>{
+//       setUserState(data.data.User_profiles[0])
+//       setLocationState(data.data.Locations[0])
+//       setcompanyState(data.data)
+//       console.log(data.data);
       
-    })
-},[])
+//     })
+// },[])
 
   return (
     <div>
