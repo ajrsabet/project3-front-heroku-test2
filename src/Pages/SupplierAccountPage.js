@@ -7,14 +7,18 @@ import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
 import InventoryTable from "../Components/InventoryTable";
 import AccountOverview from "../Components/AccountOverview";
-import EditProfile from "../Components/EditProfile/EditProfile";
-import PickupSchedule from "../Components/PickupSchedule/PickupSchedule";
+import EditProfile from "../Components/EditProfile";
+import PickupSchedule from "../Components/PickupSchedule";
+import SupplierDrawer from "../Components/SupplierDrawer";
 
 export default function SupplierAccountPage() {
   const history = useHistory();
+
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+
+  const [activePage, setActivePage] = useState("Account Overview")
 
   useEffect(() => {
     console.log(history)
@@ -70,21 +74,34 @@ export default function SupplierAccountPage() {
     })
   }
 
+  function renderComponent(){
+    if(activePage==="Account Overview"){
+      return <AccountOverview />
+    } else if(activePage==="Edit Profile"){
+      return <EditProfile />
+    } else if(activePage==="Set Pickup Schedule"){
+      return <PickupSchedule />
+    } else if(activePage==="Inventory"){
+      return <InventoryTable />
+    }
+  }
+
   return (
     <div>
+      <SupplierDrawer setActivePage={setActivePage}/>
       <Header>
         <h1>Hi Daddy</h1>
       </Header>
       <Wrapper>
         <Aside>
-          <button className='btn' onClick={accountOverview}>Account Overview</button>
+          {/* <button className='btn' onClick={accountOverview}>Account Overview</button>
           <button className='btn' onClick={editProfile}>Edit Profile</button>
           <button className='btn' onClick={setPickupSchedule}>Set Pickup Schedule</button>
-          <button className='btn' onClick={inventory}>Inventory</button>
-          <button className='btn' onClick={reviewCharities}>Review Charities</button>
+          <button className='btn' onClick={inventory}>Inventory</button> */}
         </Aside>
         <Section>
-          <div>{sectionState.sectionData}</div>
+          {/* <div>{sectionState.sectionData}</div> */}
+          {renderComponent()}
         </Section>
       </Wrapper>
     </div>

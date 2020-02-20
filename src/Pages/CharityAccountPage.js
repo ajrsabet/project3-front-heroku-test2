@@ -7,13 +7,16 @@ import API from "../Util/API/API";
 import { Redirect, useHistory } from "react-router-dom"
 import FindingSupplier from '../Components/FindingSupplier';
 import AccountOverview from "../Components/AccountOverview";
-import EditProfile from "../Components/EditProfile/EditProfile";
+import EditProfile from "../Components/EditProfile";
+import CharityDrawer from "../Components/CharityDrawer";
 
 export default function CharityAccountPage() {
   const history = useHistory();
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+
+  const [activePage, setActivePage] = useState("Account Overview")
 
   useEffect(() => {
     API.verifyLogin().then(res => {
@@ -70,8 +73,19 @@ export default function CharityAccountPage() {
     })
   }
 
+  function renderComponent(){
+    if(activePage==="Account Overview"){
+      return <AccountOverview />
+    } else if(activePage==="Edit Profile"){
+      return <EditProfile />
+    } else if(activePage==="Find Suppliers"){
+      return <FindingSupplier />
+    }
+  }
+
   return (
     <div>
+      <CharityDrawer setActivePage={setActivePage}/>
       <Header>
         <h1>Hi Daddy</h1>
       </Header>
@@ -80,11 +94,10 @@ export default function CharityAccountPage() {
           <button className='btn' onClick={accountOverview}>Account Overview</button>
           <button className='btn' onClick={editProfile}>Edit Profile</button>
           <button className='btn' onClick={findSupplier}>Find Suppliers</button>
-          <button className='btn' onClick={viewInventory}>View Supplier Inventory</button>
-          <button className='btn' onClick={reviewSupplier}>Review Suppliers</button>
         </Aside>
         <Section>
           <div>{sectionState.sectionData}</div>
+          {renderComponent()}
         </Section>
       </Wrapper>
     </div>
