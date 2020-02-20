@@ -146,6 +146,8 @@ const API = {
     verifyLogin:()=>{
         return axios.get(`${URL}/api/auth/verifylogin`,{withCredentials:true});
     },
+    
+    // External API Calls ________________________________________________________
     // checking the EIN number
     einChecker:(einToCheck) => {
         return axios.get(`${URL}/api/company/ein/${einToCheck}`);
