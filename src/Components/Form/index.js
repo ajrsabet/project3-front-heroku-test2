@@ -222,7 +222,7 @@ export default function Form() {
           placeholder='CONFIRM PASSWORD'
           id='pw2'
         />
-        <button type='submit' onClick={submitRegistration}>SUBMIT</button>
+        <button className='btn-main' type='submit' onClick={submitRegistration}>SUBMIT</button>
       </div>
     </form>
   )

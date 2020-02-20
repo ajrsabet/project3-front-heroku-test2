@@ -1,0 +1,63 @@
+@import './config';
+
+.login-form {
+  width: 60%;
+  margin: 0 auto;
+  background-color: $frosty;
+  text-align: center;
+  // margin-top: 4%;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+h3 {
+  margin: 30px auto 0 auto;
+  color: #fff;
+  width: 45%;
+  border: #fff solid 2px;
+  text-align: center;
+}
+
+
+
+.login-container {
+  text-align: center;
+  width: auto;
+  margin: 15px auto 40px auto;
+
+  .row {
+    text-align: center;
+  }
+
+  input {
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    
+    &:first-of-type {
+      margin-top: 15px;
+      margin-right: 10px;
+    }
+  }
+
+  button {
+    margin-top: 5px;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  .login-form {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20%;
+    padding: 10px 0;
+
+    input {
+      &:first-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
