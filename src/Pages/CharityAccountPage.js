@@ -34,6 +34,7 @@ export default function CharityAccountPage() {
           history.push("/login");
         }  
       }).catch(err=>{
+        alert(err)
         console.log(err);
           history.push("/login");
       })
