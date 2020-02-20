@@ -9,11 +9,12 @@ import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
 import FindingSupplier from '../Components/FindingSupplier';
 import AccountOverview from "../Components/AccountOverview";
-import EditProfile from "../Components/EditProfile/EditProfile";
+import EditProfile from "../Components/EditProfile";
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/useraccountpage.min.css';
+import CharityDrawer from "../Components/CharityDrawer";
 
 export default function CharityAccountPage() {
   const history = useHistory();
@@ -33,10 +34,13 @@ export default function CharityAccountPage() {
           history.push("/login");
         }  
       }).catch(err=>{
+        alert(err)
         console.log(err);
           history.push("/login");
       })
   },[])
+
+  const [activePage, setActivePage] = useState("Account Overview")
 
   useEffect(() => {
     accountOverview();
@@ -85,27 +89,31 @@ export default function CharityAccountPage() {
     })
   }
 
+  function renderComponent(){
+    if(activePage==="Account Overview"){
+      return <AccountOverview />
+    } else if(activePage==="Edit Profile"){
+      return <EditProfile />
+    } else if(activePage==="Find Suppliers"){
+      return <FindingSupplier />
+    }
+  }
+
+  function goToHome(event){
+    event.preventDefault();
+    window.location.href = "/"
+  }
+
   return (
     <div className='main'>
       <div className='container row'>
         <Navbar>
-          <img className='logo' src={logo} alt='logo'></img>
-          <Link to='/login'>Login</Link>
-          <Link id='register' to='/register'>Register</Link>
+          <img onClick={goToHome}  className='logo' src={logo} alt='logo'></img>
+          <CharityDrawer setActivePage={setActivePage}/>
         </Navbar>
         <div className='row'>
-          <Aside>
-            <div className='left-aside'>
-              <button className='btn-acct' onClick={accountOverview}>Account Overview</button>
-              <button className='btn-acct' onClick={editProfile}>Edit Profile</button>
-              <button className='btn-acct' onClick={findSupplier}>Find Suppliers</button>
-              <button className='btn-acct' onClick={viewInventory}>View Supplier Inventory</button>
-              <button className='btn-acct' onClick={reviewSupplier}>Review Suppliers</button>
-            </div>
-
-          </Aside>
           <Section>
-            <div>{sectionState.sectionData}</div>
+          {renderComponent()}
           </Section>
           <Aside>
             <h3>aslan</h3>

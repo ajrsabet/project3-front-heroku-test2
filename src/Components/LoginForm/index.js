@@ -11,14 +11,16 @@ export default function LoginForm() {
 
     const submitLogin = (event) => {
         event.preventDefault();
-        console.log(loginState)
+        // console.log(loginState)
         API.logIn({
             email: loginState.email.trim(),
             password: loginState.password.trim()
         }).then(res => {
             console.log(res);
-            if(res.email){
-                history.goBack();
+            if(res.data.email){
+                history.push("/");
+            } else {
+                alert("Account not found")
             }
         }).catch(err=>{
             console.log(err);

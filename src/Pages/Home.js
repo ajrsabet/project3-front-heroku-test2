@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/homepage.min.css';
+import HomeDrawer from "../Components/HomeDrawer";
 
-export default function Home() {
+function Home() {
+
+  const [activePage, setActivePage] = useState("Account Overview")
+
+  useEffect(() => {
+    switch (activePage) {
+      case "Login":
+        window.location.href = "/login";
+        break;
+      case "Register":
+        window.location.href = "/register";
+        break;
+      default:
+        break;
+    }
+  }, [activePage]);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.screen.availWidth < 824) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [window.screen.availWidth]);
 
   return (
     <div >
@@ -13,8 +39,13 @@ export default function Home() {
         <div className='row'>
           <Navbar>
             <img className='logo' src={logo} alt='logo'></img>
-            <Link to='/login'>Login</Link>
-            <Link id='register' to='/register'>Register</Link>
+            <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} />
+            {isMobile ? (<div />) : (
+              <div>
+                <Link to='/login'>Login</Link>
+                <Link to='/register'>Register</Link>
+              </div>
+            )}
           </Navbar>
         </div>
         <div className='main-text'>
@@ -44,5 +75,5 @@ export default function Home() {
 
 }
 
-
+export default Home;
 
