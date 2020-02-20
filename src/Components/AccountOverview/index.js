@@ -31,6 +31,7 @@ export default function AccountOverview(props) {
   const [companyState, setcompanyState] = useState([])
   const [locationState, setLocationState] = useState([])
   const [userState, setUserState] = useState([])
+<<<<<<< HEAD
 //   useEffect(()=>{
 //     console.log(props.sessionData);
     
@@ -39,6 +40,14 @@ export default function AccountOverview(props) {
 //       setLocationState(data.data.Locations[0])
 //       setcompanyState(data.data)
 //       console.log(data.data);
+=======
+  useEffect(()=>{
+    API.getUserById(1).then(data=>{
+      setUserState(data.data.User_profiles[0])
+      setLocationState(data.data.Locations[0])
+      setcompanyState(data.data)
+      console.log(data.data);
+>>>>>>> 82977096d4ebc56415e495432194ac55e3095667
       
 //     })
 // },[])
