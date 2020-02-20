@@ -1,37 +1,42 @@
 @import './config';
 
+.main {
+  overflow: scroll;
+}
+
 .aside {
-  border: 1px solid $primary-color-1;
+  // border: 1px solid $primary-color-1;
   float: left;
   display: block;
 
   .left-aside {
-    border: purple 2px solid;
+    // border: purple 2px solid;
+    margin-top: 90px;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+}
+
+.edit-container {
+  display: inline;
+  .row {
+    display: inline;
   }
 }
 
 .Section {
-  border: 1px solid green;
+  // border: 1px solid green;
   float: left;
   color: white;
 
+  tbody,
   h1,
-  h2,
-  table {
-    margin-left: 25px;
+  h2 {
+    // border: 1px solid red;
+    margin-left: 20px;
   }
 
-  table {
-    tbody {
-      tr {
-        border: 1px solid red;
-      }
-    }
-
-
-  }
 }
-
 
 .btn-acct {
   color: #fff;
@@ -46,5 +51,41 @@
   &:hover,
   &:focus {
     background-color: $primary-color-1;
+  }
+}
+
+td {
+  &:first-child {
+    font-weight: bold;
+  }
+}
+
+td {
+  border: 1px yellow solid;
+  padding-right: 130px;
+  padding-left: 15px;
+}
+
+
+
+
+
+@media screen and (max-width: 900px) {
+  * {
+    // text-align: center;
+    margin: 2px auto;
+  }
+
+  .aside {
+    .left-aside {
+      margin: 2px auto;
+    }
+  }
+
+
+  td {
+    padding: 0;
+    width: 50%;
+    text-align: left;
   }
 }

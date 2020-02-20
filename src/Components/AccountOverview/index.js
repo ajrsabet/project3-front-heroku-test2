@@ -1,10 +1,11 @@
 import React from "react";
+import '../../style/css/useraccountpage.min.css';
 
 export default function AccountOverview(props) {
   return (
     <div>
       <h1>Account Overview</h1>
-      <h2>Profile</h2>
+      {/* <h2>Profile</h2> */}
       <table>
         <tbody>
           <tr>

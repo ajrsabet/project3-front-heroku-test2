@@ -81,6 +81,7 @@ body {
 
 @media screen and (max-width: 1140px) {
   .container {
+    overflow: scroll;
     .navbar {
       .logo {
         margin: 15px 0 0 15px;

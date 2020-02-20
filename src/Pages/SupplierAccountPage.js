@@ -24,20 +24,20 @@ export default function SupplierAccountPage() {
   // Session data stored here 
   let sessionData = {};
   // Check login status and redirect if not logged in
-    useEffect(()=>{
-      API.verifyLogin().then(res=>{
-        if (res.data.email) {
-          sessionData = res.data;
-          console.log(sessionData);
-        } else {
-          history.push("/login");
-        }  
-      }).catch(err=>{
-        console.log(err);
-        alert(err);
-          history.push("/login");
-      })
-  },[])
+  //   useEffect(()=>{
+  //     API.verifyLogin().then(res=>{
+  //       if (res.data.email) {
+  //         sessionData = res.data;
+  //         console.log(sessionData);
+  //       } else {
+  //         history.push("/login");
+  //       }  
+  //     }).catch(err=>{
+  //       console.log(err);
+  //       alert(err);
+  //         history.push("/login");
+  //     })
+  // },[])
 
   useEffect(() => {
     accountOverview()
@@ -91,13 +91,16 @@ export default function SupplierAccountPage() {
           <Link to='/login'>Login</Link>
           <Link id='register' to='/register'>Register</Link>
         </Navbar>
-        <div className='row'>
+        <div className='row data'>
           <Aside>
-            <button className='btn' onClick={accountOverview}>Account Overview</button>
-            <button className='btn' onClick={editProfile}>Edit Profile</button>
-            <button className='btn' onClick={setPickupSchedule}>Set Pickup Schedule</button>
-            <button className='btn' onClick={inventory}>Inventory</button>
-            <button className='btn' onClick={reviewCharities}>Review Charities</button>
+            <div className='left-aside'>
+              <button className='btn-acct' onClick={accountOverview}>Account Overview</button>
+              <button className='btn-acct' onClick={editProfile}>Edit Profile</button>
+              <button className='btn-acct' onClick={setPickupSchedule}>Set Pickup Schedule</button>
+              <button className='btn-acct' onClick={inventory}>Inventory</button>
+              <button className='btn-acct' onClick={reviewCharities}>Review Charities</button>
+            </div>
+
           </Aside>
           <Section>
             <div>{sectionState.sectionData}</div>
