@@ -1,7 +1,9 @@
-$primary-orange: #FF5722;
-$primary-color-2: #94d3ac;
-$primary-color-3: #ccedd2;
-$primary-color-4: #effcef;
+$primary-color-1: yellow;
+// $primary-color-2: #902919;
+// $primary-color-3: #7B2315;
+// $primary-color-4: #58230F;
+// $primary-color-5: #482303;
+
 $primary-font:'Roboto',
 sans-serif;
 $primary-font-size: 20px;
@@ -19,7 +21,17 @@ body {
   font-family: $primary-font;
   font-weight: $primary-font-weight;
   text-rendering: optimizeLegibility;
-  background-color: $primary-color-4;
+  background-color: $primary-color-1;
+}
+
+.btn-main {
+  border: 2px solid $primary-color-1;
+  padding: 3px 15px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: $primary-color-1;
+  transition: 0.2s;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -48,7 +60,7 @@ body {
 
       &:hover {
         padding: 4px 15px;
-        border: 2px solid $primary-orange;
+        border: 2px solid $primary-color-1;
         border-radius: 50px;
       }
     }

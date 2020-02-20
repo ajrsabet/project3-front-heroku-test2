@@ -17,17 +17,17 @@
 
   a {
     text-decoration: none;
-    border: 2px solid $primary-orange;
+    border: 2px solid $primary-color-1;
     padding: 3px 15px;
     border-radius: 50px;
     color: #fff;
-    background-color: $primary-orange;
+    background-color: $primary-color-1;
     transition: 0.2s;
 
     &:hover {
-      background-color: darken($color: $primary-orange, $amount: 10%);
+      background-color: darken($color: $primary-color-1, $amount: 10%);
       ;
-      border-color: darken($color: $primary-orange, $amount: 10%);
+      border-color: darken($color: $primary-color-1, $amount: 10%);
     }
   }
 }
