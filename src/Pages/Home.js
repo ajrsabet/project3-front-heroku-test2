@@ -44,6 +44,7 @@ function Home() {
               <div>
                 <Link to='/login'>Login</Link>
                 <Link to='/register'>Register</Link>
+                <Link to='/charity'>Profile</Link>
               </div>
             )}
           </Navbar>
