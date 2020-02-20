@@ -1,5 +1,7 @@
+// NPM packages
 import React, { useState, useEffect } from "react";
 import {Redirect,useHistory} from "react-router-dom"
+// Components
 import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
@@ -13,15 +15,23 @@ export default function SupplierAccountPage() {
     sectionData: ''
   })
 
-  useEffect(()=>{
-    console.log(history)
-    API.verifyLogin().then(res=>{
-        console.log("yay you can make animals!")
-    }).catch(err=>{
-        // history.goBack();
-        history.push("/login")
-    })
-},[])
+  // Session data stored here 
+  let sessionData = {};
+  // Check login status and redirect if not logged in
+    useEffect(()=>{
+      API.verifyLogin().then(res=>{
+        if (res.data.username) {
+          sessionData = res.data;
+          console.log(sessionData);
+        } else {
+          history.push("/login");
+        }  
+      }).catch(err=>{
+        console.log(err);
+        alert(err);
+          history.push("/login");
+      })
+  },[])
 
   useEffect(() => {
     accountOverview()

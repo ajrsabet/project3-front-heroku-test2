@@ -1,28 +1,39 @@
+// NPM packages
 import React, { useState, useEffect } from "react";
+import {Redirect,useHistory} from "react-router-dom"
+// Components
 import Header from "../Components/Header";
 import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
-import {Redirect,useHistory} from "react-router-dom"
 import FindingSupplier from '../Components/FindingSupplier';
 
 export default function CharityAccountPage() {
   const history = useHistory();
   const [sectionState, setSectionState] = useState({
     sectionData: ''
-  })
+  });
   
+  // Session data stored here 
+  let sessionData = {};
+  // Check login status and redirect if not logged in
     useEffect(()=>{
       API.verifyLogin().then(res=>{
-          console.log("You are logged in!")
+        if (res.data.username) {
+          sessionData = res.data;
+          console.log(sessionData);
+        } else {
+          history.push("/login");
+        }  
       }).catch(err=>{
-          history.push("/login")
+        console.log(err);
+          history.push("/login");
       })
   },[])
 
   useEffect(() => {
-    accountOverview()
+    accountOverview();
   }, []);
 
   function accountOverview(props) {
