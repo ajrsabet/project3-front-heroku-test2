@@ -1,2 +1,50 @@
 @import './config';
 
+.aside {
+  border: 1px solid $primary-color-1;
+  float: left;
+  display: block;
+
+  .left-aside {
+    border: purple 2px solid;
+  }
+}
+
+.Section {
+  border: 1px solid green;
+  float: left;
+  color: white;
+
+  h1,
+  h2,
+  table {
+    margin-left: 25px;
+  }
+
+  table {
+    tbody {
+      tr {
+        border: 1px solid red;
+      }
+    }
+
+
+  }
+}
+
+
+.btn-acct {
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  border-radius: 0px;
+  border: 2px solid transparent;
+  margin: 0;
+  background-color: rgba($primary-color-1, 0.6);
+
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: $primary-color-1;
+  }
+}

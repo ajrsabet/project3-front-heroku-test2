@@ -12,7 +12,7 @@
 
 h3 {
   margin: 30px auto 0 auto;
-  color: #fff;
+  color: $primary-color-1;
   width: 45%;
   border: #fff solid 2px;
   text-align: center;
@@ -23,7 +23,7 @@ h3 {
 .login-container {
   text-align: center;
   width: auto;
-  margin: 15px auto 40px auto;
+  margin: 15px auto;
 
   .row {
     text-align: center;
@@ -51,7 +51,7 @@ h3 {
     width: 75%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 1%;
     padding: 10px 0;
 
     input {
@@ -59,5 +59,11 @@ h3 {
         margin-right: 0;
       }
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .login-form {
+    margin-top: 20%;
   }
 }

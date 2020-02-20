@@ -14,7 +14,7 @@ export default function Home() {
           <Navbar>
             <img className='logo' src={logo} alt='logo'></img>
             <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
+            <Link id='register' to='/register'>Register</Link>
           </Navbar>
         </div>
         <div className='main-text'>
