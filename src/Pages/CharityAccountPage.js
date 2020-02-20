@@ -24,20 +24,20 @@ export default function CharityAccountPage() {
   
   // Session data stored here 
   let sessionData = {};
-  // Check login status and redirect if not logged in
-  //   useEffect(()=>{
-  //     API.verifyLogin().then(res=>{
-  //       if (res.data.email) {
-  //         sessionData = res.data;
-  //         console.log(sessionData);
-  //       } else {
-  //         history.push("/login");
-  //       }  
-  //     }).catch(err=>{
-  //       console.log(err);
-  //         history.push("/login");
-  //     })
-  // },[])
+  Check login status and redirect if not logged in
+    useEffect(()=>{
+      API.verifyLogin().then(res=>{
+        if (res.data.email) {
+          sessionData = res.data;
+          console.log(sessionData);
+        } else {
+          history.push("/login");
+        }  
+      }).catch(err=>{
+        console.log(err);
+          history.push("/login");
+      })
+  },[])
 
   const [activePage, setActivePage] = useState("Account Overview")
 
