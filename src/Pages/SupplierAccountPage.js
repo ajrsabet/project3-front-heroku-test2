@@ -8,18 +8,22 @@ import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
 import InventoryTable from "../Components/InventoryTable";
 import AccountOverview from "../Components/AccountOverview";
-import EditProfile from "../Components/EditProfile/EditProfile";
-import PickupSchedule from "../Components/PickupSchedule/PickupSchedule";
+import EditProfile from "../Components/EditProfile";
+import PickupSchedule from "../Components/PickupSchedule";
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/useraccountpage.min.css';
+import SupplierDrawer from "../Components/SupplierDrawer"
 
 export default function SupplierAccountPage() {
   const history = useHistory();
+
   const [sectionState, setSectionState] = useState({
     sectionData: ''
   })
+
+  const [activePage, setActivePage] = useState("Account Overview")
 
   // Session data stored here 
   let sessionData = {};
@@ -83,24 +87,35 @@ export default function SupplierAccountPage() {
     })
   }
 
+  function renderComponent() {
+    if (activePage === "Account Overview") {
+      return <AccountOverview />
+    } else if (activePage === "Edit Profile") {
+      return <EditProfile />
+    } else if (activePage === "Set Pickup Schedule") {
+      return <PickupSchedule />
+    } else if (activePage === "Inventory") {
+      return <InventoryTable />
+    }
+  }
+
+  function goToHome(event){
+    event.preventDefault();
+    window.location.href = "/"
+  }
+
   return (
     <div className='main'>
       <div className='container row'>
         <Navbar>
-          <img className='logo' src={logo} alt='logo'></img>
-          <Link to='/login'>Login</Link>
-          <Link id='register' to='/register'>Register</Link>
+          <img onClick={goToHome} className='logo' src={logo} alt='logo'></img>
+          <SupplierDrawer setActivePage={setActivePage} />
+  
         </Navbar>
         <div className='row'>
-          <Aside>
-            <button className='btn' onClick={accountOverview}>Account Overview</button>
-            <button className='btn' onClick={editProfile}>Edit Profile</button>
-            <button className='btn' onClick={setPickupSchedule}>Set Pickup Schedule</button>
-            <button className='btn' onClick={inventory}>Inventory</button>
-            <button className='btn' onClick={reviewCharities}>Review Charities</button>
-          </Aside>
+
           <Section>
-            <div>{sectionState.sectionData}</div>
+            {renderComponent()}
           </Section>
         </div>
       </div>

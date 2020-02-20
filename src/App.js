@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -11,12 +11,13 @@ import CharityAccountPage from "./Pages/CharityAccountPage";
 import './style/Resources/grid-css/grid.css';
 import './style/Resources/normalize/normalize.css';
 
-function App() {
+export default function App() {
+
   return (
     <div>
       <Router>
 
-        <Navbar className='navbar' />
+        {/* <Navbar className='navbar' /> */}
 
         <Switch>
 
@@ -36,9 +37,10 @@ function App() {
             <CharityAccountPage />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/">
             <Home />
-          </Route>
+          </Route> */}
 
         </Switch>
 
@@ -47,6 +49,4 @@ function App() {
       </Router>
     </div>
   )
-}
-
-export default App;
+  }
