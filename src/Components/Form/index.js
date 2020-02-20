@@ -69,7 +69,7 @@ export default function Form() {
             console.log(res3);
             // Login after data is added
             API.logIn({
-              username: userState.email.trim(),
+              email: userState.email.trim(),
               password: userState.password.trim()
             }).then(res => {
               console.log(res);

@@ -7,7 +7,6 @@ import Aside from "../Components/Aside";
 import Section from "../Components/Section";
 import Wrapper from '../Components/Wrapper';
 import API from "../Util/API/API";
-import { Redirect, useHistory } from "react-router-dom"
 import FindingSupplier from '../Components/FindingSupplier';
 import AccountOverview from "../Components/AccountOverview";
 import EditProfile from "../Components/EditProfile/EditProfile";
@@ -23,7 +22,7 @@ export default function CharityAccountPage() {
   // Check login status and redirect if not logged in
     useEffect(()=>{
       API.verifyLogin().then(res=>{
-        if (res.data.username) {
+        if (res.data.email) {
           sessionData = res.data;
           console.log(sessionData);
         } else {

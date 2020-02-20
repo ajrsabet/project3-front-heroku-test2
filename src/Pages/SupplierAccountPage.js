@@ -22,7 +22,7 @@ export default function SupplierAccountPage() {
   // Check login status and redirect if not logged in
     useEffect(()=>{
       API.verifyLogin().then(res=>{
-        if (res.data.username) {
+        if (res.data.email) {
           sessionData = res.data;
           console.log(sessionData);
         } else {
