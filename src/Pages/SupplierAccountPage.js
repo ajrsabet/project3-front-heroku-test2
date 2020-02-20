@@ -27,7 +27,7 @@ export default function SupplierAccountPage() {
 
   // Session data stored here 
   let sessionData = {};
-  Check login status and redirect if not logged in
+  // Check login status and redirect if not logged in
     useEffect(()=>{
       API.verifyLogin().then(res=>{
         if (res.data.email) {
