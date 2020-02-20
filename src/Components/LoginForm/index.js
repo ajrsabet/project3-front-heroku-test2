@@ -1,48 +1,61 @@
 import React, { useState } from "react";
 import API from "../../Util/API/API";
+import {Redirect,useHistory} from "react-router-dom"
 
 export default function LoginForm() {
-
+    const history = useHistory();
     const [loginState, setLoginState] = useState({
-        email: "",
+        username: "",
         password: ""
     })
 
     const submitLogin = (event) => {
         event.preventDefault();
-        console.log(event)
-       
+        console.log(loginState)
+        API.logIn({
+            username: loginState.username.trim(),
+            password: loginState.password.trim()
+        }).then(res => {
+            if(res){
+                history.goBack();
+            }
+        })
     }
 
     const handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
         setLoginState({
+            ...loginState,
             [name]: value
         });
     };
 
-    
-    return (
-        <form className="login-form">
-            <div className='login-container'>
-                <input
-                    value={loginState.email}
-                    onChange={handleInputChange}
-                    type='email'
-                    name='email'
-                    placeholder='EMAIL'
-                />
-                <input
-                    value={loginState.password}
-                    onChange={handleInputChange}
-                    type='password'
-                    name='password'
-                    placeholder='PASSWORD'
-                    id='pw1'
-                />
-                <button type='submit' onClick={submitLogin}>SUBMIT</button>
-            </div>
-        </form>
-    )
+
+  return (
+    <form className="login-form">
+      <h3>Login</h3>
+      <div className='login-container row'>
+        <input
+          value={loginState.email}
+          onChange={handleInputChange}
+          type='email'
+          name='email'
+          placeholder='EMAIL'
+        />
+        <input
+          value={loginState.password}
+          onChange={handleInputChange}
+          type='password'
+          name='password'
+          placeholder='PASSWORD'
+          id='pw1'
+        />
+
+        <div className='row'>
+          <button className='btn-main' type='submit' onClick={submitLogin}>SUBMIT</button>
+        </div>
+      </div>
+    </form>
+  )
 };
