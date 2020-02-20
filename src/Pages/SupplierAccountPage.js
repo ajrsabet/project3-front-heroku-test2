@@ -21,17 +21,6 @@ export default function SupplierAccountPage() {
     sectionData: ''
   })
 
-<<<<<<< HEAD
-  useEffect(()=>{
-    console.log(history)
-    API.verifyLogin().then(res=>{
-        console.log("yay you can make animals!")
-    }).catch(err=>{
-        // history.goBack();
-        //history.push("/login")
-    })
-},[])
-=======
   // Session data stored here 
   let sessionData = {};
   // Check login status and redirect if not logged in
@@ -49,7 +38,6 @@ export default function SupplierAccountPage() {
           history.push("/login");
       })
   },[])
->>>>>>> 1a378823e513a01be0f1b18366085ed9bbc0dd13
 
   useEffect(() => {
     accountOverview()
