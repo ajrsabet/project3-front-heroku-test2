@@ -16,10 +16,9 @@ export default function LoginForm() {
             username: loginState.username.trim(),
             password: loginState.password.trim()
         }).then(res => {
-            // if(res){
-            //     history.goBack();
-            // }
-            console.log(res);
+            if(res){
+                history.goBack();
+            }
         })
     }
 
