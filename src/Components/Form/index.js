@@ -73,10 +73,13 @@ export default function Form() {
               password: userState.password.trim()
             }).then(res => {
               console.log(res);
-              if(res.username){
+              if(res.email){
               alert("You have successfully created an account!")
                   history.goBack();
               }
+            }).catch(err=>{
+              console.log(err);
+                history.push("/login");
             })
           })
         })
