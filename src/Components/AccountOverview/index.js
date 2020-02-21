@@ -12,7 +12,7 @@ export default function AccountOverview(props) {
       API.verifyLogin().then(res=>{
         if (res.data.email) {
           sessionData = res.data;
-          API.getUserById(sessionData.CompanyProfileId).then(data=>{
+          API.getUserById(1).then(data=>{
             setUserState(data.data.User_profiles[0])
             setLocationState(data.data.Locations[0])
             setcompanyState(data.data)
@@ -42,8 +42,8 @@ export default function AccountOverview(props) {
  },[])
 
   return (
-    <div>
-      <h1>Account Overview</h1>
+    <div className="login-form">
+      <h1 className="tableH1">Account Overview</h1>
       <h2>Profile</h2>
       <table>
         <tbody>

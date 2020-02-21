@@ -7,9 +7,9 @@ import TextField from "@material-ui/core/TextField";
 import API from "../../Util/API/API";
 
 
-// function rand() {
-//     return Math.round(Math.random() * 20) - 10;
-// }
+function refresh() {
+  document.location.reload();
+}
 
 function getModalStyle() {
   const top = 50
@@ -78,28 +78,28 @@ export default function SimpleModal(props) {
   };
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    const dataToUpload={
-      title:itemToSave.title,
+    const dataToUpload = {
+      title: itemToSave.title,
       quantity: itemToSave.quantity,
       unit: itemToSave.unit,
       value_unit: itemToSave.value_unit,
       exp_date: itemToSave.exp_date,
-      LocationId:locationState.id
+      LocationId: locationState.id
     }
     API.createInventory(dataToUpload).then(res => {
-      handleClose()
-console.log(res);
+      refresh();
+      console.log(res);
 
-    }).catch(err=> console.log(err))
+    }).catch(err => console.log(err))
   }
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div>
@@ -121,7 +121,7 @@ console.log(res);
             <TextField onChange={props.handleInputChange} label="Value" name={"value_unit"} value={props.itemToUpdate.value_unit} />
             <TextField onChange={props.handleInputChange} label="Expiration Date" name={"exp_date"} value={props.itemToUpdate.exp_date} />
             <SimpleModal />
-            <button onClick={props.editRow}>Submit</button>
+            <button className="btn-main" onClick={props.editRow}>Submit</button>
           </div>
         ) :
           <form style={modalStyle} className={classes.paper}>
@@ -132,7 +132,7 @@ console.log(res);
             <TextField onChange={handleInputChange} label="Value" name="value_unit" />
             <TextField onChange={handleInputChange} label="Expiration Date" name="exp_date" placeholder="MM/DD/YY" />
             <SimpleModal />
-            <button onClick={handleSubmitForm}>Submit</button>
+            <button className="btn-main" onClick={handleSubmitForm}>Submit</button>
           </form>
         }
       </Modal>

@@ -1,21 +1,13 @@
 @import './config';
 
-.aside {
-  float: left;
-}
-
 .Section {
-  float: left;
   color: white;
-  margin-top: 5%;
-  margin-left: 35px;
-  background-color: $frosty;
+  margin: 5% auto;
   border-radius: 5px;
   padding-bottom: 3%;
   overflow: scroll;
 
-  h1,
-  table {
+  .tableH1, table, form {
     margin-left: 25px;
     width: 75%;
   }
@@ -32,6 +24,24 @@
     &:hover {
       background-color: darken($color: $frosty, $amount: 10%);
     }
+  }
+}
+
+.formInput {
+  margin-top: 2%;
+
+  input {
+    margin-left: 1%;
+  }
+}
+
+.edit-container {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+
+  p, button {
+    margin-top: 10px;
   }
 }
 
@@ -58,10 +68,31 @@
   }
 }
 
+.search-bar {
+  input {
+    margin: 0 3%;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .Section {
-    width: 100%;
-    margin-left: 0;
+    margin-top: 1%;
+
+    .tableH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 8%;
+      font-size: 125%;
+    }
+
+    .formInput {
+      margin-top: 5%;
+
+      input {
+        display: block;
+      }
+    }
+    
 
     h1 {
       text-align: center;
@@ -70,6 +101,7 @@
 
     h2 {
       margin: 3% 5%;
+      font-weight: 200;
     }
 
     table {
