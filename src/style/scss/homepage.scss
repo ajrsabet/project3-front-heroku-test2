@@ -9,6 +9,7 @@
 #register {
   background-color: $primary-color-1;
   border-radius: 50px;
+
   &:hover {
     background-color: darken($color: $primary-color-1, $amount: 10%);
     ;
@@ -47,9 +48,44 @@
   margin: 0 auto;
 
   div {
-    border: 1px solid red;
+    // border: 1px solid red;
     height: 560px;
   }
+}
+
+.box {
+  line-height: 165%;
+
+  .icon {
+    width: 75%;
+    text-align: center;
+  }
+}
+
+p {
+  margin: 10%;
+
+
+}
+
+.home-page-data {
+  .row {
+    &::before {
+      display: block;
+      height: 2px;
+      width: 75%;
+      background-color: $primary-color-2;
+      content: '';
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+    height: 100%;
+  }
+
+  padding-top: 5%;
+  background-color: #fff;
+  height: auto;
 }
 
 @media screen and (max-width: 1140px) {
@@ -66,6 +102,15 @@
 
     a {
       margin: 0 15px;
+    }
+  }
+
+  .main-info {
+    width: 90%;
+    margin: 0 auto;
+
+    div {
+      height: auto;
     }
   }
 
