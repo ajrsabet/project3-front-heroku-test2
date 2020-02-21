@@ -4,25 +4,66 @@ import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/homepage.min.css';
 import HomeDrawer from "../Components/HomeDrawer";
+import API from "../Util/API/API";
 
 function Home() {
-
   const [activePage, setActivePage] = useState("Account Overview")
+  const [isMobile, setIsMobile] = useState(false);
+  const [authState, setAuthState] = useState({
+    loggedIn: false,
+    userData: {}
+  })
+
+  // Check login status and redirect if not logged in
+    useEffect(()=>{
+      API.verifyLogin().then(res=>{
+        if (res.data.email) {
+          setAuthState({
+            loggedIn: true,
+            userData: res.data
+          });
+        } 
+      }).catch(err=>{
+        setAuthState({
+          loggedIn: false
+        });
+        console.log(err);
+      })
+  },[])
+
+  const logOut = ()=>{
+    API.logOut().then(res=>{
+      setAuthState({
+        loggedIn: false
+      });
+      console.log(res);
+    }).catch(err=>{
+      console.log(err);
+    })
+  } 
 
   useEffect(() => {
     switch (activePage) {
-      case "Login":
+      case "login":
         window.location.href = "/login";
         break;
-      case "Register":
+      case "register":
         window.location.href = "/register";
+        break;
+      case "logout":
+        // window.location.href = "/register";
+        break;
+      case "charity":
+        window.location.href = "/charity";
+        break;
+      case "supplier":
+        window.location.href = "/supplier";
         break;
       default:
         break;
     }
   }, [activePage]);
 
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (window.screen.availWidth < 824) {
@@ -32,6 +73,8 @@ function Home() {
     }
   }, [window.screen.availWidth]);
 
+  
+
   return (
     <div >
 
@@ -39,12 +82,16 @@ function Home() {
         <div className='row'>
           <Navbar>
             <img className='logo' src={logo} alt='logo'></img>
-            <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} />
+            <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} authState={authState} logOut={logOut}/>
             {isMobile ? (<div />) : (
               <div>
-                <Link to='/login'>Login</Link>
-                <Link to='/register'>Register</Link>
-                <Link to='/charity'>Profile</Link>
+                {/* display routes if logged out */}
+                {authState.loggedIn === false ? <a onClick={()=>{setActivePage("register")}}>Register</a> : <div/>}
+                {authState.loggedIn === false ? <a onClick={()=>{setActivePage("login")}}>Login</a> : <div/>}
+                {/* display routes if logged in */}
+                {authState.loggedIn === true ? <a onClick={logOut} >Logout</a> : <div/>}
+                {authState.loggedIn === true && authState.userData.companyType === "charity" ? <a onClick={()=>{setActivePage("charity")}}>Charity Profile</a> : <></>} 
+                {authState.loggedIn === true && authState.userData.companyType === "supplier" ? <a onClick={()=>{setActivePage("supplier")}}>Supplier Profile</a> : <></>} 
               </div>
             )}
           </Navbar>

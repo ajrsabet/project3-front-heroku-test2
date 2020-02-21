@@ -39,32 +39,36 @@ export default function HomeDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <p onClick={()=>{props.setActivePage("Login")}}>Login</p>
-        <p onClick={()=>{props.setActivePage("Register")}}>Register</p>
+        {/* display routes if logged out */}
+        {props.authState.loggedIn === false ? <p onClick={() => { props.setActivePage("register") }}>Register</p> : <div />}
+        {props.authState.loggedIn === false ? <p onClick={() => { props.setActivePage("login") }}>Login</p> : <div />}
+        {/* display routes if logged in */}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "charity" ? <p onClick={() => { props.setActivePage("charity") }}>Charity Profile</p> : <></>}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "supplier" ? <p onClick={() => { props.setActivePage("supplier") }}>Supplier Profile</p> : <></>}
       </List>
       <Divider />
       <List>
-      <p>Logout</p>
+        {props.authState.loggedIn === true ? <p onClick={props.logOut} >Logout</p> : <div />}
       </List>
     </div>
   );
-    
+
 
 
   return (
     <div>
       {props.isMobile ? (
         <div>
-      <Button onClick={toggleDrawer('right', true)} style={{position:"absolute", top: 0, right: 0, color: "white", marginTop: '12px'}}><i class="fas fa-bars icon-3x"></i></Button>
-    
-      <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
-        {sideList('right')}
-      </Drawer>
-          </div>
+          <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '12px' }}><i class="fas fa-bars icon-3x"></i></Button>
+
+          <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
+            {sideList('right')}
+          </Drawer>
+        </div>
       ) : (
-      <div />
-      )}
-      
+          <div />
+        )}
+
     </div>
   );
 }
