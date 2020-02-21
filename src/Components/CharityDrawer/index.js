@@ -4,6 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import "../../style/css/drawer.min.css";
 
 const useStyles = makeStyles({
   list: {
@@ -39,13 +40,22 @@ export default function CharityDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <p onClick={()=>{props.setActivePage("Account Overview")}}>Account Overview</p>
-        <p onClick={()=>{props.setActivePage("Edit Profile")}}>Edit Profile</p>
-        <p onClick={()=>{props.setActivePage("Find Suppliers")}}>Find Suppliers</p>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Account Overview") }}>
+          <p>Account Overview</p>
+        </div>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Edit Profile") }}>
+          <p>Edit Profile</p>
+        </div>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Find Suppliers") }}>
+          <p>Find Suppliers</p>
+        </div>
       </List>
       <Divider />
       <List>
-      <p>Logout</p>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Logout") }}>
+          <p>Logout</p>
+        </div>
+        {/* Make route to logout */}
       </List>
     </div>
   );
@@ -53,12 +63,12 @@ export default function CharityDrawer(props) {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('right', true)} style={{position:"absolute", top: 0, right: 0, color: "white", marginTop: '12px'}}><i class="fas fa-bars icon-3x"></i></Button>
-    
+      <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '15px', marginRight: '15px' }}><i class="fas fa-bars fa-2x"></i></Button>
+
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}
       </Drawer>
-      
+
     </div>
   );
 }

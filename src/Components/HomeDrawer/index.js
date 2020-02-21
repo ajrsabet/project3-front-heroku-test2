@@ -4,6 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import "../../style/css/drawer.min.css";
 
 const useStyles = makeStyles({
   list: {
@@ -39,32 +40,36 @@ export default function HomeDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <p onClick={()=>{props.setActivePage("Login")}}>Login</p>
-        <p onClick={()=>{props.setActivePage("Register")}}>Register</p>
+        {/* display routes if logged out */}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("register") }}><p> Register</p></div> : <div />}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("login") }}><p>Login</p></div> : <div />}
+        {/* display routes if logged in */}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "charity" ? <div className="drawerBtn" onClick={() => { props.setActivePage("charity") }}><p>Charity Profile</p></div> : <></>}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "supplier" ? <div className="drawerBtn" onClick={() => { props.setActivePage("supplier") }}><p>Supplier Profile</p></div> : <></>}
       </List>
       <Divider />
       <List>
-      <p>Logout</p>
+        {props.authState.loggedIn === true ? <div className="drawerBtn" onClick={props.logOut} ><p>Logout</p></div> : <div />}
       </List>
     </div>
   );
-    
+
 
 
   return (
     <div>
       {props.isMobile ? (
         <div>
-      <Button onClick={toggleDrawer('right', true)} style={{position:"absolute", top: 0, right: 0, color: "white", marginTop: '12px'}}><i class="fas fa-bars icon-3x"></i></Button>
-    
-      <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
-        {sideList('right')}
-      </Drawer>
-          </div>
+          <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '15px', marginRight: '15px' }}><i class="fas fa-bars fa-2x"></i></Button>
+
+          <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
+            {sideList('right')}
+          </Drawer>
+        </div>
       ) : (
-      <div />
-      )}
-      
+          <div />
+        )}
+
     </div>
   );
 }

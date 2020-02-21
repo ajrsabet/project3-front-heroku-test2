@@ -73,9 +73,9 @@ export default function CharityAccountPage() {
           <Section>
           {renderComponent()}
           </Section>
-          <Aside>
+          {/* <Aside>
             <h3>aslan</h3>
-          </Aside>
+          </Aside> */}
         </div>
       </div>
     </div>
