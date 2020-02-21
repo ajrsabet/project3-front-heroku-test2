@@ -4,7 +4,11 @@ import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/homepage.min.css';
 import HomeDrawer from "../Components/HomeDrawer";
+<<<<<<< HEAD
+import API from "../Util/API/API"
+=======
 import API from "../Util/API/API";
+>>>>>>> development
 
 function Home() {
   const [activePage, setActivePage] = useState("Account Overview")
@@ -106,15 +110,15 @@ function Home() {
         <div className='row'>
           <div className='main-info' id='main-info'>
             <div className='col span-1-of-3 box'>
-              <p className='icon'><i class="far fa-trash-alt fa-2x"></i></p>
+              <p className='icon'><i className="far fa-trash-alt fa-2x"></i></p>
               <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
             <div className='col span-1-of-3 box'>
-              <p className='icon'><i class="far fa-handshake fa-2x"></i></p>
+              <p className='icon'><i className="far fa-handshake fa-2x"></i></p>
               <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
             <div className='col span-1-of-3 box'>
-              <p className='icon'><i class="fas fa-globe-americas fa-2x"></i></p>
+              <p className='icon'><i className="fas fa-globe-americas fa-2x"></i></p>
               <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
           </div>

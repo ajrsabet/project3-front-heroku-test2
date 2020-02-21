@@ -1,21 +1,14 @@
 @import './config';
 
-.aside {
-  float: left;
-}
-
 .Section {
-  float: left;
   color: white;
-  margin-top: 5%;
-  margin-left: 35px;
+  margin: 5% auto;
   background-color: $frosty;
   border-radius: 5px;
   padding-bottom: 3%;
   overflow: scroll;
 
-  h1,
-  table {
+  .tableH1, table {
     margin-left: 25px;
     width: 75%;
   }
@@ -32,6 +25,16 @@
     &:hover {
       background-color: darken($color: $frosty, $amount: 10%);
     }
+  }
+}
+
+.edit-container {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+
+  p, button {
+    margin-top: 10px;
   }
 }
 
@@ -58,10 +61,15 @@
   }
 }
 
+.search-bar {
+  input {
+    margin: 0 3%;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .Section {
-    width: 100%;
-    margin-left: 0;
+    margin-top: 1%;
 
     h1 {
       text-align: center;

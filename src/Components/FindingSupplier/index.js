@@ -75,7 +75,7 @@ console.log(sessionData);
         <div>
             <form className="register-form">
                 <div className='search-bar'>
-                    <h1 htmlFor="searchSupplier">Supplier Search</h1>
+                    <h1 htmlFor="searchSupplier" className="tableH1">Supplier Search</h1>
                     <input
                         className='city-search'
                         value={cityState.city}
