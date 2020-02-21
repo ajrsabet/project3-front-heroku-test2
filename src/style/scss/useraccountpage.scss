@@ -1,34 +1,43 @@
 @import './config';
 
 .aside {
-  border: 1px solid $primary-color-1;
   float: left;
-  display: block;
-
-  .left-aside {
-    border: purple 2px solid;
-  }
 }
 
 .Section {
-  border: 1px solid green;
   float: left;
   color: white;
+  margin-top: 5%;
+  margin-left: 35px;
+  background-color: $frosty;
+  border-radius: 5px;
+  padding-bottom: 3%;
+  overflow: scroll;
 
   h1,
-  h2,
   table {
     margin-left: 25px;
+    width: 75%;
   }
 
-  table {
-    tbody {
-      tr {
-        border: 1px solid red;
-      }
+  h2 {
+    margin: 3% 5%;
+  }
+
+  td {
+    border-bottom: 1px solid black;
+    padding-right: 1%;
+    // margin-right: 190px;
+
+    &:hover {
+      background-color: darken($color: $frosty, $amount: 10%);
     }
+  }
+}
 
-
+.search-bar {
+  input {
+    margin: 0 3%;
   }
 }
 
@@ -46,5 +55,35 @@
   &:hover,
   &:focus {
     background-color: $primary-color-1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Section {
+    width: 100%;
+    margin-left: 0;
+
+    h1 {
+      text-align: center;
+      margin: 5% 0;
+    }
+
+    h2 {
+      margin: 3% 5%;
+    }
+
+    table {
+      margin-left: 4%;
+      width: 85%;
+    }
+
+    td {
+      font-size: 80%;
+      width: 100%;
+    }
+
+    th {
+      margin-bottom: 4%;
+    }
   }
 }

@@ -25,7 +25,7 @@ export default function AccountOverview(props) {
   const [locationState, setLocationState] = useState([])
   const [userState, setUserState] = useState([])
   useEffect(()=>{
-    API.getUserById(sessionData.CompanyProfileId).then(data=>{
+    API.getUserById(1).then(data=>{
       setUserState(data.data.User_profiles[0])
       setLocationState(data.data.Locations[0])
       setcompanyState(data.data)
