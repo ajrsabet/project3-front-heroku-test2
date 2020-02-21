@@ -4,6 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import "../../style/scss/drawer.css"
 
 const useStyles = makeStyles({
   list: {
@@ -39,32 +40,39 @@ export default function HomeDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <p onClick={()=>{props.setActivePage("Login")}}>Login</p>
-        <p onClick={()=>{props.setActivePage("Register")}}>Register</p>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Login") }}>
+          <p>Login</p>
+        </div>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Register") }}>
+          <p>Register</p>
+        </div>
       </List>
       <Divider />
       <List>
-      <p>Logout</p>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Logout") }}>
+          <p>Logout</p>
+        </div>
+        {/* Make route to logout */}
       </List>
     </div>
   );
-    
+
 
 
   return (
     <div>
       {props.isMobile ? (
         <div>
-      <Button onClick={toggleDrawer('right', true)} style={{position:"absolute", top: 0, right: 0, color: "white", marginTop: '12px'}}><i class="fas fa-bars icon-3x"></i></Button>
-    
-      <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
-        {sideList('right')}
-      </Drawer>
-          </div>
+          <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '15px', marginRight: '15px' }}><i class="fas fa-bars fa-2x"></i></Button>
+
+          <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
+            {sideList('right')}
+          </Drawer>
+        </div>
       ) : (
-      <div />
-      )}
-      
+          <div />
+        )}
+
     </div>
   );
 }
