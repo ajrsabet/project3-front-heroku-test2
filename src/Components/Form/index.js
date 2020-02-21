@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import API from "../../Util/API/API"
-import {Redirect,useHistory} from "react-router-dom"
+import { Redirect, useHistory } from "react-router-dom"
 
 export default function Form() {
   const history = useHistory();
   // let pw1, pw2;
 
   const [userState, setUserState] = useState({
-    accountType: "", // State doesn't change when choosing an option & we can choose both options
+    accountType: "", 
     company: "",
     adminFirstName: "", //Admin first name
     adminLastName: "", //Admin last name- both needed for the user model
@@ -46,11 +46,10 @@ export default function Form() {
       API.createCompany({
         company_name: userState.company.trim(),
         ein: einState.ein.trim(),
-        account_type: 1
+        account_type: userState.accountType
       }).then(res => {
         console.log(res);
         API.createUser({
-          account_type: userState.accountType,
           password: userState.password.trim(),
           first_name: userState.adminFirstName.trim(),
           last_name: userState.adminLastName.trim(),
@@ -73,14 +72,18 @@ export default function Form() {
               password: userState.password.trim()
             }).then(res => {
               console.log(res);
-            if(res.data.email){
+              if (res.data.companyType==="charity") {
+                history.push("/charity");
+              } else if (res.data.companyType==="supplier") {
+                history.push("/supplier");
+              } else {
+                alert("Account type not specified")
                 history.push("/");
-            } else {
-                alert("Account not found")
-            }
-            }).catch(err=>{
+              }
+            }).catch(err => {
               console.log(err);
-                history.push("/login");
+              alert("your request could not be processed please try again" + err)
+              // history.push("/login");
             })
           })
         })
@@ -96,6 +99,7 @@ export default function Form() {
       ...userState,
       [name]: value
     });
+    console.log(userState);
 
   };
 
@@ -112,7 +116,7 @@ export default function Form() {
         value
       ).then(result => {
         console.log(result)
-        if (result) {
+        if (result.data.name) {
           alert(`The EIN matches: ${result.data.name} located at ${result.data.address}, ${result.data.city}, ${result.data.state}`)
         } else {
           alert('This EIN does not exist')
@@ -130,24 +134,21 @@ export default function Form() {
             Charity
             <input
               className='radio-button'
-              value={userState.accountType}
-              data-value='charity'
+              value='charity'
               onChange={handleInputChange}
               type="radio"
-              name='account-type' />
+              name='accountType' />
           </label>
 
           <label>
             <input
               className='radio-button'
-              value={userState.accountType}
-              data-value='supplier'
+              value='supplier'
               onChange={handleInputChange}
               type="radio"
-              name='account-type' />
+              name='accountType' />
             Supplier
             </label>
-
         </div>
         <input className='text-input'
           value={userState.company}

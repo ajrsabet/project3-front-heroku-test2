@@ -42,52 +42,10 @@ export default function CharityAccountPage() {
 
   const [activePage, setActivePage] = useState("Account Overview")
 
-  useEffect(() => {
-    accountOverview();
-  }, []);
+ 
 
-  function accountOverview(props) {
-    setSectionState({
-      sectionData:
-        <AccountOverview />
-    })
-  }
 
-  function editProfile() {
-    setSectionState({
-      sectionData:
-        <EditProfile />
-    })
-  }
-
-  function findSupplier() {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1> Find Suppliers </h1>
-          <FindingSupplier />
-        </div>
-    })
-  }
-
-  function viewInventory() {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1> View Supplier Inventory </h1>
-          {/* Of favorite suppliers? */}
-        </div>
-    })
-  }
-
-  function reviewSupplier() {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1> Review Suppliers </h1>
-        </div>
-    })
-  }
+  
 
   function renderComponent(){
     if(activePage==="Account Overview"){
@@ -95,7 +53,7 @@ export default function CharityAccountPage() {
     } else if(activePage==="Edit Profile"){
       return <EditProfile />
     } else if(activePage==="Find Suppliers"){
-      return <FindingSupplier />
+      return <FindingSupplier  />
     }
   }
 
