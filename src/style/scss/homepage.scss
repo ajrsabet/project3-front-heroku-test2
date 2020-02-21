@@ -1,0 +1,116 @@
+@import './config';
+
+.main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#register {
+  background-color: $primary-color-1;
+  border-radius: 50px;
+
+  &:hover {
+    background-color: darken($color: $primary-color-1, $amount: 10%);
+    ;
+    border-color: darken($color: $primary-color-1, $amount: 10%);
+  }
+}
+
+.main-text {
+  position: absolute;
+  width: 1140px;
+  top: 45%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  font-size: 120%;
+
+  a {
+    text-decoration: none;
+    border: 2px solid $primary-color-1;
+    padding: 3px 15px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: $primary-color-1;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: darken($color: $primary-color-1, $amount: 10%);
+      ;
+      border-color: darken($color: $primary-color-1, $amount: 10%);
+    }
+  }
+}
+
+.main-info {
+  width: 90%;
+  margin: 0 auto;
+
+  div {
+    // border: 1px solid red;
+    height: 560px;
+  }
+}
+
+.box {
+  line-height: 165%;
+
+  .icon {
+    width: 75%;
+    text-align: center;
+  }
+  p {
+    margin: 10%;
+  }
+}
+
+
+
+.home-page-data {
+  .row {
+    &::before {
+      display: block;
+      height: 2px;
+      width: 75%;
+      background-color: $primary-color-2;
+      content: '';
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+    height: 100%;
+  }
+
+  padding-top: 5%;
+  background-color: #fff;
+  height: auto;
+}
+
+@media screen and (max-width: 1140px) {
+  .main-text {
+    width: 100vw;
+    top: 30%;
+    left: 0;
+    transform: none;
+
+    h1 {
+      margin: 0 15px 20px 10px;
+      font-weight: 200;
+    }
+
+    a {
+      margin: 0 15px;
+    }
+  }
+
+  .main-info {
+    width: 90%;
+    margin: 0 auto;
+
+    div {
+      height: auto;
+    }
+  }
+
+}

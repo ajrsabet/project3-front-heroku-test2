@@ -1,0 +1,121 @@
+@import './config';
+
+.Section {
+  color: white;
+  margin: 5% auto;
+  border-radius: 5px;
+  padding-bottom: 3%;
+  overflow: scroll;
+
+  .tableH1, table, form {
+    margin-left: 25px;
+    width: 75%;
+  }
+
+  h2 {
+    margin: 3% 5%;
+  }
+
+  td {
+    border-bottom: 1px solid black;
+    padding-right: 1%;
+    // margin-right: 190px;
+
+    &:hover {
+      background-color: darken($color: $frosty, $amount: 10%);
+    }
+  }
+}
+
+.formInput {
+  margin-top: 2%;
+
+  input {
+    margin-left: 1%;
+  }
+}
+
+.edit-container {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+
+  p, button {
+    margin-top: 10px;
+  }
+}
+
+.search-bar {
+  input {
+    margin: 0 3%;
+  }
+}
+
+
+.btn-acct {
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  border-radius: 0px;
+  border: 2px solid transparent;
+  margin: 0;
+  background-color: rgba($primary-color-1, 0.6);
+
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: $primary-color-1;
+  }
+}
+
+.search-bar {
+  input {
+    margin: 0 3%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Section {
+    margin-top: 1%;
+
+    .tableH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 8%;
+      font-size: 125%;
+    }
+
+    .formInput {
+      margin-top: 5%;
+
+      input {
+        display: block;
+      }
+    }
+    
+
+    h1 {
+      text-align: center;
+      margin: 5% 0;
+    }
+
+    h2 {
+      margin: 3% 5%;
+      font-weight: 200;
+    }
+
+    table {
+      margin-left: 4%;
+      width: 85%;
+    }
+
+    td {
+      font-size: 80%;
+      width: 100%;
+    }
+
+    th {
+      margin-bottom: 4%;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// FROM THE VERY BEGINNING
+
+1. Create Repo, Create Development Branch, set Default to Development and add rules
+
+2. Clone Repo to Local Machine
+
+3. git checkout -b <initials_feature_version#>
+
+4. Code baby Code
+
+5. Save changes when you feel the need. 
+  => git add . (or specific file names) 
+  => git commit -m '<specific and meaningful message>'
+  => git pull origin development
+  => git push
+  => run --set-upstream message from console
+  // this save your current work on github, no need to create pull request until feature is complete
+
+6. Once feature is complete => Create pull request on github
+
+7. On local machine, git checkout development
+
+8. git pull origin development 
+  // now your local development branch is up to date with githubs development branch
+
+9. git checkout -b <initials_feature_version#>
+
+10. Code baby code and start back at #5
