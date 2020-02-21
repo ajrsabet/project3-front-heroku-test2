@@ -41,6 +41,10 @@ const API = {
     updateInventoryById: (itemInfo) => {
         return axios.put(`${URL}/api/inventory/update`, itemInfo)
     },
+    // Update inventory bulk
+    updateInventoryBulk: (itemInfo) => {
+        return axios.put(`${URL}/api/inventory/update/bulk`, itemInfo)
+    },
     // Delete inventory by id
     deleteInventoryById: (id) => {
         return axios.delete(`${URL}/api/inventory/${id}`)

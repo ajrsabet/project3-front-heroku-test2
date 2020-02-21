@@ -43,49 +43,6 @@ export default function SupplierAccountPage() {
       })
   },[])
 
-  useEffect(() => {
-    accountOverview()
-  }, []);
-
-  function accountOverview(props) {
-    setSectionState({
-      sectionData:
-        <AccountOverview />
-    })
-  }
-
-  function editProfile() {
-    setSectionState({
-      sectionData:
-        <EditProfile />
-    })
-  }
-
-  function setPickupSchedule() {
-    setSectionState({
-      sectionData:
-        <PickupSchedule />
-    })
-  }
-
-  function inventory(props) {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1> Inventory </h1>
-          <InventoryTable />
-        </div>
-    })
-  }
-
-  function reviewCharities() {
-    setSectionState({
-      sectionData:
-        <div>
-          <h1> Review Charities </h1>
-        </div>
-    })
-  }
 
   function renderComponent() {
     if (activePage === "Account Overview") {
@@ -95,7 +52,7 @@ export default function SupplierAccountPage() {
     } else if (activePage === "Set Pickup Schedule") {
       return <PickupSchedule />
     } else if (activePage === "Inventory") {
-      return <InventoryTable />
+      return <InventoryTable  />
     }
   }
 

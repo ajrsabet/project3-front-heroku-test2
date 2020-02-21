@@ -1,8 +1,45 @@
 import React, { useState, useEffect } from "react";
+import { Redirect, useHistory } from "react-router-dom"
+
 import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
 
-export default function InventoryTable() {
+export default function InventoryTable(props) {
+    const history = useHistory();
+    let sessionData = {};
+    let locationId=0
+    useEffect(() => {
+        API.verifyLogin().then(res => {
+            if (res.data.email) {
+                sessionData = res.data;
+                API.getUserById(sessionData.CompanyProfileId).then(data => {
+                    setLocationState(data.data.Locations[0])
+                    // locationId =data.data.Locations[0].id
+                    API.getAllInventory(data.data.Locations[0].id)
+                    .then(res2 => {
+                        console.log(locationState);
+        
+                        setInventoryState({
+                            result: res2.data
+                        })
+                    })
+                    .catch(err => setInventoryState({
+                        ...inventoryState,
+                        error: err.message
+                    }))
+
+                })
+
+            } else {
+                history.push("/login");
+            }
+        }).catch(err => {
+            console.log(err);
+            history.push("/login");
+        })
+    }, [])
+    const [locationState, setLocationState] = useState([])
+
 
     const [inventoryState, setInventoryState] = useState({
         result: [{
@@ -21,25 +58,25 @@ export default function InventoryTable() {
         exp_date: ""
     })
 
-    useEffect(() => {
-        API.getAllInventory(inventoryState)
-            .then(res => {
-                console.log(res.data);
+    // useEffect(() => {
+    //     API.getAllInventory(locationState.id)
+    //         .then(res => {
+    //             console.log(res);
 
-                setInventoryState({
-                    result: res.data
-                })
-            })
-            .catch(err => setInventoryState({
-                ...inventoryState,
-                error: err.message
-            }))
-    }, []);
+    //             setInventoryState({
+    //                 result: res.data
+    //             })
+    //         })
+    //         .catch(err => setInventoryState({
+    //             ...inventoryState,
+    //             error: err.message
+    //         }))
+    // }, []);
 
     function deleteRow(id) {
         API.deleteInventoryById(id)
             .then(() => {
-                API.getAllInventory(inventoryState)
+                API.getAllInventory(locationState.id)
                     .then(res => {
                         console.log(res.data);
 
@@ -62,7 +99,7 @@ export default function InventoryTable() {
         console.log("submit button clicked", itemToUpdate)
         API.updateInventoryById(itemToUpdate).
             then(() => {
-                API.getAllInventory(inventoryState)
+                API.getAllInventory(locationState.id)
                     .then(res => {
                         console.log("get all inventory response", res.data);
 
@@ -81,10 +118,10 @@ export default function InventoryTable() {
             }))
     }
 
-    function addRow(){
-      API.createInventory(itemToUpdate).
+    function addRow() {
+        API.createInventory(itemToUpdate).
             then(() => {
-                API.getAllInventory(inventoryState)
+                API.getAllInventory(locationState.id)
                     .then(res => {
                         console.log("get all inventory response", res.data);
 
@@ -118,7 +155,7 @@ export default function InventoryTable() {
 
     return (
         <>
-        <button onClick={() =>handleToggleModal()}>Add</button>
+            <button onClick={() => handleToggleModal()}>Add</button>
             <table className="table">
                 <thead>
                     <tr>
@@ -133,7 +170,7 @@ export default function InventoryTable() {
                     {
                         inventoryState.result.map((inventory) => {
                             return (
-                              
+
                                 <tr key={inventory.id}>
                                     <td>{inventory.title}</td>
                                     <td>{inventory.quantity}</td>
@@ -146,15 +183,15 @@ export default function InventoryTable() {
                                     <button onClick={() => deleteRow(inventory.id)}>Delete</button>
 
                                 </tr>
-                    
+
                             )
                         })
-                        
+
                     }
 
                 </tbody>
-            </table>        
-            <Modal editRow={editRow} addRow={addRow} handleInputChange={handleInputChange} modalOpen={modalOpen} toggleModal={handleToggleModal} itemToUpdate={itemToUpdate} />
+            </table>
+            <Modal accountOverview={props.accountOverview} editRow={editRow} addRow={addRow} handleInputChange={handleInputChange} modalOpen={modalOpen} toggleModal={handleToggleModal} itemToUpdate={itemToUpdate} />
         </>
     );
 }

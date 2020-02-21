@@ -1,7 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import API from "../../Util/API/API"
+import {Redirect,useHistory} from "react-router-dom"
+
 
 export default function FindingSupplier() {
+    const history = useHistory();
+
+    // let sessionData = {};
+    // Check login status and redirect if not logged in
+      useEffect(()=>{
+        API.verifyLogin().then(res=>{
+          if (res.data.email) {
+            setSessionData(res.data);
+            console.log(sessionData);
+          } else {
+            history.push("/login");
+          }  
+        }).catch(err=>{
+          alert(err)
+          console.log(err);
+            history.push("/login");
+        })
+    },[])
+  
+const [sessionData,setSessionData]= useState({})
     const [supplierState, setSupplierState] = useState([])
     const [inventoryState, setInventoryState] = useState([])
 
@@ -30,6 +52,19 @@ export default function FindingSupplier() {
         API.getAllInventory(id).then(res => {
             setInventoryState(res.data)
         })
+    }
+
+    const claimInventory = ()=>{
+const inventoryItem=[...inventoryState]
+console.log(sessionData);
+
+        inventoryItem.map((item)=>{
+            item.charity_id = sessionData.CompanyProfileId})
+        
+
+        console.log(inventoryItem);
+        API.updateInventoryBulk({inventoryItem })
+        
     }
 
 
@@ -107,7 +142,7 @@ export default function FindingSupplier() {
                                                                         <td>{inventory.unit}</td>
 
 
-                                                                        {/* <button onClick={() => handleShowInventory(supplier.id)}>Inventory</button> */}
+                                                                        
                                                                     </tr>
                                                                 )
                                                             })
@@ -115,6 +150,7 @@ export default function FindingSupplier() {
 
                                                     </tbody>
                                                 </table>
+                                                <button onClick={() => claimInventory()}>CLaim</button>
                                             </div>):null}
             </div>
         </div>
