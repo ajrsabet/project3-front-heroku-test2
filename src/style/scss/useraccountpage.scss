@@ -3,12 +3,11 @@
 .Section {
   color: white;
   margin: 5% auto;
-  background-color: $frosty;
   border-radius: 5px;
   padding-bottom: 3%;
   overflow: scroll;
 
-  .tableH1, table {
+  .tableH1, table, form {
     margin-left: 25px;
     width: 75%;
   }
@@ -25,6 +24,14 @@
     &:hover {
       background-color: darken($color: $frosty, $amount: 10%);
     }
+  }
+}
+
+.formInput {
+  margin-top: 2%;
+
+  input {
+    margin-left: 1%;
   }
 }
 
@@ -71,6 +78,22 @@
   .Section {
     margin-top: 1%;
 
+    .tableH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 8%;
+      font-size: 125%;
+    }
+
+    .formInput {
+      margin-top: 5%;
+
+      input {
+        display: block;
+      }
+    }
+    
+
     h1 {
       text-align: center;
       margin: 5% 0;
@@ -78,6 +101,7 @@
 
     h2 {
       margin: 3% 5%;
+      font-weight: 200;
     }
 
     table {

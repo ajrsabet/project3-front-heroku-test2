@@ -12,10 +12,10 @@
 
 h3 {
   margin: 30px auto 0 auto;
-  color: $primary-color-1;
+  color: #fff;
   width: 45%;
-  border: #fff solid 2px;
   text-align: center;
+  font-size: 200%;
 }
 
 
@@ -49,10 +49,10 @@ h3 {
 @media screen and (max-width: 900px) {
   .login-form {
     width: 75%;
-    margin: 0 auto;
+    margin: 1% auto;
     text-align: center;
     margin-top: 1%;
-    padding: 10px 0;
+    padding: 35px 0;
 
     input {
       &:first-of-type {

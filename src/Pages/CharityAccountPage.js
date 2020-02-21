@@ -42,18 +42,13 @@ export default function CharityAccountPage() {
 
   const [activePage, setActivePage] = useState("Account Overview")
 
- 
-
-
-  
-
   function renderComponent(){
     if(activePage==="Account Overview"){
       return <AccountOverview />
     } else if(activePage==="Edit Profile"){
       return <EditProfile />
     } else if(activePage==="Find Suppliers"){
-      return <FindingSupplier  />
+      return <FindingSupplier />
     }
   }
 
@@ -73,9 +68,6 @@ export default function CharityAccountPage() {
           <Section>
           {renderComponent()}
           </Section>
-          {/* <Aside>
-            <h3>aslan</h3>
-          </Aside> */}
         </div>
       </div>
     </div>

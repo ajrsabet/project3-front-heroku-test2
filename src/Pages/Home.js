@@ -4,11 +4,7 @@ import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/homepage.min.css';
 import HomeDrawer from "../Components/HomeDrawer";
-<<<<<<< HEAD
-import API from "../Util/API/API"
-=======
 import API from "../Util/API/API";
->>>>>>> development
 
 function Home() {
   const [activePage, setActivePage] = useState("Account Overview")
