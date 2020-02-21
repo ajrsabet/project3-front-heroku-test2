@@ -41,15 +41,15 @@ export default function HomeDrawer(props) {
     >
       <List>
         {/* display routes if logged out */}
-        {props.authState.loggedIn === false ? <p onClick={() => { props.setActivePage("register") }}>Register</p> : <div />}
-        {props.authState.loggedIn === false ? <p onClick={() => { props.setActivePage("login") }}>Login</p> : <div />}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("register") }}><p> Register</p></div> : <div />}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("login") }}><p>Login</p></div> : <div />}
         {/* display routes if logged in */}
-        {props.authState.loggedIn === true && props.authState.userData.companyType === "charity" ? <p onClick={() => { props.setActivePage("charity") }}>Charity Profile</p> : <></>}
-        {props.authState.loggedIn === true && props.authState.userData.companyType === "supplier" ? <p onClick={() => { props.setActivePage("supplier") }}>Supplier Profile</p> : <></>}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "charity" ? <div className="drawerBtn" onClick={() => { props.setActivePage("charity") }}><p>Charity Profile</p></div> : <></>}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "supplier" ? <div className="drawerBtn" onClick={() => { props.setActivePage("supplier") }}><p>Supplier Profile</p></div> : <></>}
       </List>
       <Divider />
       <List>
-        {props.authState.loggedIn === true ? <p onClick={props.logOut} >Logout</p> : <div />}
+        {props.authState.loggedIn === true ? <div className="drawerBtn" onClick={props.logOut} ><p>Logout</p></div> : <div />}
       </List>
     </div>
   );
