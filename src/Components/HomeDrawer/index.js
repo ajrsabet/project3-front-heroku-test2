@@ -40,19 +40,16 @@ export default function HomeDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <div className="drawerBtn" onClick={() => { props.setActivePage("Login") }}>
-          <p>Login</p>
-        </div>
-        <div className="drawerBtn" onClick={() => { props.setActivePage("Register") }}>
-          <p>Register</p>
-        </div>
+        {/* display routes if logged out */}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("register") }}><p> Register</p></div> : <div />}
+        {props.authState.loggedIn === false ? <div className="drawerBtn" onClick={() => { props.setActivePage("login") }}><p>Login</p></div> : <div />}
+        {/* display routes if logged in */}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "charity" ? <div className="drawerBtn" onClick={() => { props.setActivePage("charity") }}><p>Charity Profile</p></div> : <></>}
+        {props.authState.loggedIn === true && props.authState.userData.companyType === "supplier" ? <div className="drawerBtn" onClick={() => { props.setActivePage("supplier") }}><p>Supplier Profile</p></div> : <></>}
       </List>
       <Divider />
       <List>
-        <div className="drawerBtn" onClick={() => { props.setActivePage("Logout") }}>
-          <p>Logout</p>
-        </div>
-        {/* Make route to logout */}
+        {props.authState.loggedIn === true ? <div className="drawerBtn" onClick={props.logOut} ><p>Logout</p></div> : <div />}
       </List>
     </div>
   );
