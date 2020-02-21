@@ -102,17 +102,20 @@ function Home() {
         </div>
       </div>
 
-      <div className='container'>
+      <div className='container home-page-data'>
         <div className='row'>
           <div className='main-info' id='main-info'>
-            <div className='col span-1-of-3'>
-              {/* icon and paragraph shit */}
+            <div className='col span-1-of-3 box'>
+              <p className='icon'><i class="far fa-trash-alt fa-2x"></i></p>
+              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
-            <div className='col span-1-of-3'>
-              {/* icon and paragraph shit */}
+            <div className='col span-1-of-3 box'>
+              <p className='icon'><i class="far fa-handshake fa-2x"></i></p>
+              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
-            <div className='col span-1-of-3'>
-              {/* icon and paragraph shit */}
+            <div className='col span-1-of-3 box'>
+              <p className='icon'><i class="fas fa-globe-americas fa-2x"></i></p>
+              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
             </div>
           </div>
         </div>
