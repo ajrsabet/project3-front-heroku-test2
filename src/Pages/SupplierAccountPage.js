@@ -70,7 +70,6 @@ export default function SupplierAccountPage() {
   
         </Navbar>
         <div className='row'>
-
           <Section>
             {renderComponent()}
           </Section>
