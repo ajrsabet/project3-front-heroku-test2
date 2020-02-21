@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Redirect, useHistory } from "react-router-dom"
+
 import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
+import API from "../../Util/API/API";
+
 
 // function rand() {
 //     return Math.round(Math.random() * 20) - 10;
@@ -30,11 +34,64 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SimpleModal(props) {
+  const history = useHistory();
+  let sessionData = {};
   console.log(props.itemToUpdate)
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
+  useEffect(() => {
+    API.verifyLogin().then(res => {
+      if (res.data.email) {
+        sessionData = res.data;
+        API.getUserById(sessionData.CompanyProfileId).then(data => {
+          setLocationState(data.data.Locations[0])
+          // console.log(data.data);
+
+        })
+
+      } else {
+        history.push("/login");
+      }
+    }).catch(err => {
+      console.log(err);
+      history.push("/login");
+    })
+  }, [])
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  const [locationState, setLocationState] = React.useState([])
+  const [itemToSave, SetItemToSave] = React.useState({
+    title: "",
+    quantity: "",
+    unit: "",
+    value_unit: "",
+    exp_date: ""
+  })
+  const handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    SetItemToSave({
+      ...itemToSave,
+      [name]: value
+    });
+
+  };
+  const handleSubmitForm = (event) => {
+    event.preventDefault()
+    const dataToUpload={
+      title:itemToSave.title,
+      quantity: itemToSave.quantity,
+      unit: itemToSave.unit,
+      value_unit: itemToSave.value_unit,
+      exp_date: itemToSave.exp_date,
+      LocationId:locationState.id
+    }
+    API.createInventory(dataToUpload).then(res => {
+      handleClose()
+console.log(res);
+
+    }).catch(err=> console.log(err))
+  }
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,16 +123,16 @@ export default function SimpleModal(props) {
             <SimpleModal />
             <button onClick={props.editRow}>Submit</button>
           </div>
-        ) : 
-        <form style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Edit Item</h2>
-            <TextField onChange={props.handleInputChange} label="Food" name={"title"} />
-            <TextField onChange={props.handleInputChange} label="Quantity" name={"quantity"} />
-            <TextField onChange={props.handleInputChange} label="Unit" name={"unit"} />
-            <TextField onChange={props.handleInputChange} label="Value" name={"value_unit"} />
-            <TextField onChange={props.handleInputChange} label="Expiration Date" name={"exp_date"} placeholder="MM/DD/YY"/>
+        ) :
+          <form style={modalStyle} className={classes.paper}>
+            <h2 id="simple-modal-title">Add</h2>
+            <TextField onChange={handleInputChange} label="Food" name="title" />
+            <TextField onChange={handleInputChange} label="Quantity" name="quantity" />
+            <TextField onChange={handleInputChange} label="Unit" name="unit" />
+            <TextField onChange={handleInputChange} label="Value" name="value_unit" />
+            <TextField onChange={handleInputChange} label="Expiration Date" name="exp_date" placeholder="MM/DD/YY" />
             <SimpleModal />
-            <button onClick={props.addRow}>Submit</button>
+            <button onClick={handleSubmitForm}>Submit</button>
           </form>
         }
       </Modal>
