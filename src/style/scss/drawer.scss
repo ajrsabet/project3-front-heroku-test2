@@ -1,12 +1,11 @@
 @import "./config";
 
 .drawerBtn {
-  p{
+  &:hover {
+    background-color: lighten($color: lightgray, $amount: 12%);
+  }
+  p {
     margin: 0;
   }
-  padding: 20px 20px
-}
-
-.drawerBtn:hover {
-  background-color: lighten($color: lightgray, $amount: 12%);
+  padding: 15px 20px;
 }

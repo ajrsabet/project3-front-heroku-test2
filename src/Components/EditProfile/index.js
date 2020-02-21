@@ -23,6 +23,8 @@ export default function EditProfile(props) {
       <p>Password</p>
       <input placeholder=""></input>
       {/* Add confirm password? Also add API calls to change this info in DB */}
+      <br/>
+      <button className="btn-main">Submit</button>
     </div>
   )
 }
