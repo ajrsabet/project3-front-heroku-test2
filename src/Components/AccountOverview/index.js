@@ -29,7 +29,7 @@ export default function AccountOverview(props) {
 
 
   return (
-    <div>
+    <div className="login-form">
       <h1 className="tableH1">Account Overview</h1>
       <h2>Profile</h2>
       <table>
