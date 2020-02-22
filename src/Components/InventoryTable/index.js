@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom"
 
 import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
 
 export default function InventoryTable(props) {
-    const history = useHistory();
     let sessionData = {};
-    let locationId=0
+    // let locationId=0
     useEffect(() => {
         API.verifyLogin().then(res => {
             if (res.data.email) {
@@ -31,11 +29,11 @@ export default function InventoryTable(props) {
                 })
 
             } else {
-                history.push("/login");
+                window.location.href = "/login";
             }
         }).catch(err => {
             console.log(err);
-            history.push("/login");
+            window.location.href = "/login";
         })
     }, [])
     const [locationState, setLocationState] = useState([])

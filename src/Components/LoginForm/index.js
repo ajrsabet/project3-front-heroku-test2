@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import API from "../../Util/API/API";
-import {Redirect,useHistory} from "react-router-dom"
 
 export default function LoginForm() {
-    const history = useHistory();
     const [loginState, setLoginState] = useState({
         email: "",
         password: ""
@@ -11,20 +9,19 @@ export default function LoginForm() {
 
     const submitLogin = (event) => {
         event.preventDefault();
-        // console.log(loginState)
         API.logIn({
             email: loginState.email.trim(),
             password: loginState.password.trim()
         }).then(res => {
-            console.log(res);
-            if(res.data.email){
-                history.push("/");
-            } else {
-                alert("Account not found")
+            if(res.data.companyType === "supplier"){
+              window.location.href = "/supplier";
+            } else if(res.data.companyType === "charity"){
+                window.location.href = "/charity";
+              } else {
+                window.location.href = "/";
             }
         }).catch(err=>{
             console.log(err);
-              history.push("/login");
           })
     }
 

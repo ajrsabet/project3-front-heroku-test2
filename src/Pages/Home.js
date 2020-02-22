@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/homepage.min.css';
 import HomeDrawer from "../Components/HomeDrawer";
-<<<<<<< HEAD
-import API from "../Util/API/API"
-=======
 import API from "../Util/API/API";
->>>>>>> development
 
 function Home() {
+
+  // State variables
   const [activePage, setActivePage] = useState("Account Overview")
   const [isMobile, setIsMobile] = useState(false);
   const [authState, setAuthState] = useState({
@@ -35,17 +32,7 @@ function Home() {
       })
   },[])
 
-  const logOut = ()=>{
-    API.logOut().then(res=>{
-      setAuthState({
-        loggedIn: false
-      });
-      console.log(res);
-    }).catch(err=>{
-      console.log(err);
-    })
-  } 
-
+// route navigation
   useEffect(() => {
     switch (activePage) {
       case "login":
@@ -55,7 +42,14 @@ function Home() {
         window.location.href = "/register";
         break;
       case "logout":
-        // window.location.href = "/register";
+        API.logOut().then(res=>{
+          setAuthState({
+            loggedIn: false
+          });
+          console.log(res);
+        }).catch(err=>{
+          console.log(err);
+        })
         break;
       case "charity":
         window.location.href = "/charity";
@@ -86,14 +80,14 @@ function Home() {
         <div className='row'>
           <Navbar>
             <img className='logo' src={logo} alt='logo'></img>
-            <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} authState={authState} logOut={logOut}/>
+            <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} authState={authState}/>
             {isMobile ? (<div />) : (
               <div>
                 {/* display routes if logged out */}
                 {authState.loggedIn === false ? <a onClick={()=>{setActivePage("register")}}>Register</a> : <div/>}
                 {authState.loggedIn === false ? <a onClick={()=>{setActivePage("login")}}>Login</a> : <div/>}
                 {/* display routes if logged in */}
-                {authState.loggedIn === true ? <a onClick={logOut} >Logout</a> : <div/>}
+                {authState.loggedIn === true ? <a onClick={()=>{setActivePage("logout")}} >Logout</a> : <div/>}
                 {authState.loggedIn === true && authState.userData.companyType === "charity" ? <a onClick={()=>{setActivePage("charity")}}>Charity Profile</a> : <></>} 
                 {authState.loggedIn === true && authState.userData.companyType === "supplier" ? <a onClick={()=>{setActivePage("supplier")}}>Supplier Profile</a> : <></>} 
               </div>

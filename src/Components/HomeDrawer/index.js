@@ -49,7 +49,7 @@ export default function HomeDrawer(props) {
       </List>
       <Divider />
       <List>
-        {props.authState.loggedIn === true ? <div className="drawerBtn" onClick={props.logOut} ><p>Logout</p></div> : <div />}
+        {props.authState.loggedIn === true ? <div className="drawerBtn" onClick={() => { props.setActivePage("logout") }} ><p>Logout</p></div> : <div />}
       </List>
     </div>
   );

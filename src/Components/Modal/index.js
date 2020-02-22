@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Redirect, useHistory } from "react-router-dom"
 
 import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
@@ -34,7 +33,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SimpleModal(props) {
-  const history = useHistory();
   let sessionData = {};
   console.log(props.itemToUpdate)
   const classes = useStyles();
@@ -50,11 +48,11 @@ export default function SimpleModal(props) {
         })
 
       } else {
-        history.push("/login");
+        window.location.href = "/login";
       }
     }).catch(err => {
       console.log(err);
-      history.push("/login");
+      window.location.href = "/login";
     })
   }, [])
   const [modalStyle] = React.useState(getModalStyle);
