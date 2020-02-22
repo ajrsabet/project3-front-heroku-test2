@@ -1,107 +1,15 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-=======
-import { Redirect, useHistory } from "react-router-dom"
 import moment from "moment"
 
->>>>>>> ac9281af0f1142f17ab13efd0dc4ad11410f21e6
 
 import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
 
 export default function InventoryTable(props) {
-<<<<<<< HEAD
-    let sessionData = {};
-    // let locationId=0
-    useEffect(() => {
-        API.verifyLogin().then(res => {
-            if (res.data.email) {
-                sessionData = res.data;
-                API.getUserById(sessionData.CompanyProfileId).then(data => {
-                    setLocationState(data.data.Locations[0])
-                    // locationId =data.data.Locations[0].id
-                    API.getAllInventory(data.data.Locations[0].id)
-                    .then(res2 => {
-                        console.log(locationState);
-        
-                        setInventoryState({
-                            result: res2.data
-                        })
-                    })
-                    .catch(err => setInventoryState({
-                        ...inventoryState,
-                        error: err.message
-                    }))
-
-                })
-
-            } else {
-                window.location.href = "/login";
-            }
-        }).catch(err => {
-            console.log(err);
-            window.location.href = "/login";
-        })
-    }, [])
-    const [locationState, setLocationState] = useState([])
-
-
-    const [inventoryState, setInventoryState] = useState({
-        result: [{
-
-        }]
-    });
-
-    const [modalOpen, setModalOpen] = useState(false)
-
-    const [itemToUpdate, setItemToUpdate] = useState({
-        id: "",
-        title: "",
-        quantity: "",
-        unit: "",
-        value_unit: "",
-        exp_date: ""
-    })
-
-    // useEffect(() => {
-    //     API.getAllInventory(locationState.id)
-    //         .then(res => {
-    //             console.log(res);
-
-    //             setInventoryState({
-    //                 result: res.data
-    //             })
-    //         })
-    //         .catch(err => setInventoryState({
-    //             ...inventoryState,
-    //             error: err.message
-    //         }))
-    // }, []);
-
-    function deleteRow(id) {
-        API.deleteInventoryById(id)
-            .then(() => {
-                API.getAllInventory(locationState.id)
-                    .then(res => {
-                        console.log(res.data);
-
-                        setInventoryState({
-                            result: res.data
-                        })
-                    })
-                    .catch(err => setInventoryState({
-                        ...inventoryState,
-                        error: err.message
-                    }))
-=======
-  const history = useHistory();
-  let sessionData = {};
   let locationId = 0
   useEffect(() => {
     API.verifyLogin().then(res => {
-      if (res.data.email) {
-        sessionData = res.data;
-        API.getUserById(sessionData.CompanyProfileId).then(data => {
+        API.getUserById(res.data.CompanyProfileId).then(data => {
           setLocationState(data.data.Locations[0])
           // locationId =data.data.Locations[0].id
           API.getAllInventory(data.data.Locations[0].id)
@@ -111,21 +19,14 @@ export default function InventoryTable(props) {
               setInventoryState({
                 result: res2.data
               })
->>>>>>> ac9281af0f1142f17ab13efd0dc4ad11410f21e6
             })
             .catch(err => setInventoryState({
               ...inventoryState,
               error: err.message
             }))
-
         })
-
-      } else {
-        history.push("/login");
-      }
     }).catch(err => {
       console.log(err);
-      history.push("/login");
     })
   }, [])
   const [locationState, setLocationState] = useState([])
@@ -152,20 +53,6 @@ export default function InventoryTable(props) {
     exp_date: ""
   })
 
-  // useEffect(() => {
-  //     API.getAllInventory(locationState.id)
-  //         .then(res => {
-  //             console.log(res);
-
-  //             setInventoryState({
-  //                 result: res.data
-  //             })
-  //         })
-  //         .catch(err => setInventoryState({
-  //             ...inventoryState,
-  //             error: err.message
-  //         }))
-  // }, []);
 
   function deleteRow(id) {
     API.deleteInventoryById(id)
