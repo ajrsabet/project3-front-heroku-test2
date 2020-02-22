@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom"
+import moment from "moment"
+
 
 import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
@@ -181,7 +183,7 @@ export default function InventoryTable(props) {
                   <td>{inventory.quantity}</td>
                   <td>{inventory.unit}</td>
                   <td>${inventory.value_unit}</td>
-                  <td>{inventory.exp_date}</td>
+                  <td>{ moment(inventory.exp_date).format("MM/DD/YY")}</td>
 
                   {/* <button onClick={() => editRow(inventory.id)}>Edit</button> */}
                   <button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button>
