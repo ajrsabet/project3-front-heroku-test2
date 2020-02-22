@@ -66,7 +66,7 @@ export default function SupplierDrawer(props) {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '15px', marginRight: '15px' }}><i class="fas fa-bars fa-2x"></i></Button>
+      <Button onClick={toggleDrawer('right', true)} style={{ position: "absolute", top: 0, right: 0, color: "white", marginTop: '15px', marginRight: '15px' }}><i className="fas fa-bars fa-2x"></i></Button>
 
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}

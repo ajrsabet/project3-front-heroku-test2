@@ -15,9 +15,6 @@ export default function Login() {
       case "Register":
         window.location.href = "/register";
         break;
-      case "Logout":
-        window.location.href = "/";
-        break;
         case "Home":
           window.location.href = "/"
         break;
