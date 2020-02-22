@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom"
 import moment from "moment"
 
 
@@ -7,14 +6,10 @@ import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
 
 export default function InventoryTable(props) {
-  const history = useHistory();
-  let sessionData = {};
   let locationId = 0
   useEffect(() => {
     API.verifyLogin().then(res => {
-      if (res.data.email) {
-        sessionData = res.data;
-        API.getUserById(sessionData.CompanyProfileId).then(data => {
+        API.getUserById(res.data.CompanyProfileId).then(data => {
           setLocationState(data.data.Locations[0])
           // locationId =data.data.Locations[0].id
           API.getAllInventory(data.data.Locations[0].id)
@@ -29,15 +24,9 @@ export default function InventoryTable(props) {
               ...inventoryState,
               error: err.message
             }))
-
         })
-
-      } else {
-        history.push("/login");
-      }
     }).catch(err => {
       console.log(err);
-      history.push("/login");
     })
   }, [])
   const [locationState, setLocationState] = useState([])
@@ -64,20 +53,6 @@ export default function InventoryTable(props) {
     exp_date: ""
   })
 
-  // useEffect(() => {
-  //     API.getAllInventory(locationState.id)
-  //         .then(res => {
-  //             console.log(res);
-
-  //             setInventoryState({
-  //                 result: res.data
-  //             })
-  //         })
-  //         .catch(err => setInventoryState({
-  //             ...inventoryState,
-  //             error: err.message
-  //         }))
-  // }, []);
 
   function deleteRow(id) {
     API.deleteInventoryById(id)

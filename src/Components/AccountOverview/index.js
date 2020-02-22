@@ -1,45 +1,32 @@
 import React, { useState,useEffect } from "react";
-import {Redirect,useHistory} from "react-router-dom"
 
 import API from "../../Util/API/API"
 
 export default function AccountOverview(props) {
-  const history = useHistory();
-  // Session data stored here 
-  let sessionData = {};
-  // Check login status and redirect if not logged in
-    useEffect(()=>{
-      API.verifyLogin().then(res=>{
-        if (res.data.email) {
-          sessionData = res.data;
-          API.getUserById(1).then(data=>{
-            setUserState(data.data.User_profiles[0])
-            setLocationState(data.data.Locations[0])
-            setcompanyState(data.data)
-            console.log(data.data);
-            
-          })
-          console.log(sessionData);
-        } else {
-          history.push("/login");
-        }  
-      }).catch(err=>{
-        console.log(err);
-          history.push("/login");
-      })
-  },[])
-  const [companyState, setcompanyState] = useState([])
+  // All state data here
+  const [companyState, setCompanyState] = useState([])
   const [locationState, setLocationState] = useState([])
   const [userState, setUserState] = useState([])
 
+// Use login state to get user data
   useEffect(()=>{
-    API.getUserById(1).then(data=>{
-      setUserState(data.data.User_profiles[0])
-      setLocationState(data.data.Locations[0])
-      setcompanyState(data.data)
-      console.log(data.data);
-     })
- },[])
+    API.verifyLogin().then(res=>{
+        // setAuthState(res.data);
+        console.log(res.data);
+      API.getUserById(res.data.id).then(res2=>{
+        setUserState(res2.data.User_profiles[0])
+        setLocationState(res2.data.Locations[0])
+        setCompanyState(res2.data)
+        // console.log(data.data);
+       }).catch(err=>{
+        console.log(err);
+      })
+    }).catch(err=>{
+      console.log(err);
+      window.location.href = "/login";
+    })
+},[])
+
 
   return (
     <div className="login-form">

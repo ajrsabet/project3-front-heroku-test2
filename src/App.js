@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
@@ -16,8 +15,6 @@ export default function App() {
   return (
     <div>
       <Router>
-
-        {/* <Navbar className='navbar' /> */}
 
         <Switch>
 
@@ -38,9 +35,6 @@ export default function App() {
           </Route>
 
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/">
-            <Home />
-          </Route> */}
 
         </Switch>
 
