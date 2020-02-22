@@ -150,7 +150,7 @@ console.log(sessionData);
 
                                                     </tbody>
                                                 </table>
-                                                <button onClick={() => claimInventory()}>CLaim</button>
+                                                <button className="btn-main" onClick={() => claimInventory()}>Claim</button>
                                             </div>):null}
             </div>
         </div>
