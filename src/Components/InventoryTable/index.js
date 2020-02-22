@@ -6,16 +6,13 @@ import API from "../../Util/API/API";
 import Modal from "../../Components/Modal";
 
 export default function InventoryTable(props) {
-  let locationId = 0
   useEffect(() => {
     API.verifyLogin().then(res => {
         API.getUserById(res.data.CompanyProfileId).then(data => {
           setLocationState(data.data.Locations[0])
-          // locationId =data.data.Locations[0].id
           API.getAllInventory(data.data.Locations[0].id)
             .then(res2 => {
               console.log(locationState);
-
               setInventoryState({
                 result: res2.data
               })
@@ -83,7 +80,6 @@ export default function InventoryTable(props) {
         API.getAllInventory(locationState.id)
           .then(res => {
             console.log("get all inventory response", res.data);
-            
             setInventoryState({
               result: res.data
             })
