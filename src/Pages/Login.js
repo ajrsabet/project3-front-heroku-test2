@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LoginForm from "../Components/LoginForm";
-import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/loginform.min.css';

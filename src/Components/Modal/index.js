@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleModal(props) {
   let sessionData = {};
-  console.log(props.itemToUpdate)
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   useEffect(() => {
@@ -43,7 +42,6 @@ export default function SimpleModal(props) {
         sessionData = res.data;
         API.getUserById(sessionData.CompanyProfileId).then(data => {
           setLocationState(data.data.Locations[0])
-          // console.log(data.data);
 
         })
 
@@ -86,7 +84,6 @@ export default function SimpleModal(props) {
     }
     API.createInventory(dataToUpload).then(res => {
       refresh();
-      console.log(res);
 
     }).catch(err => console.log(err))
   }

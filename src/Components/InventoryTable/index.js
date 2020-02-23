@@ -14,7 +14,6 @@ export default function InventoryTable(props) {
           // locationId =data.data.Locations[0].id
           API.getAllInventory(data.data.Locations[0].id)
             .then(res2 => {
-              console.log(locationState);
 
               setInventoryState({
                 result: res2.data
@@ -59,7 +58,6 @@ export default function InventoryTable(props) {
       .then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log(res.data);
 
             setInventoryState({
               result: res.data
@@ -77,12 +75,10 @@ export default function InventoryTable(props) {
   }
 
   function editRow() {
-    console.log("submit button clicked", itemToUpdate)
     API.updateInventoryById(itemToUpdate).
       then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log("get all inventory response", res.data);
             
             setInventoryState({
               result: res.data
@@ -105,7 +101,6 @@ export default function InventoryTable(props) {
       then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log("get all inventory response", res.data);
 
             setInventoryState({
               result: res.data
@@ -150,10 +145,10 @@ export default function InventoryTable(props) {
         </thead>
         <tbody>
           {
-            inventoryState.result.map((inventory) => {
+            inventoryState.result.map((inventory,index) => {
               return (
 
-                <tr key={inventory.id}>
+                <tr key={index}>
                   <td>{inventory.title}</td>
                   <td>{inventory.quantity}</td>
                   <td>{inventory.unit}</td>
@@ -161,8 +156,8 @@ export default function InventoryTable(props) {
                   <td>{ moment(inventory.exp_date).format("MM/DD/YY")}</td>
 
                   {/* <button onClick={() => editRow(inventory.id)}>Edit</button> */}
-                  <button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button>
-                  <button className="btn-main" onClick={() => deleteRow(inventory.id)}>Delete</button>
+                 <td><button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button></td>
+                  <td><button className="btn-main" onClick={() => deleteRow(inventory.id)}>Delete</button></td>
 
                 </tr>
 
