@@ -30,7 +30,7 @@ export default function AccountOverview(props) {
 
   return (
     <div>
-      <h1 className="sectionH1">Account Overview</h1>
+      <h1 className="accountH1">Account Overview</h1>
       <table>
         <tbody>
           <tr>
