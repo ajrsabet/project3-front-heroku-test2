@@ -40,11 +40,12 @@ export default function RegisterDrawer(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Home") }}>
+          <p>Home</p>
+        </div>
+        <hr/>
         <div className="drawerBtn" onClick={() => { props.setActivePage("Login") }}>
           <p>Login</p>
-        </div>
-        <div className="drawerBtn" onClick={() => { props.setActivePage("Logout") }}>
-          <p>Logout</p>
         </div>
       </List>
     </div>

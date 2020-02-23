@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Form from "../Components/Form";
-import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/registerpage.min.css';
@@ -14,9 +13,6 @@ export default function Register() {
     switch (activePage) {
       case "Login":
         window.location.href = "/login";
-        break;
-      case "Logout":
-        window.location.href = "/";
         break;
       case "Home":
         window.location.href = "/"
