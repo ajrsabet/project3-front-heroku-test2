@@ -15,22 +15,14 @@ export default function CharityAccountPage() {
 
   // State Variables 
   const [activePage, setActivePage] = useState("Account Overview")
-  const [authState, setAuthState] = useState({
-      email: "",
-      id: 0,
-      CompanyProfileId: 0,
-      companyType: "" //supplier or charity
-  })
-
+ 
   // Check login status and redirect if not logged in
     useEffect(()=>{
       API.verifyLogin().then(res=>{
-        if (res.data.email) {
-          setAuthState(res.data);
-        } else {
+        if (!res.data.email) {
           window.location.href = "/login";
-          console.log(authState);
-        }  
+
+        }
       }).catch(err=>{
         console.log(err);
         window.location.href = "/login";
@@ -48,7 +40,6 @@ export default function CharityAccountPage() {
       window.location.href = "/";
     } else if(activePage==="Logout"){
       API.logOut().then(res=>{
-        console.log(res);
         window.location.href = "/";
       }).catch(err=>{
         console.log(err);

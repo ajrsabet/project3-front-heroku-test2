@@ -39,13 +39,13 @@ export default function Form() {
     const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/; 
     
     // validate all data fields
-    if (Object.values(userState).indexOf("") !== -1) {
-      handleVerifyChange("simpleInput")
-      // setVerifyState({
-      //   ...verifyState,
-      //   simpleInput: true
-      // });
-    };
+    // if (Object.values(userState).indexOf("") !== -1) {
+    //   handleVerifyChange("simpleInput")
+    //   // setVerifyState({
+    //   //   ...verifyState,
+    //   //   simpleInput: true
+    //   // });
+    // };
     if (userState.zipCode.length === 5) {
       handleVerifyChange("zipLength")
       // setVerifyState({
@@ -74,7 +74,7 @@ export default function Form() {
       //   passwordValid: true
       // });
     };
-    if (userState.password == userState.password2) {
+    if (userState.password === userState.password2) {
       handleVerifyChange("passwordMatch")
       // setVerifyState({
       //   ...verifyState,
@@ -98,9 +98,9 @@ function handleVerifyChange(item) {
     const submitRegistration = (event) => {
       event.preventDefault();
       
-      if (Object.values(verifyState).indexOf(false) !== -1) {
-        verifyInput();
-      } else {
+      // if (Object.values(verifyState).indexOf(false) !== -1) {
+      //   verifyInput();
+      // } else {
         ///// Create Company /////
         API.createCompany({
           company_name: userState.company.trim(),
@@ -153,7 +153,7 @@ function handleVerifyChange(item) {
         }).catch(err => {
           console.log(err);
         })
-      }
+      // }
     }
 
     const handleInputChange = event => {

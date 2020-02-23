@@ -14,7 +14,6 @@ export default function InventoryTable(props) {
           // locationId =data.data.Locations[0].id
           API.getAllInventory(data.data.Locations[0].id)
             .then(res2 => {
-              console.log(locationState);
 
               setInventoryState({
                 result: res2.data
@@ -59,7 +58,6 @@ export default function InventoryTable(props) {
       .then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log(res.data);
 
             setInventoryState({
               result: res.data
@@ -77,12 +75,10 @@ export default function InventoryTable(props) {
   }
 
   function editRow() {
-    console.log("submit button clicked", itemToUpdate)
     API.updateInventoryById(itemToUpdate).
       then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log("get all inventory response", res.data);
             
             setInventoryState({
               result: res.data
@@ -105,7 +101,6 @@ export default function InventoryTable(props) {
       then(() => {
         API.getAllInventory(locationState.id)
           .then(res => {
-            console.log("get all inventory response", res.data);
 
             setInventoryState({
               result: res.data
@@ -151,10 +146,10 @@ export default function InventoryTable(props) {
         </thead>
         <tbody className="inventoryTBody">
           {
-            inventoryState.result.map((inventory) => {
+            inventoryState.result.map((inventory,index) => {
               return (
 
-                <tr className="inventoryTR" key={inventory.id}>
+                <tr className="inventoryTR" key={index}>
                   <td className="inventoryTD">{inventory.title}</td>
                   <td className="inventoryTD">{inventory.quantity}</td>
                   <td className="inventoryTD">{inventory.unit}</td>
@@ -162,8 +157,8 @@ export default function InventoryTable(props) {
                   <td className="inventoryTD">{ moment(inventory.exp_date).format("MM/DD/YY")}</td>
 
                   {/* <button onClick={() => editRow(inventory.id)}>Edit</button> */}
-                  <button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button>
-                  <button className="btn-main" onClick={() => deleteRow(inventory.id)}>Delete</button>
+                 <td><button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button></td>
+                  <td><button className="btn-main" onClick={() => deleteRow(inventory.id)}>Delete</button></td>
 
                 </tr>
 

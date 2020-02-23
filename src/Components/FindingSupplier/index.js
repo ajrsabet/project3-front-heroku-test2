@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import API from "../../Util/API/API"
-import {Redirect,useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 
 export default function FindingSupplier() {
@@ -12,7 +12,6 @@ export default function FindingSupplier() {
         API.verifyLogin().then(res=>{
           if (res.data.email) {
             setSessionData(res.data);
-            console.log(sessionData);
           } else {
             history.push("/login");
           }  
@@ -41,14 +40,13 @@ const [sessionData,setSessionData]= useState({})
 
     const submitRegistration = (event) => {
         event.preventDefault();
+        setInventoryState([])
         API.getAllLocation(cityState.city).then(res => {
-            console.log(res.data);
             setSupplierState(res.data)
 
         })
     }
     const handleShowInventory = (id) => {
-        console.log(id);
         API.getAllInventory(id).then(res => {
             setInventoryState(res.data)
         })
@@ -56,13 +54,11 @@ const [sessionData,setSessionData]= useState({})
 
     const claimInventory = ()=>{
 const inventoryItem=[...inventoryState]
-console.log(sessionData);
 
         inventoryItem.map((item)=>{
             item.charity_id = sessionData.CompanyProfileId})
         
 
-        console.log(inventoryItem);
         API.updateInventoryBulk({inventoryItem })
         
     }
@@ -111,7 +107,7 @@ console.log(sessionData);
                                             <td>{supplier.zip}</td>
 
 
-                                            <button className='btn-main' onClick={() => handleShowInventory(supplier.id)}>Inventory</button>
+                                            <td><button className='btn-main' onClick={() => handleShowInventory(supplier.id)}>Inventory</button></td>
                                            
                                         </tr>
                                     )

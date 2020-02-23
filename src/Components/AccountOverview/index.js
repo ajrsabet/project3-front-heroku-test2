@@ -12,12 +12,10 @@ export default function AccountOverview(props) {
   useEffect(()=>{
     API.verifyLogin().then(res=>{
         // setAuthState(res.data);
-        console.log(res.data);
       API.getUserById(res.data.id).then(res2=>{
         setUserState(res2.data.User_profiles[0])
         setLocationState(res2.data.Locations[0])
         setCompanyState(res2.data)
-        // console.log(data.data);
        }).catch(err=>{
         console.log(err);
       })
