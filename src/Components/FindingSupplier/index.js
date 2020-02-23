@@ -40,6 +40,7 @@ const [sessionData,setSessionData]= useState({})
 
     const submitRegistration = (event) => {
         event.preventDefault();
+        setInventoryState([])
         API.getAllLocation(cityState.city).then(res => {
             setSupplierState(res.data)
 
