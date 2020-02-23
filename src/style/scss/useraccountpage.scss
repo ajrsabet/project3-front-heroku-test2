@@ -3,6 +3,7 @@
 .Section {
   color: white;
   margin: 5% auto;
+  background-color: $frosty;
   border-radius: 5px;
   padding-bottom: 3%;
   overflow: scroll;
@@ -77,12 +78,32 @@
 @media screen and (max-width: 900px) {
   .Section {
     margin-top: 1%;
+    padding-top: 20px;
+    padding-bottom: 40px;
 
-    .tableH1 {
+    .sectionH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 12%;
+      font-size: 175%;
+    }
+
+    .inventoryH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 3%;
+      font-size: 175%;
+    }
+
+    .editProfileH1 {
       text-align: center;
       margin: 0 auto;
       margin-bottom: 8%;
-      font-size: 125%;
+      font-size: 175%;
+    }
+
+    .city-search {
+      margin: 0;
     }
 
     .formInput {
@@ -101,7 +122,8 @@
 
     h2 {
       margin: 3% 5%;
-      font-weight: 200;
+      // font-weight: 200;
+      text-align: center;
     }
 
     table {
@@ -117,5 +139,73 @@
     th {
       margin-bottom: 4%;
     }
+  }
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	.inventoryTable, .inventoryTHead, .inventoryTBody, .inventoryTH, .inventoryTD, .inventoryTR { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.inventoryTHead .inventoryTR { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.inventoryTR { border: 1px solid #ccc; }
+	
+	.inventoryTD { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	.inventoryTD:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+	
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+  }
+  /*
+	Label the data
+	*/
+	.inventoryTD:nth-of-type(1):before { content: "Food Item"; }
+	.inventoryTD:nth-of-type(2):before { content: "Quantity"; }
+	.inventoryTD:nth-of-type(3):before { content: "Unit"; }
+	.inventoryTD:nth-of-type(4):before { content: "Value per Unit"; }
+	.inventoryTD:nth-of-type(5):before { content: "Expiration Date"; }
+}
+
+.modal{
+  background-color:white;
+  height: 100%;
+  position:relative;
+  margin:0 auto;
+  padding:3em;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  @media (min-width: 60em) {
+    height:75%;
+   margin:5% auto;
+   max-height: 57em;
+    max-width:66em;
+    width:85%;
+  }
+> iframe, > div{
+  border:none;
+  width:85%;
+  height:50%;
   }
 }

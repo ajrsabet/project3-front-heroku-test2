@@ -132,28 +132,29 @@ export default function InventoryTable(props) {
 
   return (
     <>
+      <h1 className="inventoryH1">Inventory</h1>
       <button className="btn-main" onClick={() => handleToggleModal()}>Add</button>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Food Item</th>
-            <th>Quantity</th>
-            <th>Unit</th>
-            <th>Value Per Unit</th>
-            <th>Expiration Date</th>
+      <table className="inventoryTable">
+        <thead className="inventoryTHead">
+          <tr className="inventoryTR">
+            <th className="inventoryTH">Food Item</th>
+            <th className="inventoryTH">Quantity</th>
+            <th className="inventoryTH">Unit</th>
+            <th className="inventoryTH">Value Per Unit</th>
+            <th className="inventoryTH">Expiration Date</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="inventoryTBody">
           {
             inventoryState.result.map((inventory,index) => {
               return (
 
-                <tr key={index}>
-                  <td>{inventory.title}</td>
-                  <td>{inventory.quantity}</td>
-                  <td>{inventory.unit}</td>
-                  <td>${inventory.value_unit}</td>
-                  <td>{ moment(inventory.exp_date).format("MM/DD/YY")}</td>
+                <tr className="inventoryTR" key={index}>
+                  <td className="inventoryTD">{inventory.title}</td>
+                  <td className="inventoryTD">{inventory.quantity}</td>
+                  <td className="inventoryTD">{inventory.unit}</td>
+                  <td className="inventoryTD">${inventory.value_unit}</td>
+                  <td className="inventoryTD">{ moment(inventory.exp_date).format("MM/DD/YY")}</td>
 
                   {/* <button onClick={() => editRow(inventory.id)}>Edit</button> */}
                  <td><button className="btn-main" onClick={() => handleToggleModal(inventory)}>Edit</button></td>

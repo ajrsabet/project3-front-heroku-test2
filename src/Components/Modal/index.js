@@ -102,6 +102,7 @@ export default function SimpleModal(props) {
         Open Modal
       </button> */}
       <Modal
+        className="modal"
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={props.modalOpen}
