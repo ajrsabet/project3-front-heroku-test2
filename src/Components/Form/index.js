@@ -74,7 +74,7 @@ export default function Form() {
       //   passwordValid: true
       // });
     };
-    if (userState.password == userState.password2) {
+    if (userState.password === userState.password2) {
       handleVerifyChange("passwordMatch")
       // setVerifyState({
       //   ...verifyState,
