@@ -1,9 +1,12 @@
 import React from "react";
 
 export default function Section(props) {
-    return (
-        <section className="Section span-2-of-3">
-            {props.children}
-        </section>
-    )
+  return (
+    // <div className="container">
+      <div className="Section span-2-of-3">
+        {props.children}
+      </div>
+    // </div>
+
+  )
 };

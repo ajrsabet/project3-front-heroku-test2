@@ -75,14 +75,14 @@ console.log(sessionData);
         <div>
             <form className="register-form">
                 <div className='search-bar'>
-                    <h1 htmlFor="searchSupplier" className="tableH1">Supplier Search</h1>
+                    <h1 htmlFor="searchSupplier" className="sectionH1">Supplier Search</h1>
+                    <p>Search by City</p>
                     <input
                         className='city-search'
                         value={cityState.city}
                         onChange={handleInputChange}
                         type='text'
                         name='city'
-                        placeholder='Search By City'
                     />
                     <button className='btn-main' type='submit' onClick={submitRegistration}>Search</button>
                 </div>
@@ -150,7 +150,7 @@ console.log(sessionData);
 
                                                     </tbody>
                                                 </table>
-                                                <button onClick={() => claimInventory()}>CLaim</button>
+                                                <button className="btn-main" onClick={() => claimInventory()}>Claim</button>
                                             </div>):null}
             </div>
         </div>
