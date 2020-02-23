@@ -29,9 +29,8 @@ export default function AccountOverview(props) {
 
 
   return (
-    <div className="login-form">
-      <h1 className="tableH1">Account Overview</h1>
-      <h2>Profile</h2>
+    <div>
+      <h1 className="sectionH1">Account Overview</h1>
       <table>
         <tbody>
           <tr>
