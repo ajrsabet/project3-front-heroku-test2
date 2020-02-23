@@ -20,6 +20,9 @@
     margin-left: 25px;
     width: 75%;
   }
+  .add-btn {
+    margin-left: 4%;
+  }
 
   h2 {
     margin: 3% 5%;
@@ -149,7 +152,9 @@
   }
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
   /* Force table to not be like tables anymore */
   .inventoryTable,
   .inventoryTHead,
@@ -189,79 +194,92 @@
     padding-right: 10px;
     white-space: nowrap;
   }
+
   /*
 	Label the data
 	*/
   .inventoryTD:nth-of-type(1):before {
     content: "Food Item";
   }
+
   .inventoryTD:nth-of-type(2):before {
     content: "Quantity";
   }
+
   .inventoryTD:nth-of-type(3):before {
     content: "Unit";
   }
+
   .inventoryTD:nth-of-type(4):before {
     content: "Value per Unit";
   }
+
   .inventoryTD:nth-of-type(5):before {
     content: "Expiration Date";
   }
 }
 
 // Modal
-.modaloverlay{
-  background:rgba(0,0,0,0.8);
-  bottom:0;
-  left:0;
-  opacity:0;
-  pointer-events:none;
-  position:fixed;
-  right:0;
-  top:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  z-index:-1;
-  display: none;
-  &:target{
-    display: block;
-    opacity:1;
-    pointer-events:auto;
-    z-index:99999;
+// .modaloverlay {
+//   // background:rgba(0,0,0,0.8);
+//   background-color: transparent;
+//   bottom: 0;
+//   left: 0;
+//   opacity: 100%;
+//   pointer-events: none;
+//   position: fixed;
+//   right: 0;
+//   top: 0;
+//   -webkit-transition: opacity 400ms ease-in;
+//   -moz-transition: opacity 400ms ease-in;
+//   transition: opacity 400ms ease-in;
+//   z-index: -1;
+//   display: none;
+
+//   &:target {
+//     display: block;
+//     opacity: 1;
+//     pointer-events: auto;
+//     z-index: 99999;
+//   }
+// }
+
+.modal {
+//   // background-color:white;
+//   background-color: transparent;
+//   height: 100%;
+//   position: relative;
+//   margin: 0 auto;
+//   padding: 3em;
+//   overflow-y: scroll;
+//   -webkit-overflow-scrolling: touch;
+  
+  @media (min-width: 60em) {
+    height: 75%;
+    margin: 5% auto;
+    max-height: 57em;
+    max-width: 66em;
+    width: 85% !important;
   }
+
+//   >iframe,
+//   >div {
+//     border: none;
+//     width: 85%;
+//     height: 50%;
+//   }
 }
-  .modal{
-    background-color:white;
-    height: 100%;
-    position:relative;
-    margin:0 auto;
-    padding:3em;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    @media (min-width: 60em) {
-      height:75%;
-  	 margin:5% auto;
-  	 max-height: 57em;
-      max-width:66em;
-      width:85%;
-  	}
-	> iframe, > div{
-		border:none;
-		width: 85%;
-		height: 50%;
-    }
-  }
-  // .close{
-  //   color:black;
-  //   font-size:24px;
-  //   padding:8px 12px;
-  //   position:absolute;
-  //   right:0;
-  //   text-align:center;
-  //   text-decoration:none;
-  //   top:0;
-  //   z-index: 1;
-  // }
+
+// .close{
+//   color:black;
+//   font-size:24px;
+//   padding:8px 12px;
+//   position:absolute;
+//   right:0;
+//   text-align:center;
+//   text-decoration:none;
+//   top:0;
+//   z-index: 1;
+// }
 
 
