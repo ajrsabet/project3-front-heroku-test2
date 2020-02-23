@@ -98,40 +98,40 @@ export default function SimpleModal(props) {
 
   return (
     <div>
-      {/* <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button> */}
-      <Modal
-        className="modal"
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        open={props.modalOpen}
-        onClose={props.toggleModal}
-      >
-        {props.itemToUpdate ? (
-          <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Edit Item</h2>
-            <TextField onChange={props.handleInputChange} label="Food" name={"title"} value={props.itemToUpdate.title} />
-            <TextField onChange={props.handleInputChange} label="Quantity" name={"quantity"} value={props.itemToUpdate.quantity} />
-            <TextField onChange={props.handleInputChange} label="Unit" name={"unit"} value={props.itemToUpdate.unit} />
-            <TextField onChange={props.handleInputChange} label="Value" name={"value_unit"} value={props.itemToUpdate.value_unit} />
-            <TextField onChange={props.handleInputChange} label="Expiration Date" name={"exp_date"} value={props.itemToUpdate.exp_date} />
-            <SimpleModal />
-            <button className="btn-main" onClick={props.editRow}>Submit</button>
-          </div>
-        ) :
-          <form style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Add</h2>
-            <TextField onChange={handleInputChange} label="Food" name="title" />
-            <TextField onChange={handleInputChange} label="Quantity" name="quantity" />
-            <TextField onChange={handleInputChange} label="Unit" name="unit" />
-            <TextField onChange={handleInputChange} label="Value" name="value_unit" />
-            <TextField onChange={handleInputChange} label="Expiration Date" name="exp_date" placeholder="MM/DD/YY" />
-            <SimpleModal />
-            <button className="btn-main" onClick={handleSubmitForm}>Submit</button>
-          </form>
-        }
-      </Modal>
+      <div className="modaloverlay">
+        <Modal
+          className="modal"
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={props.modalOpen}
+          onClose={props.toggleModal}
+        >
+          {props.itemToUpdate ? (
+            <div style={modalStyle} className={classes.paper}>
+              {/* <a href="#close" class="close">&times;</a> */}
+              <h2 id="simple-modal-title">Edit Item</h2>
+              <TextField onChange={props.handleInputChange} label="Food" name={"title"} value={props.itemToUpdate.title} />
+              <TextField onChange={props.handleInputChange} label="Quantity" name={"quantity"} value={props.itemToUpdate.quantity} />
+              <TextField onChange={props.handleInputChange} label="Unit" name={"unit"} value={props.itemToUpdate.unit} />
+              <TextField onChange={props.handleInputChange} label="Value" name={"value_unit"} value={props.itemToUpdate.value_unit} />
+              <TextField onChange={props.handleInputChange} label="Expiration Date" name={"exp_date"} value={props.itemToUpdate.exp_date} />
+              <SimpleModal />
+              <button className="btn-main" onClick={props.editRow}>Submit</button>
+            </div>
+          ) :
+            <form style={modalStyle} className={classes.paper}>
+              <h2 id="simple-modal-title">Add</h2>
+              <TextField onChange={handleInputChange} label="Food" name="title" />
+              <TextField onChange={handleInputChange} label="Quantity" name="quantity" />
+              <TextField onChange={handleInputChange} label="Unit" name="unit" />
+              <TextField onChange={handleInputChange} label="Value" name="value_unit" />
+              <TextField onChange={handleInputChange} label="Expiration Date" name="exp_date" placeholder="MM/DD/YY" />
+              <SimpleModal />
+              <button className="btn-main" onClick={handleSubmitForm}>Submit</button>
+            </form>
+          }
+        </Modal>
+      </div>
     </div>
   );
 }
