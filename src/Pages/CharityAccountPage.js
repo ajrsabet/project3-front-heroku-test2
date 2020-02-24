@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 // Components
 import Section from "../Components/Section";
+import AccountHistory from "../Components/AccountHistory"
 import API from "../Util/API/API";
 import FindingSupplier from '../Components/FindingSupplier';
 import AccountOverview from "../Components/AccountOverview";
@@ -36,6 +37,8 @@ export default function CharityAccountPage() {
       return <EditProfile />
     } else if(activePage==="Find Suppliers"){
       return <FindingSupplier />
+    } else if(activePage==="Account History"){
+      return <AccountHistory />
     } else if(activePage==="Home"){
       window.location.href = "/";
     } else if(activePage==="Logout"){
