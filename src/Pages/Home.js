@@ -95,7 +95,7 @@ function Home() {
           </Navbar>
         </div>
         <div className='main-text'>
-          <h1>Some fancy shit to say about food and planet yea</h1>
+          <h1></h1>
           <a href='#main-info'>Learn more</a>
         </div>
       </div>
@@ -105,15 +105,15 @@ function Home() {
           <div className='main-info' id='main-info'>
             <div className='col span-1-of-3 box'>
               <p className='icon'><i className="far fa-trash-alt fa-2x"></i></p>
-              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
+              <p>In the United States alone, 40 percent of food goes uneaten every year. This amounts to $162 billion in waste annually, according to the Natural Resources Defense Council. </p>
             </div>
             <div className='col span-1-of-3 box'>
               <p className='icon'><i className="far fa-handshake fa-2x"></i></p>
-              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
+              <p>In 2018, an estimated 1 in 9 Americans were food insecure, equating to over 37 million people. Food insecurity does not have one main cause, as low-income families are often affected by multiple, overlapping issues, such as lack of affordable housing, chronic health problems, high medical costs, and low wages. Making sure food banks and hunger-relief organizations have enough provisions is a huge piece in solving this puzzle.</p>
             </div>
             <div className='col span-1-of-3 box'>
               <p className='icon'><i className="fas fa-globe-americas fa-2x"></i></p>
-              <p>Hella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshitHella moar words gucci belt lorem ipshit</p>
+              <p>Getting food from farm to fork takes up 10% of the total U.S. energy budget, 50% of U.S. land, and 80% of all freshwater consumed in the United States. Increasing the efficiency of our food system is a necessity that requires collaborative efforts between businesses, governments and consumers. Here at Leftovers, we would like to facilitate and establish these relationships and begin working towards a less wasteful world.</p>
             </div>
           </div>
         </div>
