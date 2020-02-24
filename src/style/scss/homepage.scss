@@ -34,11 +34,16 @@
     color: #fff;
     background-color: $primary-color-1;
     transition: 0.2s;
+    margin-left: 40px;
 
     &:hover {
       background-color: darken($color: $primary-color-1, $amount: 10%);
       ;
       border-color: darken($color: $primary-color-1, $amount: 10%);
+    }
+
+    @media (max-width: 110px) {
+      margin-left: 400px;
     }
   }
 }
@@ -60,6 +65,7 @@
     width: 75%;
     text-align: center;
   }
+
   p {
     margin: 10%;
   }
@@ -72,8 +78,8 @@
     &::before {
       display: block;
       height: 2px;
-      width: 75%;
-      background-color: $primary-color-2;
+      width: 70%;
+      background-color: $primary-color-1;
       content: '';
       margin: 0 auto;
       margin-bottom: 30px;
@@ -93,15 +99,6 @@
     top: 30%;
     left: 0;
     transform: none;
-
-    h1 {
-      margin: 0 15px 20px 10px;
-      font-weight: 200;
-    }
-
-    a {
-      margin: 0 15px;
-    }
   }
 
   .main-info {
