@@ -5,7 +5,7 @@ const URL = "http://localhost:8080"
 const API = {
     // User Routes __________________________________________________
     // Get all users
-    getAllUsers: () => {
+    getAllUsers: (query) => {
         return axios.get(`${URL}/api/user`)
     },
     // Create new user
@@ -15,6 +15,10 @@ const API = {
     // Get User by id
     getUserById: (id) => {
         return axios.get(`${URL}/api/user/${id}`)
+    },
+    // Get User by email
+    checkUserEmail: (email) => {
+        return axios.get(`${URL}/api/user/email/${email}`)
     },
     // Update user by id
     updateUserById: (id) => {
