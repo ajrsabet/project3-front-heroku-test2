@@ -29,13 +29,8 @@
   }
 
   td {
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     padding-right: 1%;
-    // margin-right: 190px;
-
-    &:hover {
-      background-color: darken($color: $frosty, $amount: 10%);
-    }
   }
 }
 
@@ -84,6 +79,25 @@
   input {
     margin: 0 3%;
   }
+}
+
+.inventoryTH {
+  text-align: left;
+}
+
+.btn-no-top-margin {
+  margin-top: 0;
+}
+
+.p-search-tag {
+  margin-left: 3%;
+}
+
+.sweetcheeks {
+  table {
+    margin: 0 auto;
+  }
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 900px) {
