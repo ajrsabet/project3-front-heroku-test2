@@ -36,6 +36,8 @@ export default function CharityAccountPage() {
       return <EditProfile />
     } else if(activePage==="Find Suppliers"){
       return <FindingSupplier />
+    } else if(activePage==="Account History"){
+      return <AccountHistory />
     } else if(activePage==="Home"){
       window.location.href = "/";
     } else if(activePage==="Logout"){

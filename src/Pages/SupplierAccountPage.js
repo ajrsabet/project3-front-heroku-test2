@@ -44,6 +44,8 @@ export default function SupplierAccountPage() {
       return <PickupSchedule />
     } else if (activePage === "Inventory") {
       return <InventoryTable />
+    } else if(activePage==="Account History"){
+      return <AccountHistory />
     } else if (activePage === "Home") {
       window.location.href = "/";
     } else if (activePage === "Logout") {
