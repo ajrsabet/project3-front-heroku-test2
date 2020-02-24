@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 // Components
 import Section from "../Components/Section";
+import AccountHistory from "../Components/AccountHistory"
 import API from "../Util/API/API";
 import FindingSupplier from '../Components/FindingSupplier';
 import AccountOverview from "../Components/AccountOverview";

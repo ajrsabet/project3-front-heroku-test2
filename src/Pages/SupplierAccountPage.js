@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Section from "../Components/Section";
 import API from "../Util/API/API";
 import InventoryTable from "../Components/InventoryTable";
+import AccountHistory from "../Components/AccountHistory"
 import AccountOverview from "../Components/AccountOverview";
 import EditProfile from "../Components/EditProfile";
 import PickupSchedule from "../Components/PickupSchedule";
