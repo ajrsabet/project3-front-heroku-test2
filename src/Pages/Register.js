@@ -30,11 +30,9 @@ export default function Register() {
             <img onClick={()=>{setActivePage("Home")}} className='logo' src={logo} alt='logo'></img>
             <RegisterDrawer setActivePage={setActivePage} />
           </Navbar>
-          <div className='span-2-of-3'>
-            <Form />
-          </div>
         </div>
       </div>
+            <Form />
     </div>
   )
 }

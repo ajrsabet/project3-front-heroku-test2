@@ -290,8 +290,9 @@ export default function Form() {
 
   //////////////////// JSX /////////////////////////
   return (
+    <div className='input-container'>
     <form className="register-form row">
-      <div className='input-container'>
+      
         <h3>Account Setup</h3>
         <div className='radios'>
           <label>
@@ -367,6 +368,7 @@ export default function Form() {
           maxLength="5"
         />
         {warningText.company === false ? <p style={{ color: "red" }}>* enter 5 digit zip</p> : <div></div>}
+        <br />
         <hr />
         <br />
         <h6>User Info</h6>
@@ -411,7 +413,7 @@ export default function Form() {
         />
         {warningText.company === false ? <p style={{ color: "red" }}>* passwords do not match</p> : <div></div>}
         <button className='btn-main' type='submit' value='submit' onClick={submitRegistration}>SUBMIT</button>
-      </div>
     </form>
+      </div>
   )
 };
