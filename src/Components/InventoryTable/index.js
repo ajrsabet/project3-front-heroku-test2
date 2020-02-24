@@ -133,7 +133,7 @@ export default function InventoryTable(props) {
   return (
     <>
       <h1 className="inventoryH1">Inventory</h1>
-      <button className="btn-main" onClick={() => handleToggleModal()}>Add</button>
+      <button className="btn-main add-btn" onClick={() => handleToggleModal()}>Add</button>
       <table className="inventoryTable">
         <thead className="inventoryTHead">
           <tr className="inventoryTR">

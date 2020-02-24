@@ -3,7 +3,7 @@ import React from "react";
 export default function PickupSchedule(props) {
   return (
     <div>
-      <h1 className="sectionH1"> Set Pickup Schedule </h1>
+      <h1 className="pickupH1"> Set Pickup Schedule </h1>
       <form>
         <div className="formInput">
           <label for="pickupDate">Pickup Date:</label>
