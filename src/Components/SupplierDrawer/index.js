@@ -52,6 +52,9 @@ export default function SupplierDrawer(props) {
         <div className="drawerBtn" onClick={() => { props.setActivePage("Inventory") }}>
           <p>Inventory</p>
         </div>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Account History") }}>
+          <p>Account History</p>
+        </div>
       </List>
       <Divider />
       <List>
@@ -70,6 +73,7 @@ export default function SupplierDrawer(props) {
 
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}
+
       </Drawer>
 
     </div>

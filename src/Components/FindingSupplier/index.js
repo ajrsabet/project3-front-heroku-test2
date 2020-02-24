@@ -47,6 +47,7 @@ const [sessionData,setSessionData]= useState({})
         })
     }
     const handleShowInventory = (id) => {
+        console.log(id);
         API.getAllInventory(id).then(res => {
             setInventoryState(res.data)
         })
