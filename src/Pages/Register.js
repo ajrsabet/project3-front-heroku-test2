@@ -32,7 +32,7 @@ export default function Register() {
           </Navbar>
         </div>
       </div>
-            <Form />
+      <Form />
     </div>
   )
 }

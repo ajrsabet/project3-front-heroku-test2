@@ -290,7 +290,7 @@ export default function Form() {
 
   //////////////////// JSX /////////////////////////
   return (
-    <div className='input-container'>
+    <div className='register-container'>
     <form className="register-form row">
       
         <h3>Account Setup</h3>
