@@ -74,12 +74,11 @@ function Home() {
   
 
   return (
-    <div >
-
+    <>
       <div className='container main'>
         <div className='row'>
           <Navbar>
-            <img className='logo' src={logo} alt='logo'></img>
+            <img className='logo' src={logo} alt='logo'/>
             <HomeDrawer setActivePage={setActivePage} isMobile={isMobile} authState={authState}/>
             {isMobile ? (<div />) : (
               <div>
@@ -95,8 +94,8 @@ function Home() {
           </Navbar>
         </div>
         <div className='main-text'>
-          <h1></h1>
-          <a href='#main-info'>Learn more</a>
+          <h1 id='main-name'>leftōvers</h1>
+
         </div>
       </div>
 
@@ -105,7 +104,12 @@ function Home() {
           <div className='main-info' id='main-info'>
             <div className='col span-1-of-3 box'>
               <p className='icon'><i className="far fa-trash-alt fa-2x"></i></p>
+<<<<<<< HEAD
               <p>In the United States alone, 40 percent of food goes uneaten every year. This amounts to $162 billion in waste annually, according to the Natural Resources Defense Council. This level of waste has far-reaching impacts on society. Food that could have helped feed families in need is sent to landfills, and resources involved in producing this food, such as land, water, labor, and energy, are wasted.</p>
+=======
+
+              <p>In the United States alone, 40 percent of food goes uneaten every year. This amounts to $162 billion in waste annually, according to the Natural Resources Defense Council. </p>
+>>>>>>> 09d089b9b3750f5a34a5ee24ac0eb56d28f87109
             </div>
             <div className='col span-1-of-3 box'>
               <p className='icon'><i className="far fa-handshake fa-2x"></i></p>
@@ -119,7 +123,7 @@ function Home() {
         </div>
       </div>
 
-    </div>
+    </>
   )
 
 }
