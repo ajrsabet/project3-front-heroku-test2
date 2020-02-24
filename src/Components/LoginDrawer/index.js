@@ -43,8 +43,8 @@ export default function LoginDrawer(props) {
         <div className="drawerBtn" onClick={() => { props.setActivePage("Register") }}>
           <p>Register</p>
         </div>
-        <div className="drawerBtn" onClick={() => { props.setActivePage("Logout") }}>
-          <p>Logout</p>
+        <div className="drawerBtn" onClick={() => { props.setActivePage("Home") }}>
+          <p>Home</p>
         </div>
       </List>
     </div>

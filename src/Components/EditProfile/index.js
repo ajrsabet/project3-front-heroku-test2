@@ -3,7 +3,7 @@ import React from "react";
 export default function EditProfile(props) {
   return (
     <div className='edit-container'>
-      <h1> Edit Profile </h1>
+      <h1 className="sectionH1"> Edit Profile </h1>
       <p>Company Name</p>
       <input placeholder=""></input>
       <p>Admin Name</p>

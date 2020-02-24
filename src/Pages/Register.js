@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Form from "../Components/Form";
-import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import logo from '../style/images/green-earth.svg';
 import '../style/css/registerpage.min.css';
@@ -15,13 +14,10 @@ export default function Register() {
       case "Login":
         window.location.href = "/login";
         break;
-      case "Logout":
-        window.location.href = "/";
-        break;
       case "Home":
         window.location.href = "/"
-      default:
         break;
+        default:
     }
   }, [activePage]);
 
@@ -34,11 +30,9 @@ export default function Register() {
             <img onClick={()=>{setActivePage("Home")}} className='logo' src={logo} alt='logo'></img>
             <RegisterDrawer setActivePage={setActivePage} />
           </Navbar>
-          <div className='span-2-of-3'>
-            <Form />
-          </div>
         </div>
       </div>
+      <Form />
     </div>
   )
 }

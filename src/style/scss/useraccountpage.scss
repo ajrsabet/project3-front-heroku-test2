@@ -1,15 +1,26 @@
-@import './config';
+@import "./config";
 
 .Section {
   color: white;
-  margin: 5% auto;
+  margin: 12% auto;
+  background-color: $frosty;
   border-radius: 5px;
   padding-bottom: 3%;
-  overflow: scroll;
 
-  .tableH1, table, form {
+  .accountH1,
+  .pickupH1,
+  table,
+  form {
     margin-left: 25px;
     width: 75%;
+  }
+
+  .inventoryH1 {
+    margin-left: 25px;
+    width: 75%;
+  }
+  .add-btn {
+    margin-left: 4%;
   }
 
   h2 {
@@ -17,13 +28,8 @@
   }
 
   td {
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     padding-right: 1%;
-    // margin-right: 190px;
-
-    &:hover {
-      background-color: darken($color: $frosty, $amount: 10%);
-    }
   }
 }
 
@@ -40,7 +46,8 @@
   margin: 0 auto;
   text-align: center;
 
-  p, button {
+  p,
+  button {
     margin-top: 10px;
   }
 }
@@ -50,7 +57,6 @@
     margin: 0 3%;
   }
 }
-
 
 .btn-acct {
   color: #fff;
@@ -74,15 +80,55 @@
   }
 }
 
+.inventoryTH {
+  text-align: left;
+}
+
+.btn-no-top-margin {
+  margin-top: 0;
+}
+
+.p-search-tag {
+  margin-left: 3%;
+}
+
+.sweetcheeks {
+  table {
+    margin: 0 auto;
+  }
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 900px) {
   .Section {
     margin-top: 1%;
+    padding-top: 20px;
+    padding-bottom: 40px;
 
-    .tableH1 {
+    .sectionH1,
+    .pickupH1 {
       text-align: center;
       margin: 0 auto;
-      margin-bottom: 8%;
-      font-size: 125%;
+      margin-bottom: 12%;
+      font-size: 175%;
+    }
+
+    .accountH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 12%;
+      font-size: 150%;
+    }
+
+    .inventoryH1 {
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 3%;
+      font-size: 175%;
+    }
+
+    .city-search {
+      margin: 0;
     }
 
     .formInput {
@@ -92,7 +138,6 @@
         display: block;
       }
     }
-    
 
     h1 {
       text-align: center;
@@ -101,11 +146,11 @@
 
     h2 {
       margin: 3% 5%;
-      font-weight: 200;
+      // font-weight: 200;
+      text-align: center;
     }
 
     table {
-      margin-left: 4%;
       width: 85%;
     }
 
@@ -119,3 +164,135 @@
     }
   }
 }
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
+  /* Force table to not be like tables anymore */
+  .inventoryTable,
+  .inventoryTHead,
+  .inventoryTBody,
+  .inventoryTH,
+  .inventoryTD,
+  .inventoryTR {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  .inventoryTHead .inventoryTR {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .inventoryTR {
+    border: 1px solid #ccc;
+  }
+
+  .inventoryTD {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .inventoryTD:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
+	Label the data
+	*/
+  .inventoryTD:nth-of-type(1):before {
+    content: "Food Item";
+  }
+
+  .inventoryTD:nth-of-type(2):before {
+    content: "Quantity";
+  }
+
+  .inventoryTD:nth-of-type(3):before {
+    content: "Unit";
+  }
+
+  .inventoryTD:nth-of-type(4):before {
+    content: "Value per Unit";
+  }
+
+  .inventoryTD:nth-of-type(5):before {
+    content: "Expiration Date";
+  }
+}
+
+// Modal
+// .modaloverlay {
+//   // background:rgba(0,0,0,0.8);
+//   background-color: transparent;
+//   bottom: 0;
+//   left: 0;
+//   opacity: 100%;
+//   pointer-events: none;
+//   position: fixed;
+//   right: 0;
+//   top: 0;
+//   -webkit-transition: opacity 400ms ease-in;
+//   -moz-transition: opacity 400ms ease-in;
+//   transition: opacity 400ms ease-in;
+//   z-index: -1;
+//   display: none;
+
+//   &:target {
+//     display: block;
+//     opacity: 1;
+//     pointer-events: auto;
+//     z-index: 99999;
+//   }
+// }
+
+.modal {
+//   // background-color:white;
+//   background-color: transparent;
+//   height: 100%;
+//   position: relative;
+//   margin: 0 auto;
+//   padding: 3em;
+//   overflow-y: scroll;
+//   -webkit-overflow-scrolling: touch;
+  
+  @media (min-width: 60em) {
+    height: 75%;
+    margin: 5% auto;
+    max-height: 57em;
+    max-width: 66em;
+    width: 85% !important;
+  }
+
+//   >iframe,
+//   >div {
+//     border: none;
+//     width: 85%;
+//     height: 50%;
+//   }
+}
+
+// .close{
+//   color:black;
+//   font-size:24px;
+//   padding:8px 12px;
+//   position:absolute;
+//   right:0;
+//   text-align:center;
+//   text-decoration:none;
+//   top:0;
+//   z-index: 1;
+// }
+
+
