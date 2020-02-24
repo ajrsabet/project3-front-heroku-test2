@@ -19,6 +19,7 @@ export default function Form() {
   });
 
   const [lastTargetState, setLastTargetState] = useState({ target: "", value: "" });
+
   const handleInputChange = event => {
     let name = event.target.name;
     let value = event.target.value;
@@ -26,18 +27,13 @@ export default function Form() {
       ...userState,
       [name]: value
     });
-
-    // if (name !== lastTargetState.target && lastTargetState.target) {
-    //   // console.log("verify: " + lastTargetState.target);
-    //   // console.log(name);
-    //   verifyInput(lastTargetState.target, lastTargetState.value)
-    //   setLastTargetState({ target: name, value: value });
-    // } else {
-    //   // console.log("don't verify" + name);
-    //   // console.log(lastTargetState.target);
-    //   setLastTargetState({ target: name, value: value });
-    // }
-    // // console.log(inputValidated);
+    if (name !== lastTargetState.target && lastTargetState.target) {
+      console.log(`validate ${lastTargetState.target}: ${lastTargetState.value}`);
+      verifyInput(lastTargetState.target, lastTargetState.value)
+      setLastTargetState({ target: name, value: value });
+    } else {
+      setLastTargetState({ target: name, value: value });
+    }
   };
 
   ///////////////// form validation ///////////////////////
@@ -57,182 +53,206 @@ export default function Form() {
       password: false,
       confirmPassword: false
     })
-    const [warningText, setWarningText] = useState(
-      {
-        ein: true,
-        accountType: true,
-        company: true,
-        adminFirstName: true,
-        adminLastName: true,
-        street: true,
-        city: true,
-        state: true,
-        zipCode: true,
-        email: true,
-        password: true,
-        confirmPassword: true
-      })
+
+  const [warningText, setWarningText] = useState(
+    {
+      ein: true,
+      accountType: true,
+      company: true,
+      adminFirstName: true,
+      adminLastName: true,
+      street: true,
+      city: true,
+      state: true,
+      zipCode: true,
+      email: true,
+      password: true,
+      confirmPassword: true
+    })
 
   const inputFields = ["ein", "accountType", "company", "adminFirstName", "adminLastName", "street", "city", "state", "zipCode", "email", "password", "confirmPassword"]
 
   // Verify Inputs
-  // function verifyInput(target, value) {
-  //   const stateAbrive = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'];
-  //   const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //   const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/;
+  function verifyInput(target, value) {
+    const stateAbrive = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'];
+    const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passwordCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,128}$/;
 
-  //   if (target === "accountType") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, accountType: true })
-  //       setWarningText({ ...warningText, accountType: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, accountType: false });
-  //       setWarningText({ ...warningText, accountType: false });
-  //     };
-  //   };
-  //   if (target === "ein") {
-  //     if (value.toString().length === 9) {
-  //       setInputValidated({ ...inputValidated, ein: true })
-  //       setWarningText({ ...warningText, ein: true })
-  //       API.einChecker(
-  //         value
-  //       ).then(res => {
-  //         console.log(res)
-  //         alert(`The EIN matches: ${res.data.name} located at ${res.data.address}, ${res.data.city}, ${res.data.state}. Is this your company?`)
-  //         setUserState({
-  //           ...userState,
-  //           ein: res.data.ein,
-  //           company: res.data.name,
-  //           street: res.data.address,
-  //           city: res.data.city,
-  //           state: res.data.state
-  //           // zip: parseInt(res.data.zipcode.slice(5,10))
+    if (target === "accountType") {
+      if (value) {
+        setInputValidated({ ...inputValidated, accountType: true })
+        setWarningText({ ...warningText, accountType: true })
+      } else {
+        setInputValidated({ ...inputValidated, accountType: false });
+        setWarningText({ ...warningText, accountType: false });
+      };
+    };
+    if (target === "ein") {
+      if (value.toString().length === 9) {
+        setInputValidated({ ...inputValidated, ein: true })
+        setWarningText({ ...warningText, ein: true })
+        API.einChecker(
+          value
+        ).then(res => {
+          console.log(res)
+          alert(`The EIN matches: ${res.data.name} located at ${res.data.address}, ${res.data.city}, ${res.data.state}. Is this your company?`)
+          setUserState({
+            ...userState,
+            ein: res.data.ein,
+            company: res.data.name,
+            street: res.data.address,
+            city: res.data.city,
+            state: res.data.state
+          })
+        }).catch(res => {
+          console.log('This EIN does not match the charity EIN database' + res)
+        })
+      } else {
+        setInputValidated({ ...inputValidated, ein: false });
+        setWarningText({ ...warningText, ein: false });
+      };
+    };
+    if (target === "company") {
+      if (value) {
+        setInputValidated({ ...inputValidated, company: true })
+        setWarningText({ ...warningText, company: true })
+      } else {
+        setInputValidated({ ...inputValidated, company: false });
+        setWarningText({ ...warningText, company: false });
+      };
+    };
+    if (target === "adminFirstName") {
+      if (value) {
+        setInputValidated({ ...inputValidated, adminFirstName: true })
+        setWarningText({ ...warningText, adminFirstName: true })
+      } else {
+        setInputValidated({ ...inputValidated, adminFirstName: false });
+        setWarningText({ ...warningText, adminFirstName: false });
+      };
+    };
+    if (target === "adminLastName") {
+      if (value) {
+        setInputValidated({ ...inputValidated, adminLastName: true })
+        setWarningText({ ...warningText, adminLastName: true })
+      } else {
+        setInputValidated({ ...inputValidated, adminLastName: false });
+        setWarningText({ ...warningText, adminLastName: false });
+      };
+    };
+    if (target === "street") {
+      if (value) {
+        setInputValidated({ ...inputValidated, street: true })
+        setWarningText({ ...warningText, street: true })
+      } else {
+        setInputValidated({ ...inputValidated, street: false });
+        setWarningText({ ...warningText, street: false });
+      };
+    };
+    if (target === "city") {
+      if (value) {
+        setInputValidated({ ...inputValidated, city: true })
+        setWarningText({ ...warningText, city: true })
+      } else {
+        setInputValidated({ ...inputValidated, city: false });
+        setWarningText({ ...warningText, city: false });
+      };
+    };
+    if (target === "state") {
+      if (value && stateAbrive.includes(value.toUpperCase())) {
+        setInputValidated({ ...inputValidated, state: true })
+        setWarningText({ ...warningText, state: true })
+      } else {
+        setInputValidated({ ...inputValidated, state: false });
+        setWarningText({ ...warningText, state: false });
+      };
+    };
+    if (target === "zipCode") {
+      if (value.toString().length === 5) {
+        setInputValidated({ ...inputValidated, zipCode: true });
+        setWarningText({ ...warningText, zipCode: true });
+      } else {
+        setInputValidated({ ...inputValidated, zipCode: false });
+        setWarningText({ ...warningText, zipCode: false });
+      };
+    };
+    if (target === "email") {
+      // Check email format
+      if (emailCheck.test(String(value).toLowerCase())) {
+        console.log("email character test passed");
+        console.log(userState.email);
+        // Check if it exists in the database
+        API.checkUserEmail(userState.email.trim()).then(res => {
+          setInputValidated({ ...inputValidated, email: false });
+          setWarningText({ ...warningText, email: false });
+          console.log(res)
+        }).catch(err => {
+          console.log(err);
+          console.log(target + "is available");
+          setInputValidated({ ...inputValidated, email: true })
+          setWarningText({ ...warningText, email: true })
+        })
+      } else {
+        console.log("email character check failed");
+        setInputValidated({ ...inputValidated, email: false });
+        setWarningText({ ...warningText, email: false });
+      };
 
-  //         })
-  //       }).catch(res => {
-  //         console.log('This EIN does not match the charity EIN database' + res)
-  //       })
-
-  //     } else {
-  //       setInputValidated({ ...inputValidated, ein: false });
-  //       setWarningText({ ...warningText, ein: false });
-  //     };
-  //   };
-  //   if (target === "company") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, company: true })
-  //       setWarningText({ ...warningText, company: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, company: false });
-  //       setWarningText({ ...warningText, company: false });
-  //     };
-  //   };
-  //   if (target === "adminFirstName") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, adminFirstName: true })
-  //       setWarningText({ ...warningText, adminFirstName: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, adminFirstName: false });
-  //       setWarningText({ ...warningText, adminFirstName: false });
-  //     };
-  //   };
-  //   if (target === "adminLastName") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, adminLastName: true })
-  //       setWarningText({ ...warningText, adminLastName: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, adminLastName: false });
-  //       setWarningText({ ...warningText, adminLastName: false });
-  //     };
-  //   };
-  //   if (target === "street") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, street: true })
-  //       setWarningText({ ...warningText, street: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, street: false });
-  //       setWarningText({ ...warningText, street: false });
-  //     };
-  //   };
-  //   if (target === "city") {
-  //     if (value) {
-  //       setInputValidated({ ...inputValidated, city: true })
-  //       setWarningText({ ...warningText, city: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, city: false });
-  //       setWarningText({ ...warningText, city: false });
-  //     };
-  //   };
-  //   if (target === "state") {
-  //     if (value && stateAbrive.includes(value.toUpperCase())) {
-  //       setInputValidated({ ...inputValidated, state: true })
-  //       setWarningText({ ...warningText, state: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, state: false });
-  //       setWarningText({ ...warningText, state: false });
-  //     };
-  //   };
-  //   if (target === "zipCode") {
-  //     if (value.toString().length === 5) {
-  //       setInputValidated({ ...inputValidated, zipCode: true });
-  //       setWarningText({ ...warningText, zipCode: true });
-  //     } else {
-  //       setInputValidated({ ...inputValidated, zipCode: false });
-  //       setWarningText({ ...warningText, zipCode: false });
-  //     };
-  //   };
-  //   if (target === "email") {
-  //     if (emailCheck.test(String(value).toLowerCase())) {
-  //       setInputValidated({ ...inputValidated, email: true })
-  //       setWarningText({ ...warningText, email: true })
-  //     } else {
-  //       setInputValidated({ ...inputValidated, email: false });
-  //       setWarningText({ ...warningText, email: false });
-  //     };
-  //   };
-  //   if (target === "password") {
-  //     if (value && value.match(passwordCheck)) {
-  //       setInputValidated({ ...inputValidated, password: true });
-  //       setWarningText({ ...warningText, password: true });
-  //     } else {
-  //       setInputValidated({ ...inputValidated, password: false });
-  //       setWarningText({ ...warningText, password: false });
-  //     };
-  //   };
-  //   if (target === "confirmPassword") {
-  //     if (value === userState.password) {
-  //       setInputValidated({ ...inputValidated, confirmPassword: true });
-  //       setWarningText({ ...warningText, confirmPassword: true });
-  //     } else {
-  //       setInputValidated({ ...inputValidated, confirmPassword: false });
-  //       setWarningText({ ...warningText, confirmPassword: false });
-  //     };
-  //   };
-  // }
+    };
+    if (target === "password") {
+      // development password check
+      if (value) {
+        // production password check
+        // if (value && value.match(passwordCheck)) {
+        setInputValidated({ ...inputValidated, password: true });
+        setWarningText({ ...warningText, password: true });
+      } else {
+        setInputValidated({ ...inputValidated, password: false });
+        setWarningText({ ...warningText, password: false });
+      };
+    };
+    if (target === "confirmPassword") {
+      if (value === userState.password) {
+        setInputValidated({ ...inputValidated, confirmPassword: true });
+        setWarningText({ ...warningText, confirmPassword: true });
+      } else {
+        setInputValidated({ ...inputValidated, confirmPassword: false });
+        setWarningText({ ...warningText, confirmPassword: false });
+      };
+    };
+  }
 
   ////////////////// submit form ////////////////////////
   const submitRegistration = (event) => {
     event.preventDefault();
-
     // Validate all values    
-    // if (Object.values(inputValidated).indexOf(false) !== -1 ) {
-    //   console.log("validate triggered");
-
+    if (Object.values(inputValidated).indexOf(false) !== -1) {
+      inputFields.forEach((element, index) => {
+        if (Object.values(inputValidated)[index] === false) {
+          verifyInput(element, Object.values(userState)[index]);
+          console.log(element + " not validated")
+        } else {
+          console.log(element + " validated")
+        }
+      });
+    };
+    // if (Object.values(inputValidated).indexOf(false) !== -1) {
     //   inputFields.forEach((element, index) => {
     //     if (Object.values(inputValidated)[index] === false) {
-    //       // if (inputValidated[index] === 1) {
-    //       console.log(element);
-    //       console.log(Object.values(inputValidated)[index]);
-    //       console.log(Object.values(userState)[index]);
-
     //       verifyInput(element, Object.values(userState)[index]);
+    //       console.log(element + " not validated")
+    //     } else {
+    //       console.log(element + " validated")
     //     }
     //   });
+    // };
 
-    // } else {
-    //   console.log("api call triggered");
-      // return
+    if (Object.values(inputValidated).indexOf(false) !== -1 ) {
+      alert("validation failed")
+    };
 
+    // API calls to create user profile
+    if (Object.values(inputValidated).indexOf(false) === -1) {
+      console.log("api call triggered");
       ///// Create Company /////
       API.createCompany({
         company_name: userState.company.trim(),
@@ -285,8 +305,9 @@ export default function Form() {
       }).catch(err => {
         console.log(err);
       })
-    // }
+    }
   }
+
 
   //////////////////// JSX /////////////////////////
   return (
@@ -301,7 +322,8 @@ export default function Form() {
               value='charity'
               onChange={handleInputChange}
               type="radio"
-              name='accountType' />
+              name='accountType'
+            />
           </label>
 
           <label>
@@ -385,7 +407,7 @@ export default function Form() {
           name='adminLastName'
           placeholder='ADMIN LAST NAME'
         />
-        {warningText.company === false ? <p style={{ color: "red" }}>* last name required</p> : <div></div>}
+        {warningText.zipCode === false ? <p style={{ color: "red" }}>* last name required</p> : <div></div>}
         <input className='text-input'
           value={userState.email}
           onChange={handleInputChange}
@@ -393,7 +415,7 @@ export default function Form() {
           name='email'
           placeholder='EMAIL'
         />
-        {warningText.company === false ? <p style={{ color: "red" }}>* must be valid format (name@company.com)</p> : <div></div>}
+        {warningText.email === false ? <p style={{ color: "red" }}>* is not valid format (name@company.com) or it is already in use</p> : <div></div>}
         <input className='text-input'
           value={userState.password}
           onChange={handleInputChange}
@@ -401,7 +423,7 @@ export default function Form() {
           name='password'
           placeholder='PASSWORD'
         />
-        {warningText.company === false ? <p style={{ color: "red" }}>* password must be 8 characters containing at least one lowercase letter, uppercase letter, number, and special character </p> : <div></div>}
+        {warningText.password === false ? <p style={{ color: "red" }}>* password must be 8 characters containing at least one lowercase letter, uppercase letter, number, and special character </p> : <div></div>}
         <input className='text-input'
           value={userState.confirmPassword}
           onChange={handleInputChange}
@@ -409,7 +431,7 @@ export default function Form() {
           name='confirmPassword'
           placeholder='CONFIRM PASSWORD'
         />
-        {warningText.company === false ? <p style={{ color: "red" }}>* passwords do not match</p> : <div></div>}
+        {warningText.confirmPassword === false ? <p style={{ color: "red" }}>* passwords do not match</p> : <div></div>}
         <button className='btn-main' type='submit' value='submit' onClick={submitRegistration}>SUBMIT</button>
       </div>
     </form>

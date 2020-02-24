@@ -1,28 +1,20 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../../Util/API/API"
-import {useHistory} from "react-router-dom"
 
 
 export default function FindingSupplier() {
-    const history = useHistory();
 
-    // let sessionData = {};
     // Check login status and redirect if not logged in
-      useEffect(()=>{
-        API.verifyLogin().then(res=>{
-          if (res.data.email) {
+    useEffect(() => {
+        API.verifyLogin().then(res => {
             setSessionData(res.data);
-          } else {
-            history.push("/login");
-          }  
-        }).catch(err=>{
-          alert(err)
-          console.log(err);
-            history.push("/login");
+        }).catch(err => {
+            alert(err)
+            window.location.href = "/login";
         })
-    },[])
-  
-const [sessionData,setSessionData]= useState({})
+    }, [])
+
+    const [sessionData, setSessionData] = useState({})
     const [supplierState, setSupplierState] = useState([])
     const [inventoryState, setInventoryState] = useState([])
 
@@ -52,15 +44,16 @@ const [sessionData,setSessionData]= useState({})
         })
     }
 
-    const claimInventory = ()=>{
-const inventoryItem=[...inventoryState]
+    const claimInventory = () => {
+        const inventoryItem = [...inventoryState]
 
-        inventoryItem.map((item)=>{
-            item.charity_id = sessionData.CompanyProfileId})
-        
+        inventoryItem.map((item) => {
+            item.charity_id = sessionData.CompanyProfileId
+        })
 
-        API.updateInventoryBulk({inventoryItem })
-        
+
+        API.updateInventoryBulk({ inventoryItem })
+
     }
 
 
@@ -108,7 +101,7 @@ const inventoryItem=[...inventoryState]
 
 
                                             <td><button className='btn-main' onClick={() => handleShowInventory(supplier.id)}>Inventory</button></td>
-                                           
+
                                         </tr>
                                     )
                                 })
@@ -117,37 +110,37 @@ const inventoryItem=[...inventoryState]
                         </tbody>
                     </table>
                 ) : (null)}
-                 {inventoryState.length>0 ?
-                                            (<div className="inventory">
-                                                <table className="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Item</th>
-                                                            <th>Quantity</th>
-                                                            <th>Unit</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            inventoryState.map((inventory) => {
-                                                                return (
+                {inventoryState.length > 0 ?
+                    (<div className="inventory">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    inventoryState.map((inventory) => {
+                                        return (
 
-                                                                    <tr key={inventory.id}>
-                                                                        <td>{inventory.title}</td>
-                                                                        <td>{inventory.quantity}</td>
-                                                                        <td>{inventory.unit}</td>
+                                            <tr key={inventory.id}>
+                                                <td>{inventory.title}</td>
+                                                <td>{inventory.quantity}</td>
+                                                <td>{inventory.unit}</td>
 
 
-                                                                        
-                                                                    </tr>
-                                                                )
-                                                            })
-                                                        }
 
-                                                    </tbody>
-                                                </table>
-                                                <button className="btn-main" onClick={() => claimInventory()}>Claim</button>
-                                            </div>):null}
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+                            </tbody>
+                        </table>
+                        <button className="btn-main" onClick={() => claimInventory()}>Claim</button>
+                    </div>) : null}
             </div>
         </div>
 

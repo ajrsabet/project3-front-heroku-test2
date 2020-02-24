@@ -16,8 +16,8 @@ export default function Register() {
         break;
       case "Home":
         window.location.href = "/"
-      default:
         break;
+        default:
     }
   }, [activePage]);
 
