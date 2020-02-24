@@ -47,6 +47,7 @@ const [sessionData,setSessionData]= useState({})
         })
     }
     const handleShowInventory = (id) => {
+        console.log(id);
         API.getAllInventory(id).then(res => {
             setInventoryState(res.data)
         })
@@ -72,7 +73,7 @@ const inventoryItem=[...inventoryState]
             <form className="register-form">
                 <div className='search-bar'>
                     <h1 htmlFor="searchSupplier" className="sectionH1">Supplier Search</h1>
-                    <p>Search by City</p>
+                    <p className="p-search-tag">Search by City</p>
                     <input
                         className='city-search'
                         value={cityState.city}
@@ -80,34 +81,34 @@ const inventoryItem=[...inventoryState]
                         type='text'
                         name='city'
                     />
-                    <button className='btn-main' type='submit' onClick={submitRegistration}>Search</button>
+                    <button className='btn-main btn-no-top-margin' type='submit' onClick={submitRegistration}>Search</button>
                 </div>
             </form>
-            <div>
+            <div className='sweetcheeks'>
                 {supplierState.length > 0 ? (
 
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Company</th>
-                                <th>Street Address</th>
-                                <th>City</th>
-                                <th>Zipcode</th>
+                    <table className="inventoryTable">
+                        <thead className="inventoryTHead">
+                            <tr className="inventoryTR">
+                                <th className="inventoryTH span-2-of-10">Company</th>
+                                <th className="inventoryTH span-4-of-10">Street Address</th>
+                                <th className="inventoryTH span-2-of-10">City</th>
+                                <th className="inventoryTH span-2-of-10">Zipcode</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="inventoryTBody">
                             {
                                 supplierState.map((supplier) => {
                                     return (
 
-                                        <tr key={supplier.Company_profile.id}>
-                                            <td>{supplier.Company_profile.company_name}</td>
-                                            <td>{supplier.address}</td>
-                                            <td>{supplier.city}</td>
-                                            <td>{supplier.zip}</td>
+                                        <tr className="inventoryTR" key={supplier.Company_profile.id}>
+                                            <td className="inventoryTD span-2-of-10">{supplier.Company_profile.company_name}</td>
+                                            <td className="inventoryTD span-4-of-10">{supplier.address}</td>
+                                            <td className="inventoryTD span-2-of-10">{supplier.city}</td>
+                                            <td className="inventoryTD span-2-of-10">{supplier.zip}</td>
 
 
-                                            <td><button className='btn-main' onClick={() => handleShowInventory(supplier.id)}>Inventory</button></td>
+                                            <td className="span-1-of-10"><button className='btn-main' onClick={() => handleShowInventory(supplier.id)}>Inventory</button></td>
                                            
                                         </tr>
                                     )
