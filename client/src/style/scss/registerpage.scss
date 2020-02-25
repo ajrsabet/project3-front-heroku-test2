@@ -4,9 +4,9 @@ body {
   background-color: #333;
 }
 
-// .navbar {
-//   position: fixed;
-// }
+.navbar {
+  position: fixed;
+}
 
 .main {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
@@ -24,7 +24,7 @@ body {
   position: absolute;
   transform: translate(-50%, -50%);
   text-align: center;
-  // margin-bottom: 10%;
+  margin-bottom: 10%;
 
   h3 {
     margin: 30px auto 0 auto;
