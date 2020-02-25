@@ -4,6 +4,10 @@ body {
   background-color: #333;
 }
 
+// .navbar {
+//   position: fixed;
+// }
+
 .main {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/rayia-soderberg-UrJxxnUNqOo-unsplash.jpg);
   background-size: cover;
@@ -11,15 +15,16 @@ body {
   position: relative;
 }
 
-.input-container {
+.register-container {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   width: 40vw;
-  top: 50%;
+  top: 70%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   text-align: center;
+  // margin-bottom: 10%;
 
   h3 {
     margin: 30px auto 0 auto;
@@ -27,7 +32,14 @@ body {
     width: 75%;
     text-align: center;
     font-size: 200%;
+  }
 
+  h6 {
+    margin: 30px auto 0 auto;
+    color: #fff;
+    width: 75%;
+    text-align: center;
+    font-size: 100%;
   }
 
   .radios {
