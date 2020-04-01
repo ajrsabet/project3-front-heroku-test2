@@ -10,7 +10,7 @@ Bootcamp collaborative project
 
 *Launch Leftōvers: https://food-savers.herokuapp.com/*
 
-![Home Page](https://github.com/austinfinke/project3-front/client/public/homepage.png)
+![Home Page](https://github.com/austinfinke/project3-front/blob/development/client/public/homepage.png)
 
 
 **Contributers:**
