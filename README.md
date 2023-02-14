@@ -1,29 +1,20 @@
-# Create React Express App
+# Leftōvers
 
-## About This Boilerplate
+Bootcamp collaborative project
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Welcome to Leftōvers
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+**Leftōvers** connects food suppliers with those in need to help facilitate a less wasteful world. 
 
-## Starting the app locally
+## App:
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+*Launch Leftōvers: https://food-savers.herokuapp.com/*
 
-```
-npm install
-```
+![Home Page](https://github.com/austinfinke/project3-front/blob/development/client/public/homepage.png)
 
-This should install node modules within the server and the client folder.
 
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+**Contributers:**
+Adam Sabet: https://github.com/ajrsabet
+Aslan Ghodsian: https://github.com/Aslangh67
+Austin Finke: https://github.com/austinfinke
+Isabel Uriarte: https://github.com/isabeluriarte
